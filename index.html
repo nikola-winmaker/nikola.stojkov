@@ -1,43 +1,149 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nikola Stojkov - Projects</title>
+    <title>Nikola Stojkov - Posts</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* add CSS styling here */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      h1 {
+        margin: 0;
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      nav ul li {
+        margin-right: 10px;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+      nav ul li a:hover {
+        background-color: #fff;
+        color: #333;
+        text-decoration: none;
+      }
+      main {
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+      }
+      aside {
+        width: 200px;
+        background-color: #fff;
+        padding: 10px;
+      }
+      aside ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      aside ul li {
+        margin-bottom: 10px;
+      }
+      aside ul li a {
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+        padding: 5px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+      aside ul li a:hover {
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+      }
+      section {
+        padding: 10px;
+        background-color: #fff;
+        margin-left: 20px;
+        flex: 1;
+      }
+      section h2 {
+        margin-top: 0;
+        font-size: 28px;
+      }
+      section ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      section ul li {
+        margin-bottom: 10px;
+      }
+      section ul li a {
+        color: #333;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 5px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+      section ul li a:hover {
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
     <header>
       <h1>Nikola Stojkov</h1>
       <nav>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
+        <ul>
+          <li><a href="#hobby-projects">Hobby Projects</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
       </nav>
     </header>
     <main>
-      <section id="projects">
-        <h2>Projects</h2>
+      <aside>
+        <section id="hobby-projects">
+          <h2>Hobby Projects</h2>
+          <p>Description of hobby projects.</p>
+        </section>
+        <section id="about">
+          <h2>About</h2>
+          <p>Description.</p>
+        </section>
+      </aside>
+      <section>
+        <h2>Posts</h2>
         <ul>
           <li>
-            <h3>Project 1</h3>
-            <p>Description of project 1.</p>
+            <a href="#">Post 1</a>
           </li>
           <li>
-            <h3>Project 2</h3>
-            <p>Description of project 2.</p>
+            <a href="#">Post 2</a>
           </li>
           <li>
-            <h3>Project 3</h3>
-            <p>Description of project 3.</p>
+            <a href="#">Post 3</a>
           </li>
         </ul>
       </section>
-      <section id="about">
-        <h2>About</h2>
-        <p>Brief description.</p>
-      </section>
     </main>
-    <footer>
-      <p>Contact information for the professor.</p>
-    </footer>
   </body>
 </html>
