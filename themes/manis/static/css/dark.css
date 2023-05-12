@@ -28,3 +28,9 @@ code {
 video {
   filter: invert(100%) hue-rotate(180deg);
 }
+
+.icon-text,
+.icon-social,
+a {
+    color: invert(100%);
+}
