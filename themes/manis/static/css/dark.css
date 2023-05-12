@@ -17,7 +17,7 @@ video {
 
 
 body {
-  filter: none;
+  filter: invert(100%) hue-rotate(180deg);
 }
 
 img:not(.icon-text, .icon-social),
