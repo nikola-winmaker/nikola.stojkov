@@ -21,5 +21,5 @@ The system is powered using a 12V power supply which is used to create 3.3V for 
 
 Video of the device with LVGL stress-demo:
 
-{{< youtube PWmhP1ujk8A class="no-filter">}}
+{{< youtube id=PWmhP1ujk8A class="no-filter">}}
 
