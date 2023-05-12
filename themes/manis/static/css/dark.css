@@ -12,7 +12,7 @@ filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
 
 video {
-  filter: none;
+  filter: invert(100%) hue-rotate(180deg);
 }
 
 /* 
