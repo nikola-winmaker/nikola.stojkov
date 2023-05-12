@@ -11,6 +11,6 @@ code {
 filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
 
-/* video {
+video {
   filter: none;
-} */
+}
