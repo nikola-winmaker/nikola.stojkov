@@ -17,16 +17,17 @@ html {
   background-color: #141414 !important;
 }
 
-/* Invert the colors of everything, except videos */
 body {
-  filter: invert(100%) hue-rotate(180deg); 
+filter: none;
+/* filter: invert(100%) hue-rotate(180deg); */
 }
 
-/* Invert the colors of images and code blocks */
-img:not(.icon-text, .icon-social), code {
-  filter: none; 
+img:not(.icon-text, .icon-social),
+code {
+filter: none;
+/* invert(100%) hue-rotate(180deg) contrast(100%); */
 }
 
 video {
-  filter: none;
+filter: none;
 }
