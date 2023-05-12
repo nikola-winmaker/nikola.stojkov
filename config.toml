@@ -40,7 +40,6 @@ pygmentsUseClasses = true
 	debugCSS = false
 	# Custom CSS
 	customCSS = []
-	darkMode = true
 
 	# Site meta description
 	#description = "Sweet little Hugo's theme for personal website or blog."
