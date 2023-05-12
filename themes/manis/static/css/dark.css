@@ -11,3 +11,8 @@ video,
 code {
 filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
+
+img:not(.icon-text, .icon-social),
+code:not(.youtube-video) {
+  filter: invert(100%) hue-rotate(180deg) contrast(100%);
+}
