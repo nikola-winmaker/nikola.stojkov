@@ -19,12 +19,12 @@ html {
 
 /* Invert the colors of everything, except videos */
 body:not(video) {
-  filter: none; 
+  filter: invert(100%) hue-rotate(180deg); 
 }
 
 /* Invert the colors of images and code blocks */
 img:not(.icon-text, .icon-social), code {
-  filter: invert(100%) hue-rotate(180deg) contrast(100%); 
+  filter: none; 
 }
 
 
