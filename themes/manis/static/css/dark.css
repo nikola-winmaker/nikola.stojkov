@@ -39,7 +39,7 @@ body {
   filter: invert(100%) hue-rotate(180deg);
 }
 
-video {
+body video {
   filter: none;
 }
 
@@ -47,4 +47,5 @@ img:not(.icon-text, .icon-social),
 code:not(video) {
   filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
+
 
