@@ -18,7 +18,7 @@ html {
 }
 
 /* Invert the colors of everything, except videos */
-body:not(video) {
+body {
   filter: invert(100%) hue-rotate(180deg); 
 }
 
@@ -27,4 +27,6 @@ img:not(.icon-text, .icon-social), code {
   filter: none; 
 }
 
-
+video {
+  filter: none;
+}
