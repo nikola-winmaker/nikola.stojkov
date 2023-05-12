@@ -21,12 +21,11 @@ body:not(video) {
   filter: invert(100%) hue-rotate(180deg);
 }
 
-img:not(.icon-text, .icon-social, video),
+img:not(.icon-text, .icon-social),
 code {
-  filter: none;
-  /* invert(100%) hue-rotate(180deg) contrast(100%); */
+  filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
 
 video {
-  filter: none;
+  filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
