@@ -1,36 +1,3 @@
-/* html {
-    background-color: #141414 !important;
-}
-
-body {
-filter: invert(100%) hue-rotate(180deg);
-}
-
-img:not(.icon-text, .icon-social),
-video,
-code {
-filter: invert(100%) hue-rotate(180deg) contrast(100%);
-} */
-
-/* Set the background color of the HTML element */
-/* html {
-  background-color: #141414 !important;
-}
-
-/* 
-body:not(video) {
-  filter: invert(100%) hue-rotate(180deg);
-}
-
-img:not(.icon-text, .icon-social),
-code {
-  filter: invert(100%) hue-rotate(180deg) contrast(100%);
-}
-
-video {
-  filter: none;
-} */
-
 html {
   background-color: #141414 !important;
 }
@@ -44,7 +11,7 @@ code {
   filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
 
-video {
-  filter: none !important;
+iframe[src*="youtube.com"] {
+  filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
 
