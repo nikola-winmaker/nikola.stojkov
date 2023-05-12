@@ -27,5 +27,5 @@ code {
 }
 
 video {
-  filter: invert(100%) hue-rotate(180deg) contrast(100%);
+  filter: invert(100%) hue-rotate(180deg);
 }
