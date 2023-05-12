@@ -2,7 +2,7 @@ html {
     background-color: #141414 !important;
 }
 
-/* body {
+body {
 filter: invert(100%) hue-rotate(180deg);
 }
 
@@ -13,9 +13,9 @@ filter: invert(100%) hue-rotate(180deg) contrast(100%);
 
 video {
   filter: none;
-} */
+}
 
-
+/* 
 body {
   filter: invert(100%) hue-rotate(180deg);
 }
@@ -33,4 +33,4 @@ video {
 .icon-social,
 a {
     color: invert(100%);
-}
+} */
