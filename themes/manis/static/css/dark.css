@@ -39,12 +39,12 @@ body {
   filter: invert(100%) hue-rotate(180deg);
 }
 
-img:not(.icon-text, .icon-social),
-code {
-  filter: invert(100%) hue-rotate(180deg) contrast(100%);
+video {
+  filter: none;
 }
 
-video {
-  filter: none !important;
+img:not(.icon-text, .icon-social),
+code:not(video) {
+  filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
 
