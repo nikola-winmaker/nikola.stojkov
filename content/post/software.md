@@ -16,4 +16,8 @@ The system is powered using a 12V power supply which is used to create 3.3V for 
 
 
 ![HMI Front](/post/images/frontHMI.jpg)
-![HMI Back](/post/images/frontHMI.jpg)
+![HMI Back](/post/images/backHMI.jpg)
+
+Video of the device with LVGL stress-demo:
+
+{{< youtube PWmhP1ujk8A >}}
