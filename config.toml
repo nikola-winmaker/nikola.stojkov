@@ -15,8 +15,6 @@ defaultContentLanguage = "en"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
-websiteBaseURL = "https://github.com/nikola-winmaker/nikola.stojkov.git"
-
 [menu]
 	[[menu.main]]
 		name = "Post"

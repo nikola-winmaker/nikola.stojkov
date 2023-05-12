@@ -15,5 +15,5 @@ The ESP32S3 WROOM 1U is connected to an RGB LCD display via RGB interface, and s
 The system is powered using a 12V power supply which is used to create 3.3V for ESP32 and 25,8V for LCD screen.
 
 
-![Image alt]({{ .Site.BaseURL }}assets/frontHMI.jpg)
-![Image alt]({{ .Site.BaseURL }}assets/backHMI.jpg)
+![HMI Front](/post/images/frontHMI.jpg)
+![HMI Back](/post/images/frontHMI.jpg)
