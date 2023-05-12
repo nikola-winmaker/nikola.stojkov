@@ -27,8 +27,4 @@ img:not(.icon-text, .icon-social), code {
   filter: invert(100%) hue-rotate(180deg) contrast(100%); 
 }
 
-/* Correct the colors of the embedded YouTube video */
-video[src*="youtube"] {
-  filter: invert(100%) hue-rotate(180deg) brightness(1.2); 
-}
 
