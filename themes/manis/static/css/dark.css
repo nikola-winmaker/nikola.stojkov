@@ -1,4 +1,4 @@
-html {
+/* html {
     background-color: #141414 !important;
 }
 
@@ -7,30 +7,29 @@ filter: invert(100%) hue-rotate(180deg);
 }
 
 img:not(.icon-text, .icon-social),
+video,
 code {
 filter: invert(100%) hue-rotate(180deg) contrast(100%);
+} */
+
+html {
+  background-color: #141414 !important;
 }
 
-video {
-  filter: invert(100%) hue-rotate(180deg);
-}
-
-/* 
 body {
   filter: invert(100%) hue-rotate(180deg);
 }
 
 img:not(.icon-text, .icon-social),
 code {
-  filter: invert(100%) hue-rotate(180deg) contrast(100%); 
+  filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
 
 video {
-  filter: invert(100%) hue-rotate(180deg);
+  filter: none;
 }
 
 .icon-text,
-.icon-social,
-a {
-    color: invert(100%);
-} */
+.icon-social {
+  filter: invert(100%);
+}
