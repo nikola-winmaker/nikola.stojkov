@@ -12,24 +12,23 @@ code {
 filter: invert(100%) hue-rotate(180deg) contrast(100%);
 } */
 
+/* Set the background color of the HTML element */
 html {
   background-color: #141414 !important;
 }
 
-body {
-  filter: invert(100%) hue-rotate(180deg);
+/* Invert the colors of everything, except videos */
+body:not(video) {
+  filter: invert(100%) hue-rotate(180deg); 
 }
 
-img:not(.icon-text, .icon-social),
-code {
-  filter: invert(100%) hue-rotate(180deg) contrast(100%);
+/* Invert the colors of images and code blocks */
+img:not(.icon-text, .icon-social), code {
+  filter: invert(100%) hue-rotate(180deg) contrast(100%); 
 }
 
-video {
-  filter: none;
+/* Correct the colors of the embedded YouTube video */
+video[src*="youtube"] {
+  filter: invert(100%) hue-rotate(180deg) brightness(1.2); 
 }
 
-.icon-text,
-.icon-social {
-  filter: invert(100%);
-}
