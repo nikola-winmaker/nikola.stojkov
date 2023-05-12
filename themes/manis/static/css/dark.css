@@ -13,7 +13,7 @@ filter: invert(100%) hue-rotate(180deg) contrast(100%);
 } */
 
 /* Set the background color of the HTML element */
-html {
+/* html {
   background-color: #141414 !important;
 }
 
@@ -29,4 +29,29 @@ code {
 
 video {
   filter: none;
+} */
+
+html {
+  background-color: #141414 !important;
+}
+
+body {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+img:not(.icon-text, .icon-social),
+code {
+  filter: invert(100%) hue-rotate(180deg) contrast(100%);
+}
+
+video {
+  filter: none !important;
+}
+
+video::cue {
+  filter: invert(100%) hue-rotate(180deg) contrast(100%) !important;
+}
+
+body *:not(video) {
+  filter: invert(100%) hue-rotate(180deg) !important;
 }
