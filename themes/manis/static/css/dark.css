@@ -2,17 +2,29 @@ html {
     background-color: #141414 !important;
 }
 
-body {
-  filter: none;
-/* filter: invert(100%) hue-rotate(180deg); */
+/* body {
+filter: invert(100%) hue-rotate(180deg);
 }
 
 img:not(.icon-text, .icon-social),
 code {
-filter: none;
-/* invert(100%) hue-rotate(180deg) contrast(100%); */
+filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
 
 video {
   filter: none;
+} */
+
+
+body {
+  filter: none;
+}
+
+img:not(.icon-text, .icon-social),
+code {
+  filter: invert(100%) hue-rotate(180deg) contrast(100%); 
+}
+
+video {
+  filter: invert(100%) hue-rotate(180deg);
 }
