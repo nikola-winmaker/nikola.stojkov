@@ -17,7 +17,7 @@ html {
   background-color: #141414 !important;
 }
 
-body:not(.video-container) {
+body *:not(video) {
   filter: invert(100%) hue-rotate(180deg);
 }
 
@@ -26,6 +26,6 @@ code {
   filter: invert(100%) hue-rotate(180deg) contrast(100%);
 }
 
-.video-container video {
+video {
   filter: none;
 }
