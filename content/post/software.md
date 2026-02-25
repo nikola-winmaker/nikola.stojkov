@@ -1,7 +1,7 @@
 +++
 title = "HMI For motor control system"
 type = "post"
-date = 2023-05-12
+date = 2023-05-13
 draft = false
 +++
 
