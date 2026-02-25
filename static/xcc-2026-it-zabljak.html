@@ -180,27 +180,29 @@
 					<p style="font-size: 0.8em;">Specify communication contracts and message structures</p>
 				</section>
 
-				<!-- Slide 8: Communication Specification Approaches -->
+				<!-- Slide 8: Two Input Paths to XCC and Code Generation -->
 				<section>
-					<h2>Two Input Paths to XCC</h2>
-					<div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
+					<h2>From Specification to Code</h2>
+					<div style="display: flex; gap: 25px; align-items: flex-start; margin: 20px 0;">
 						<div style="flex: 1;">
-							<h4 style="color: #ffc800; font-size: 0.85em; margin-bottom: 10px;">① UML Models → XMI Export</h4>
-							<img src="/images/uml_overview.png" alt="UML Modeling" style="max-height: 280px; margin-bottom: 8px;">
-							<p style="font-size: 0.7em;">Design with standard UML tools<br/>Export as XMI format</p>
+							<h4 style="color: #ffc800; font-size: 0.9em; margin-bottom: 15px;">① UML Models via XMI</h4>
+							<img src="/images/uml_overview.png" alt="UML Modeling" style="max-height: 280px; margin-bottom: 12px;">
+							<p style="font-size: 0.75em;">Design with UML tools<br/>Export as XMI format</p>
 						</div>
 						<div style="flex: 1;">
-							<h4 style="color: #ffc800; font-size: 0.85em; margin-bottom: 10px;">② DSL Specification</h4>
-							<img src="/images/hdl_dsl_language_horizontal.png" alt="HML DSL" style="max-height: 280px; margin-bottom: 8px;">
-							<p style="font-size: 0.7em;">Direct HML specification<br/>for communication design</p>
+							<h4 style="color: #ffc800; font-size: 0.9em; margin-bottom: 15px;">② DSL (ADL + IDL + HML)</h4>
+							<img src="/images/hdl_dsl_language_horizontal.png" alt="HML DSL" style="max-height: 280px; margin-bottom: 12px;">
+							<p style="font-size: 0.75em;">Architecture (ADL)<br/>Interface (IDL)<br/>Hardware (HML)</p>
 						</div>
 						<div style="flex: 1;">
-							<h4 style="color: #ffc800; font-size: 0.85em; margin-bottom: 10px;">③ XCC Composition</h4>
-							<img src="/images/xcc_composer.png" alt="XCC Architecture" style="max-height: 280px; margin-bottom: 8px;">
-							<p style="font-size: 0.7em;">Both inputs generate<br/>unified AST & validation</p>
+							<h4 style="color: #ffc800; font-size: 0.9em; margin-bottom: 15px;">③ Generate AST</h4>
+							<img src="/images/xcc_composer.png" alt="XCC Architecture" style="max-height: 280px; margin-bottom: 12px;">
+							<p style="font-size: 0.75em;">XCC creates AST<br/>for downstream tools</p>
 						</div>
 					</div>
-					<p style="font-size: 0.75em; text-align: center; margin-top: 10px;"><strong>Same architecture, flexible input methods</strong></p>
+					<div class="solution-box" style="margin-top: 15px;">
+						<p style="font-size: 0.8em; text-align: center;"><strong>AST feeds code generators → Platform-specific communication code</strong></p>
+					</div>
 				</section>
 
 				<!-- Slide 9: Benefits & Impact -->
