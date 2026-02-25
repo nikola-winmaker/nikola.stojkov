@@ -1,8 +1,9 @@
----
-title: "XCC: A Universal Communication Interface Composer for Heterogeneous Systems"
-date: 2026-02-25T22:43:34+02:00
-draft: false
----
++++
+title = "XCC: A Universal Communication Interface Composer for Heterogeneous Systems"
+type = "work"
+date = 2026-02-25
+draft = false
++++
 
 ## Conference Paper Presentation
 
