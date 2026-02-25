@@ -1,5 +1,5 @@
 +++
-title = "XCC: A Universal Communication Interface Composer for Heterogeneous Systems"
+title = "IT2026 in Žabljak"
 type = "work"
 date = 2026-02-25
 draft = false
@@ -21,7 +21,7 @@ XCC presents a lightweight communication composition mechanism based on a domain
 
 ### View Presentation
 
-[**Open Interactive Presentation** →](xcc-2026-it-zabljak.html)
+[**Open Interactive Presentation** →](/work/xcc-2026-it-zabljak.html)
 
 Or use the controls below to view the slides:
 - **Arrow Keys** - Navigate slides
