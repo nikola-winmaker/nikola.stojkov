@@ -111,6 +111,109 @@
 				font-size: 0.8em;
 				margin-top: 10px;
 			}
+
+			/* Mobile Responsive Styles */
+			@media screen and (max-width: 768px) {
+				.reveal {
+					font-size: 20px;
+					width: 100vw;
+				}
+
+				.reveal .slides {
+					border: 3px solid rgba(0,0,0,0.3);
+					box-shadow: 0 0 20px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.3);
+					padding: 15px 5px !important;
+				}
+
+				.reveal section {
+					padding: 0 10px !important;
+				}
+
+				.reveal h1 {
+					font-size: 1.8em;
+				}
+
+				.reveal h2 {
+					font-size: 1.5em;
+				}
+
+				.reveal h3 {
+					font-size: 1.2em;
+				}
+
+				.reveal h4 {
+					font-size: 1em;
+				}
+
+				.reveal img {
+					max-height: 300px;
+					max-width: 100%;
+				}
+
+				.reveal pre {
+					font-size: 0.4em;
+				}
+
+				.highlight-box, .problem-box, .solution-box {
+					width: 95%;
+					padding: 10px 12px;
+					margin: 10px auto;
+					font-size: 0.75em;
+				}
+
+				.two-col {
+					flex-direction: column;
+					gap: 15px;
+				}
+
+				.col {
+					text-align: center;
+				}
+
+				.key-point {
+					font-size: 1em;
+					margin: 10px 0;
+				}
+
+				.reveal ul {
+					font-size: 0.8em;
+				}
+
+				.reveal li {
+					margin: 8px 0;
+					line-height: 1.2;
+				}
+			}
+
+			/* Extra small devices */
+			@media screen and (max-width: 480px) {
+				.reveal {
+					font-size: 16px;
+				}
+
+				.reveal .slides {
+					border: 2px solid rgba(0,0,0,0.3);
+					padding: 10px 3px !important;
+				}
+
+				.reveal h1 {
+					font-size: 1.6em;
+				}
+
+				.reveal h2 {
+					font-size: 1.3em;
+				}
+
+				.reveal img {
+					max-height: 200px;
+				}
+
+				.highlight-box, .problem-box, .solution-box {
+					width: 98%;
+					padding: 8px 10px;
+					font-size: 0.7em;
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -336,11 +439,12 @@
 				progress: true,
 				center: true,
 				slideNumber: 'c/t',
-				width: 1024,
-				height: 768,
-				margin: 0.1,
+				width: '100%',
+				height: '100%',
+				margin: 0.04,
 				minScale: 0.2,
 				maxScale: 2.0,
+				embedded: false,
 				plugins: []
 			});
 		</script>
