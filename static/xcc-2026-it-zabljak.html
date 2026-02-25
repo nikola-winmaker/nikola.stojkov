@@ -180,22 +180,27 @@
 					<p style="font-size: 0.8em;">Specify communication contracts and message structures</p>
 				</section>
 
-				<!-- Slide 8: HML - Hardware Modeling & UML Support -->
+				<!-- Slide 8: Communication Specification Approaches -->
 				<section>
-					<h2>Communication Specification Approaches</h2>
-					<div class="two-col" style="gap: 20px; margin-bottom: 20px;">
+					<h2>Two Input Paths to XCC</h2>
+					<div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
 						<div style="flex: 1;">
-							<h4 style="color: #ffc800; font-size: 0.9em;">DSL Approach</h4>
-							<img src="/images/hdl_dsl_language.png" alt="HML DSL" style="max-height: 300px; margin-bottom: 10px;">
-							<p style="font-size: 0.75em;">Direct specification using HML DSL</p>
+							<h4 style="color: #ffc800; font-size: 0.85em; margin-bottom: 10px;">① UML Models → XMI Export</h4>
+							<img src="/images/uml_overview.png" alt="UML Modeling" style="max-height: 280px; margin-bottom: 8px;">
+							<p style="font-size: 0.7em;">Design with standard UML tools<br/>Export as XMI format</p>
 						</div>
 						<div style="flex: 1;">
-							<h4 style="color: #ffc800; font-size: 0.9em;">UML with XMI</h4>
-							<img src="/images/uml_overview.png" alt="UML Overview" style="max-height: 300px; margin-bottom: 10px;">
-							<p style="font-size: 0.75em;">Import existing UML models via XMI</p>
+							<h4 style="color: #ffc800; font-size: 0.85em; margin-bottom: 10px;">② DSL Specification</h4>
+							<img src="/images/hdl_dsl_language_horizontal.png" alt="HML DSL" style="max-height: 280px; margin-bottom: 8px;">
+							<p style="font-size: 0.7em;">Direct HML specification<br/>for communication design</p>
+						</div>
+						<div style="flex: 1;">
+							<h4 style="color: #ffc800; font-size: 0.85em; margin-bottom: 10px;">③ XCC Composition</h4>
+							<img src="/images/xcc_composer.png" alt="XCC Architecture" style="max-height: 280px; margin-bottom: 8px;">
+							<p style="font-size: 0.7em;">Both inputs generate<br/>unified AST & validation</p>
 						</div>
 					</div>
-					<p style="font-size: 0.8em; text-align: center;"><strong>Both generate the same AST for validation and code generation</strong></p>
+					<p style="font-size: 0.75em; text-align: center; margin-top: 10px;"><strong>Same architecture, flexible input methods</strong></p>
 				</section>
 
 				<!-- Slide 9: Benefits & Impact -->
