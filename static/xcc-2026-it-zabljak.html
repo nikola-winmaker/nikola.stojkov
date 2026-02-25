@@ -5,14 +5,37 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>XCC: Communication Composer for Heterogeneous Systems</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/sky.min.css">
 		<style>
+			/* Center the whole deck as a fixed-width "frame" */
+			.reveal{
+				font-size: 32px;
+				width: 95vw;
+				max-width: 1300px;
+				margin: 0 auto;
+			}
+
+			/* Let Reveal control slide sizing; just style the frame */
+			.reveal .slides{
+				width: 100% !important;     /* important: don’t fight Reveal sizing */
+				box-sizing: border-box;     /* padding stays inside border */
+				border: 8px solid rgba(0,0,0,0.3);
+				box-shadow: 0 0 40px rgba(0,0,0,0.2), inset 0 0 20px rgba(255,255,255,0.3);
+				padding: 30px 0px !important;
+			}
+
 			.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
 				text-transform: none;
 				font-weight: bold;
+				margin-left: 0;
+				margin-right: 0;
 			}
-			.reveal {
-				font-size: 32px;
+			.reveal section {
+				padding: 0 !important;
+				text-align: center;
+				margin: 0 auto;
+				width: 100%;
+				box-sizing: border-box;
 			}
 			.reveal img {
 				max-height: 500px;
@@ -33,23 +56,32 @@
 			.highlight-box {
 				background: rgba(255, 200, 0, 0.1);
 				border-left: 4px solid #ffc800;
-				padding: 15px;
-				margin: 15px 0;
+				padding: 15px 20px;
+				margin: 15px auto;
 				font-size: 0.85em;
+				width: 85%;
+				max-width: 1000px;
+				box-sizing: border-box;
 			}
 			.problem-box {
 				background: rgba(255, 100, 100, 0.1);
 				border-left: 4px solid #ff6464;
-				padding: 15px;
-				margin: 15px 0;
+				padding: 15px 20px;
+				margin: 15px auto;
 				font-size: 0.85em;
+				width: 85%;
+				max-width: 1000px;
+				box-sizing: border-box;
 			}
 			.solution-box {
 				background: rgba(100, 255, 100, 0.1);
 				border-left: 4px solid #64ff64;
-				padding: 15px;
-				margin: 15px 0;
+				padding: 15px 20px;
+				margin: 15px auto;
 				font-size: 0.85em;
+				width: 85%;
+				max-width: 1000px;
+				box-sizing: border-box;
 			}
 			.reveal ul {
 				width: 100%;
@@ -88,13 +120,10 @@
 				<!-- Slide 1: Title -->
 				<section>
 					<h1>XCC</h1>
-					<h3>Universal Communication Composer</h3>
-					<p style="margin-top: 40px; font-size: 0.8em;">
-						<strong>Easing Integration in Heterogeneous Systems</strong><br>
-						<span class="subtitle">with Communication-aware DSL</span>
-					</p>
+					<h3>A Universal Communication Interface Composer for Heterogeneous Systems</h3>
+
 					<p style="margin-top: 60px; font-size: 0.7em;">
-						Nikola Stojkov · Igor Dejanović<br>
+						Nikola Stojkov and Igor Dejanović<br>
 						University of Novi Sad, Serbia
 					</p>
 				</section>
@@ -123,7 +152,7 @@
 							<ul>
 								<li>Flexible for changes</li>
 								<li>Runtime overhead</li>
-								<li>Higher communication latency</li>
+								<li>Higher latency</li>
 								<li>Unpredictable</li>
 							</ul>
 						</div>
@@ -132,7 +161,7 @@
 							<ul>
 								<li>Optimizable</li>
 								<li>Low overhead</li>
-								<li>Static resource allocation / Predictable communication latency </li>
+								<li>Predictable latency </li>
 								<li>Analyzable</li>
 							</ul>
 						</div>
@@ -143,11 +172,19 @@
 				<!-- Slide 4: XCC Solution Overview -->
 				<section>
 					<h2>XCC: The Solution</h2>
-					<img src="/images/xcc_composer.png" alt="XCC Composer Architecture">
-					<div class="solution-box" style="margin-top: 20px;">
+
+					<img 
+						src="/static/images/xcc_composer.png" 
+						alt="XCC Composer Architecture"
+						style="max-height: 340px; width: auto; display: block; margin: 10px auto 20px auto;"
+					>
+
+					<div class="solution-box" style="margin-top: 10px;">
 						<p><strong>Domain-Specific Language (DSL)</strong> for systematic communication composition</p>
 						<p style="margin-top: 10px;">OR <strong>UML Models</strong> via XMI import</p>
-						<p style="margin-top: 10px; font-size: 0.9em;">Captures: <strong>Connectivity</strong> + <strong>Contracts</strong> + <strong>Profiles</strong></p>
+						<p style="margin-top: 10px; font-size: 0.9em;">
+							Captures: <strong>Connectivity</strong> + <strong>Contracts</strong> + <strong>Profiles</strong>
+						</p>
 					</div>
 				</section>
 
@@ -169,42 +206,92 @@
 				<!-- Slide 6: ADL - Architecture Description -->
 				<section>
 					<h2>Architecture Description (ADL)</h2>
-					<img src="/images/adl.png" alt="ADL Example" style="max-height: 400px; margin-bottom: 20px;">
+					<img src="/static/images/adl.png" alt="ADL Example" style="max-height: 400px; margin-bottom: 20px;">
 					<p style="font-size: 0.8em;">Define system components and their communication topology</p>
 				</section>
 
 				<!-- Slide 7: IDL - Interface Definition -->
 				<section>
 					<h2>Interface Definition (IDL)</h2>
-					<img src="/images/idl.png" alt="IDL Example" style="max-height: 400px; margin-bottom: 20px;">
+					<img src="/static/images/idl.png" alt="IDL Example" style="max-height: 400px; margin-bottom: 20px;">
 					<p style="font-size: 0.8em;">Specify communication contracts and message structures</p>
 				</section>
 
-				<!-- Slide 8: Two Input Paths to XCC and Code Generation -->
+				<!-- Slide 8: HML - Hardware Modeling -->
 				<section>
-					<h2>From Specification to Code</h2>
-					<div style="display: flex; gap: 25px; align-items: flex-start; margin: 20px 0;">
-						<div style="flex: 1;">
-							<h4 style="color: #ffc800; font-size: 0.9em; margin-bottom: 15px;">① UML Models via XMI</h4>
-							<img src="/images/uml_overview.png" alt="UML Modeling" style="max-height: 280px; margin-bottom: 12px;">
-							<p style="font-size: 0.75em;">Design with UML tools<br/>Export as XMI format</p>
-						</div>
-						<div style="flex: 1;">
-							<h4 style="color: #ffc800; font-size: 0.9em; margin-bottom: 15px;">② DSL (ADL + IDL + HML)</h4>
-							<img src="/images/hdl_dsl_language_horizontal.png" alt="HML DSL" style="max-height: 280px; margin-bottom: 12px;">
-							<p style="font-size: 0.75em;">Architecture (ADL)<br/>Interface (IDL)<br/>Hardware (HML)</p>
-						</div>
-						<div style="flex: 1;">
-							<h4 style="color: #ffc800; font-size: 0.9em; margin-bottom: 15px;">③ Generate AST</h4>
-							<img src="/images/xcc_composer.png" alt="XCC Architecture" style="max-height: 280px; margin-bottom: 12px;">
-							<p style="font-size: 0.75em;">XCC creates AST<br/>for downstream tools</p>
-						</div>
-					</div>
-					<div class="solution-box" style="margin-top: 15px;">
-						<p style="font-size: 0.8em; text-align: center;"><strong>AST feeds code generators → Platform-specific communication code</strong></p>
-					</div>
+					<h2>Hardware Modeling (HML)</h2>
+					<img src="/static/images/hdl.png" alt="HML Example" style="max-height: 400px; margin-bottom: 20px;">
+					<p style="font-size: 0.8em;">Capture communication profiles and platform-specific performance constraints</p>
 				</section>
 
+				<!-- Slide 9: DSL and UML Mapping -->
+				<section>
+					
+					<!-- Slide 1 (top) -->
+					<section>
+						<h2>From Specification to XCC-AST</h2>
+
+						<img 
+							src="/static/images/hdl_dsl_language_horizontal.png" 
+							alt="DSL" 
+						>
+
+						<p style="font-size: 0.75em; color: #999;">
+							<em>TextX syntax for DSL grammar • UML Tags mark XCC components</em>
+						</p>
+					</section>
+
+					<!-- Slide 2 (bottom arrow) -->
+					<section>
+						<h2>From Specification to XCC-AST</h2>
+
+						<div class="solution-box">
+							<p style="font-size: 0.9em; margin-bottom: 15px;">
+								<strong>Bidirectional Mapping</strong>
+							</p>
+
+							<p style="font-size: 0.85em; margin-bottom: 10px;">
+								• <strong>UML/XMI → DSL:</strong> Import UML models → XCC generates DSL representation
+							</p>
+
+							<p style="font-size: 0.85em; margin-bottom: 10px;">
+								• <strong>DSL → UML Package:</strong> Write DSL → XCC generates UML package
+							</p>
+
+							<p style="font-size: 0.85em; margin-top: 20px;">
+								<strong>Result:</strong> XCC-AST for downstream generators → Platform-specific communication code
+							</p>
+						</div>
+					</section>
+
+				</section>
+
+				<section> 
+
+					<h2>From XCC-AST to Code Generation</h2>
+
+					<div class="solution-box">
+						<p style="font-size: 0.9em; margin-bottom: 15px;">
+							<strong>XCC-AST:</strong> Rich abstract syntax tree with communication semantics and platform profiles
+						</p>
+
+						<p style="font-size: 0.85em; margin-bottom: 10px;">
+							• Enables <strong>traceability</strong> from spec to generated code
+						</p>
+
+						<p style="font-size: 0.85em; margin-bottom: 10px;">
+							• Supports <strong>compile-time validation</strong> for early error detection
+						</p>
+
+						<p style="font-size: 0.85em; margin-top: 20px;">
+							<strong>Result:</strong> Optimized, platform-specific code with communication specifications baked in, ensuring consistency and 
+							performance across heterogeneous systems by utilizing static resource allocation and predictable communication patterns.
+						</p>
+					</div>
+
+				</section>
+
+				</section>
 				<!-- Slide 9: Benefits & Impact -->
 				<section>
 					<h2>Key Benefits</h2>
