@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>XCC: A Universal Communication Interface Composer for Heterogeneous Systems</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
+		<style>
+			.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+				text-transform: none;
+				font-weight: bold;
+			}
+			.reveal {
+				font-size: 36px;
+			}
+			.reveal pre {
+				width: 100%;
+				font-size: 0.55em;
+				box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+			}
+			.reveal code {
+				padding: 2px 6px;
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: 3px;
+			}
+			.left-slide {
+				text-align: left;
+			}
+			.highlight-box {
+				background: rgba(255, 200, 0, 0.1);
+				border-left: 4px solid #ffc800;
+				padding: 20px;
+				margin: 20px 0;
+			}
+			.problem-statement {
+				background: rgba(255, 100, 100, 0.1);
+				border-left: 4px solid #ff6464;
+				padding: 20px;
+				margin: 20px 0;
+			}
+			.solution {
+				background: rgba(100, 255, 100, 0.1);
+				border-left: 4px solid #64ff64;
+				padding: 20px;
+				margin: 20px 0;
+			}
+			.two-col {
+				display: flex;
+				gap: 40px;
+				align-items: flex-start;
+			}
+			.col {
+				flex: 1;
+				text-align: left;
+			}
+			.reveal ul {
+				width: 100%;
+			}
+			.reveal li {
+				margin: 15px 0;
+				font-size: 0.9em;
+				line-height: 1.4;
+			}
+			.footer {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				font-size: 14px;
+				color: #888;
+			}
+			.author {
+				color: #ffc800;
+				font-weight: bold;
+			}
+			.conference {
+				font-size: 0.7em;
+				color: #888;
+				margin-top: 40px;
+			}
+			.key-contribution {
+				font-size: 1.1em;
+				color: #ffc800;
+				font-weight: bold;
+				margin: 20px 0;
+			}
+			.diagram {
+				background: rgba(255, 255, 255, 0.05);
+				padding: 20px;
+				border-radius: 8px;
+				margin: 20px 0;
+				font-family: monospace;
+				font-size: 0.75em;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- Title Slide -->
+				<section>
+					<h1>XCC</h1>
+					<h3>A Universal Communication Interface<br>Composer for Heterogeneous Systems</h3>
+					<p style="margin-top: 60px;">
+						<span class="author">Nikola Stojkov</span><br>
+						<span class="author">Igor Dejanović</span>
+					</p>
+					<p class="conference">
+						30th International Conference on Information Technology (IT)<br>
+						Žabljak, 24-28 February, 2026
+					</p>
+				</section>
+
+				<!-- Abstract -->
+				<section>
+					<h2>Abstract</h2>
+					<div class="left-slide" style="font-size: 0.8em;">
+						<p>In modern embedded systems with an ever-increasing number of computing nodes, <strong>communication design is a central challenge</strong>.</p>
+						<div class="highlight-box">
+							<p><strong>Problem:</strong> Communication design is often fragmented across code, configuration files, and abstract architectural diagrams.</p>
+						</div>
+						<div class="solution">
+							<p><strong>Solution:</strong> XCC enables architects, integrators, and developers to design <strong>compile-time known communication interfaces and protocols systematically</strong>.</p>
+						</div>
+						<p class="key-contribution">Key Contribution: Practical method for creating traceable, repeatable, and analyzable communication interfaces across heterogeneous platforms</p>
+					</div>
+				</section>
+
+				<!-- Motivation: The Challenge -->
+				<section>
+					<section>
+						<h2>The Challenge</h2>
+						<p>Modern embedded systems are becoming increasingly complex:</p>
+						<ul>
+							<li>System-on-Chip (SoC) architectures with heterogeneous cores</li>
+							<li>Multiple accelerators and specialized processors</li>
+							<li>Asymmetric Multiprocessing (AMP) systems</li>
+							<li>Mixed-criticality workloads</li>
+						</ul>
+						<p style="margin-top: 40px; color: #ffc800;"><strong>Result: Integration becomes critical but difficult</strong></p>
+					</section>
+
+					<section>
+						<h2>Communication Design Problems</h2>
+						<div class="problem-statement">
+							<h4>Fragmented Design</h4>
+							<ul style="font-size: 0.85em;">
+								<li>Communication interfaces scattered across source code</li>
+								<li>Configuration files and architectural diagrams disconnected</li>
+								<li>Difficult to maintain consistency across teams</li>
+								<li>Implementation spans multiple platforms: Linux, RTOS, bare-metal, FPGA</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h2>The Trade-off Problem</h2>
+						<div class="two-col">
+							<div class="col problem-statement">
+								<h4>Dynamic Communication</h4>
+								<ul>
+									<li>Accommodates late changes</li>
+									<li>Flexible but costly</li>
+									<li>Higher latency</li>
+									<li>Larger memory footprint</li>
+									<li>Runtime overhead</li>
+								</ul>
+							</div>
+							<div class="col solution">
+								<h4>Static Communication</h4>
+								<ul>
+									<li>Compile-time known</li>
+									<li>Enables optimization</li>
+									<li>Lower latency</li>
+									<li>Better predictability</li>
+									<li>Early error detection</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<!-- Related Work -->
+				<section>
+					<h2>Related Work Context</h2>
+					<div class="left-slide">
+						<h4>Key Findings from Literature:</h4>
+						<ul style="font-size: 0.85em;">
+							<li><strong>Statically allocated communication</strong> (using shared memory) significantly reduces inter-core communication overhead in AMP systems compared to dynamic approaches</li>
+							<li>Elimination of runtime memory allocation improves:
+								<ul>
+									<li>Latency and jitter</li>
+									<li>Temporal predictability</li>
+									<li>Critical for mixed-criticality systems</li>
+								</ul>
+							</li>
+							<li>Compile-time knowledge enables earlier detection of semantic mismatches</li>
+						</ul>
+						<p style="margin-top: 40px; color: #aaa; font-size: 0.8em;"><em>Gap: Need for systematic composition mechanism that balances compile-time optimization with flexibility</em></p>
+					</div>
+				</section>
+
+				<!-- Core Concepts -->
+				<section>
+					<section>
+						<h2>Core Concepts</h2>
+						<p>XCC is built on three fundamental pillars:</p>
+						<div style="margin-top: 60px;">
+							<h3 style="color: #ffc800;">① Architectural Connectivity</h3>
+							<p style="font-size: 0.8em;">Defining how system components connect and communicate</p>
+						</div>
+						<div style="margin-top: 40px;">
+							<h3 style="color: #ffc800;">② Interface Contracts</h3>
+							<p style="font-size: 0.8em;">Specifying communication protocols and message formats</p>
+						</div>
+						<div style="margin-top: 40px;">
+							<h3 style="color: #ffc800;">③ Communication Profiles</h3>
+							<p style="font-size: 0.8em;">Capturing performance characteristics and requirements</p>
+						</div>
+					</section>
+
+					<section>
+						<h2>XCC Approach</h2>
+						<div class="highlight-box">
+							<h4>Domain-Specific Language (DSL)</h4>
+							<p>A lightweight, expressive language for communication composition that enables:</p>
+							<ul style="font-size: 0.85em; margin-top: 20px;">
+								<li><strong>Systematic design</strong> of communication interfaces</li>
+								<li><strong>Single unified representation</strong> capturing all three pillars</li>
+								<li><strong>Validation</strong> of architectural consistency</li>
+								<li><strong>Code generation</strong> for target platforms</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h2>Composition Mechanism Benefits</h2>
+						<h4 style="color: #64ff64;">✓ Traceability</h4>
+						<p style="font-size: 0.8em;">Full mapping between specification and generated code</p>
+						<h4 style="color: #64ff64;" style="margin-top: 30px;">✓ Repeatability</h4>
+						<p style="font-size: 0.8em;">Consistent regeneration from the same specification</p>
+						<h4 style="color: #64ff64;" style="margin-top: 30px;">✓ Analyzability</h4>
+						<p style="font-size: 0.8em;">Enable formal analysis and validation before deployment</p>
+						<h4 style="color: #64ff64;" style="margin-top: 30px;">✓ Flexibility</h4>
+						<p style="font-size: 0.8em;">Support late architectural changes without system disruption</p>
+					</section>
+				</section>
+
+				<!-- Composition Mechanism -->
+				<section>
+					<section>
+						<h2>Composition Mechanism</h2>
+						<p style="font-size: 0.85em;">XCC bridges the gap between specification and implementation:</p>
+						<div class="diagram" style="margin-top: 40px;">
+							<strong>DSL Specification</strong><br><br>
+							↓<br><br>
+							<strong>Validation & Analysis</strong><br><br>
+							↓<br><br>
+							<strong>Code Generation</strong><br><br>
+							↓<br><br>
+							<strong>Platform-Specific Implementation</strong>
+						</div>
+					</section>
+
+					<section>
+						<h2>Key Features</h2>
+						<div class="left-slide">
+							<h4>Systematic Composition</h4>
+							<ul style="font-size: 0.85em; margin-bottom: 30px;">
+								<li>Declarative specification of communication patterns</li>
+								<li>Automatic resolution of connectivity requirements</li>
+								<li>Validation against communication contracts</li>
+							</ul>
+							<h4>Lightweight & Practical</h4>
+							<ul style="font-size: 0.85em;">
+								<li>Low overhead in implementation</li>
+								<li>Suitable for resource-constrained systems</li>
+								<li>Extensible for domain-specific needs</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h2>Validation & Guarantees</h2>
+						<div class="highlight-box">
+							<h4>Compile-Time Guarantees</h4>
+							<ul style="font-size: 0.85em;">
+								<li>Type checking of communication interfaces</li>
+								<li>Protocol conformance verification</li>
+								<li>Deadlock freedom analysis</li>
+								<li>Resource allocation verification</li>
+							</ul>
+						</div>
+						<div class="solution">
+							<h4>Result</h4>
+							<p style="font-size: 0.85em;">Errors detected early in development cycle, not at runtime</p>
+						</div>
+					</section>
+				</section>
+
+				<!-- Case Study -->
+				<section>
+					<section>
+						<h2>Case Study</h2>
+						<p style="font-size: 0.9em;">Real-world application demonstrating XCC effectiveness:</p>
+						<div class="highlight-box" style="margin-top: 40px;">
+							<h4>Scenario</h4>
+							<p style="font-size: 0.85em;">Heterogeneous embedded system with multiple processing domains and mixed criticality requirements</p>
+							<h4 style="margin-top: 20px;">Objectives</h4>
+							<ul style="font-size: 0.85em;">
+								<li>Design reliable communication across domains</li>
+								<li>Minimize latency and overhead</li>
+								<li>Support architectural evolution</li>
+								<li>Ensure safety and real-time guarantees</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h2>Case Study: Results</h2>
+						<div class="solution" style="margin-bottom: 30px;">
+							<h4>Improved Design Quality</h4>
+							<ul style="font-size: 0.85em;">
+								<li>Systematic communication architecture documented</li>
+								<li>All interfaces validated before implementation</li>
+								<li>Early issue detection prevented costly problems</li>
+							</ul>
+						</div>
+						<div class="solution">
+							<h4>Enabled Evolution</h4>
+							<ul style="font-size: 0.85em;">
+								<li>Late-stage architectural changes made safely</li>
+								<li>Specification-first approach ensured consistency</li>
+								<li>Code generation minimized manual rework</li>
+							</ul>
+						</div>
+					</section>
+				</section>
+
+				<!-- Discussion -->
+				<section>
+					<section>
+						<h2>Discussion</h2>
+						<h4>Strengths of XCC Approach</h4>
+						<ul style="font-size: 0.85em;">
+							<li><strong>Unified Specification:</strong> Single source of truth for communication design</li>
+							<li><strong>Scalability:</strong> Handles increasing system complexity</li>
+							<li><strong>Platform Independence:</strong> Generate code for diverse targets</li>
+							<li><strong>Team Collaboration:</strong> Clear contracts enable multiple teams to work efficiently</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Broader Implications</h2>
+						<h4 style="color: #ffc800;">Impact on System Design</h4>
+						<p style="font-size: 0.85em;">Shifts emphasis from runtime problem-solving to compile-time design validation</p>
+						<h4 style="color: #ffc800; margin-top: 30px;">Benefits for Mixed-Criticality Systems</h4>
+						<ul style="font-size: 0.85em;">
+							<li>Enables isolation through explicit interfaces</li>
+							<li>Supports temporal predictability requirements</li>
+							<li>Facilitates certification and compliance verification</li>
+						</ul>
+						<h4 style="color: #ffc800; margin-top: 30px;">Future Opportunities</h4>
+						<p style="font-size: 0.85em;">Integration with formal methods, machine learning for optimization</p>
+					</section>
+				</section>
+
+				<!-- Conclusion -->
+				<section>
+					<h2>Conclusion</h2>
+					<div class="highlight-box" style="margin-top: 40px;">
+						<h4>Key Takeaway</h4>
+						<p style="font-size: 0.9em;">XCC provides a practical, systematic approach to communication design in heterogeneous embedded systems that combines the benefits of compile-time optimization with the flexibility to support late architectural changes.</p>
+					</div>
+					<div class="solution" style="margin-top: 40px;">
+						<h4>Impact</h4>
+						<ul style="font-size: 0.85em;">
+							<li>Makes complex multi-core systems more manageable</li>
+							<li>Improves safety and predictability</li>
+							<li>Enables effective team collaboration</li>
+							<li>Reduces development time and errors</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Questions -->
+				<section>
+					<h2>Thank You</h2>
+					<p style="margin-top: 60px; font-size: 0.9em;">
+						<strong>Authors:</strong><br>
+						Nikola Stojkov<br>
+						<span style="font-size: 0.8em;">nikola.stojkov@outlook.com</span><br><br>
+						Igor Dejanović<br>
+						<span style="font-size: 0.8em;">igord@uns.ac.rs</span><br>
+					</p>
+					<p style="margin-top: 60px; color: #888; font-size: 0.8em;">
+						Faculty of Technical Sciences<br>
+						University of Novi Sad, Serbia
+					</p>
+					<p style="margin-top: 40px; color: #ffc800;"><strong>Questions?</strong></p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				transition: 'slide',
+				transitionSpeed: 'default',
+				controls: true,
+				progress: true,
+				center: true,
+				slideNumber: true,
+				width: 1024,
+				height: 768,
+				margin: 0.1,
+				minScale: 0.2,
+				maxScale: 2.0,
+				keyboard: true,
+				touch: true,
+				overview: true,
+				fragments: true,
+				embedded: false,
+				help: true,
+				showNotes: false,
+				autoPlayMedia: null,
+				preloadIframes: null,
+				autoSlide: 0,
+				autoSlideStoppable: true,
+				autoSlideMethod: Reveal.navigateNext,
+				defaultTiming: 120,
+				totalTime: 0,
+				minimumTimePerSlide: 0,
+				type: 'linear',
+				loop: false,
+				rtl: false,
+				shuffle: false,
+				fragments: true,
+				fragmentInURL: false,
+				embedded: false,
+				help: true,
+				pause: true,
+				backgroundTransition: 'fade',
+				viewDistance: 3,
+				mobileViewDistance: 2,
+				display: 'block',
+				hideInactiveCursor: true,
+				hideCursorTime: 5000,
+				plugins: []
+			});
+		</script>
+	</body>
+</html>
