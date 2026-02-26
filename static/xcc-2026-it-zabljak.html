@@ -424,14 +424,14 @@
 					<p style="font-size: 0.8em;">Specify communication contracts and message structures</p>
 
 					<aside class="notes">
-						IDL (Interface Definition Language) definiše sta komponente razmenjuju, koji je pristup porukama i integritet.
+						IDL (Interface Description Language) definiše sta komponente razmenjuju, koji je pristup porukama i integritet.
 						Na primeru mozemo videti ShmemInterface koji koristi strukturu poruke SharedData, ima definisan pristup (read/write) i integritet crc32.
 						Ovo osigurava konzistentnost interfejsa između različitih delova heterogenog sistema.
 						Korisnik moze da definiše svoju biblioteku strukture podataka kroz IDDL fajlove koje se mogu ukljuciti u sam IDL opis i koristiti u opisu. 
 						Time korisnik moze da ima biblioteku poruka koje se mogu koristiti u razlicitim IDL opisima.
 						<br>Vreme: 45 sekundi
 						<br> <br>
-						IDL (Interface Definition Language) defines what components exchange, how messages are accessed, and their integrity.
+						IDL (Interface Description Language) defines what components exchange, how messages are accessed, and their integrity.
 						In the example, ShmemInterface uses the SharedData message structure, specifies access mode (read/write), and defines integrity protection via CRC32.
 						This ensures interface consistency across different parts of a heterogeneous system.
 						Users can define their own data structure libraries through IDDL files, which can be included in the IDL specification and reused.
