@@ -234,7 +234,14 @@
 						Zdravo svima, ja sam Nikola Stojkov dolazim iz Srbije, tacnije Novog Sada, PhD student sam na katedri za Racunarstvo i Automatiku univerziteta u Novom Sadu. 
 						Ko-autor na radu "Univerzalnog kompozera za komunikaciju u heterogenim sistemima" je bio i moj mentor Igor Dejanović koji je medju vama u publici. 
 						Pokazacemo vam razvijeni XCC alat koji omogućava dizajn komunikacije za heterogene sisteme.
-						Vreme: 30 sekundi
+						<br>Vreme: 30 sekundi
+
+						<br> <br>
+						Hello everyone, I am Nikola Stojkov coming from Serbia, from city of Novi Sad. 
+						I'm a PhD student at the Department of Computing and Automation at the University of Novi Sad. 
+						My co-author on the "A Universal Communication Interface Composer for Heterogeneous Systems" paper is my advisor Igor Dejanović, who is among you in the audience. 
+						We'll show you the developed XCC tool which enables communication design for heterogeneous systems.
+						<br>Time: 30 seconds
 					</aside>
 				</section>
 
@@ -258,8 +265,16 @@
 						a razvoj često sprovode različiti timovi koristeći različite platforme (Linux, RTOS, bare-metal). Kao posledica, komunikacioni 
 						interfejsi postaju nekonzistentni, a dizajn komunikacije fragmentiran - rasut po kodu, konfiguracijama i dijagramima. 
 						Time se javlja potreba za sistematskim, a ne ad-hoc pristupom dizajnu komunikacije, kako bi se obezbedila konzistentnost i stabilnost
-						 interfejsa čak i kada se arhitektura sistema menja ili evoluira na pojedinim platformama.
-						Vreme: 1 minut
+						interfejsa čak i kada se arhitektura sistema menja ili evoluira na pojedinim platformama.
+						<br>Vreme: 1 minut
+						<br> <br>
+						 The problem we address is inconsistency and difficult software integration in heterogeneous, asymmetric multiprocessor systems where communication 
+						 exists between partitions. Such systems encompass different processors, accelerators, and programmable logic, and development is often conducted by 
+						 different teams using different platforms (Linux, RTOS, bare-metal). As a result, communication interfaces become inconsistent, and communication 
+						 design becomes fragmented—scattered across code, configurations, and diagrams. This creates a need for a systematic, rather than ad-hoc, approach 
+						 to communication design, to ensure consistency and stability of interfaces even when the system architecture changes or evolves on individual platforms.
+						 <br>Time: 1 minute
+
 					</aside>
 				</section>
 
@@ -289,13 +304,20 @@
 					<p class="key-point" style="margin-top: 30px;">✓ Desired: Static design with architectural flexibility</p>
 
 					<aside class="notes">
-						Ono sto se najcesce se javlja jeste dilema između dinamičkog i statičkog dizajna komunikacije. 
+						Ono sto se najcesce javlja jeste dilema između dinamičkog i statičkog dizajna komunikacije. 
 						Dinamička komunikacije je fleksibilna ali ima overhead i nepredvidivo ponašanje jer se u toku rada odlučuje o tome kako će se komunicirati pa 
 						sam tim dodaje kasnjenje i otežava analizu sistema.
 						Statička komunikacija (kompajl-tajm) nema problem nepridvidivog ponašanja jer je sve poznato u vreme kompajliranja pa samim tim omogućava
 						nizak overhead i predvidljivost ali je manje fleksibilna jer se sve mora znati unapred.
 						XCC je dizajniran da premosti jaz između ove dve paradigme i omogući statički dizajn komunikacije ali da očuva arhitektonsku fleksibilnost.
-						Vreme: 1 minut
+						<br>Vreme: 1 minut
+						<br> <br>
+						Dilemma between dynamic and static communication design is often discussed. 
+						Dynamic communication is flexible but has overhead and unpredictable behavior because decisions about how to communicate are made at runtime, 
+						which adds latency and complicates system analysis. Static communication (compile-time) doesn't have the problem of unpredictable behavior 
+						because everything is known at compile time, thus enabling low overhead and predictability, but it's less flexible because everything must be known in advance.
+						XCC is designed to bridge the gap between these two paradigms and enable static communication design while preserving architectural flexibility.
+
 					</aside>
 				</section>
 
@@ -318,19 +340,6 @@
 					</div>
 
 					<aside class="notes">
-						<!-- XCC alat omogućava sistematski dizajn komunikacije kroz dva načina:
-						1. Korišćenjem Domain-Specific Language (DSL) koji je specijalno dizajniran za opis komunikacije u heterogenim sistemima
-						2. Korišćenjem UML modela koji se mogu importovati kroz XMI format
-
-						XCC obuhvata tri ključna aspekta komunikacije: Opis arhitekture (ADL), opis interfejsa (IDL) i kako ce se komunikacija odvijati na specifičnim platformama (HML).
-						Konektivnost se odnosi na to kako su komponente povezane, ugovori se odnose na formate poruka i protokole, a profili se odnose na performanse i karakteristike hardvera.
-						Na slici možemo videti kako se specifikacija (bilo DSL ili UML) transformiše u XCC-AST tj. apstraktno sintaksno stablo koje sadrži sve informacije o komunikaciji i sistemu.
-						
-						ADL Parser analizira arhitekturu sistema, Description Parser analizira interfejse i platformske karakteristike za komunikaciju.
-						Dok XMI Parser omogućava import UML modela opisan u standardnom XMI formatu koji se moze dobiti iz alata poput na primer Enterprise Architect, Modelio ili Papyrus.
-						Zatim se sve ove informacije kombinuju u apstraktno sintaksno stablo - XCC-AST koji se dalje analizira i koristi za generisanje artifakata specifičnih opis sistema kao sto su apstraktno sintakstno stablo u obliku pkl i json fajla,
-						dijagrama i UML modela ukoliko se DSL opis modela koristi za kompoziciju. -->
-
 						Na slici mozemo videti block dijagram XCC alata.
 						Korisnici mogu praviti dizajn komunikacije na dva načina: korišćenjem jezika specificnog za domen definisan za heterogene sisteme (DSL) ili importom UML modela putem XMI formata. 
 						DSL jezici koji se koriste su: ADL za opis arhitekture sistema, opis interfejsa za komunikaciju (IDL) i opis trasporta komunikacije (HML). 
@@ -338,8 +347,17 @@
 						Specifikacija modela se transformiše u jedinstveno apstraktno sintaksno stablo (XCC-AST), koje integriše sve informacije o sistemu i komunikaciji.
 						Artifakti XCC alata ukljucuju mašinske i čitljive reprezentacije apstraktnog sintaksnog stabla (PKL i JSON fajlove) kao i 
 						dijagrame sistema arhitekture i povezanosti komponenti.
-
-						Vreme: 1 minut
+						<br>Vreme: 1 minut
+						<br> <br>
+						In the picture we can see a block diagram of the XCC tool. 
+						Users can create communication design in two ways: by using a domain-specific language designed for heterogeneous systems (DSL) 
+						or by importing UML models via XMI format. The DSL languages used are: ADL for describing system architecture, IDL for describing communication interfaces, 
+						and HML for describing communication transport. The XMI parser enables importing UML models from tools like Enterprise Architect, Modelio, or Papyrus, 
+						while ADL and Description parsers analyze specifications expressed through DSL languages. The model specification is transformed into a unified abstract 
+						syntax tree (XCC-AST), which integrates all information about the system and communication. XCC tool artifacts include machine and human-readable 
+						representations of the abstract syntax tree (PKL and JSON files) as well as diagrams of system architecture and component connectivity.
+						<br>Time: 1 minute
+					</aside>
 					</aside>
 				</section>
 
@@ -363,7 +381,14 @@
 						2. Kroz IDL jezik opisujemo strukturu poruke koju razmenjuju komponente ukljucujuci sam pristup porukama i integritet
 						3. Kroz HML jezik opisujemo komunikacioni profil, resurse na raspolaganju, sinhronizaciju i performansna ograničenja i slicno.
 						Sada ćemo detaljnije pogledati svaki od ovih jezika.
-						Vreme: 1 minut
+						<br>Vreme: 1 minut
+						<br> <br>
+						To summarize: 
+						1. Through the ADL language we describe the architecture, i.e., the topology of the system and component connectivity. 
+						2. Through the IDL language we describe the structure of messages that components exchange, including message access and integrity. 
+						3. Through the HML language we describe the communication profile, available resources, synchronization, and performance constraints, and so on. 
+						Now we'll look in more detail at each of these languages.
+						<br>Time: 1 minute
 					</aside>
 				</section>
 
@@ -379,7 +404,16 @@
 						Povezanost komponenti je uvek u jednom smeru, što omogućava jasnu analizu toka komunikacije. 
 						Dvosmerna komunikacija se modeluje kroz dve veze u suprotnim smerovima.
 						Korisnik sam može da definiše različite topologije sistema, da dodaje nove platforme, interfejse i profile a XCC će generisati AST pri transformaciji specifikacije.
-						Vreme: 1 minut
+						<br>Vreme: 1 minut
+						<br> <br>
+						ADL (Architecture Description Language) enables the definition of system topology by specifying components and their connections.
+						The example in the figure shows components Core1 and Core2 connected through the ShmemInterface and the SharedMemoryProfile. 
+						These are user-defined identifiers that are later refined through the IDL and HML languages.
+						Component connections are always unidirectional, which allows clear analysis of communication flow. 
+						Bidirectional communication is modeled using two opposite-direction connections.
+						Users can define arbitrary system topologies, add new platforms, interfaces, and profiles, and XCC generates the corresponding AST during specification 
+						transformation.
+						<br>Time: 1 minute
 					</aside>
 				</section>
 
@@ -395,7 +429,14 @@
 						Ovo osigurava konzistentnost interfejsa između različitih delova heterogenog sistema.
 						Korisnik moze da definiše svoju biblioteku strukture podataka kroz IDDL fajlove koje se mogu ukljuciti u sam IDL opis i koristiti u opisu. 
 						Time korisnik moze da ima biblioteku poruka koje se mogu koristiti u razlicitim IDL opisima.
-						Vreme: 45 sekundi
+						<br>Vreme: 45 sekundi
+						<br> <br>
+						IDL (Interface Definition Language) defines what components exchange, how messages are accessed, and their integrity.
+						In the example, ShmemInterface uses the SharedData message structure, specifies access mode (read/write), and defines integrity protection via CRC32.
+						This ensures interface consistency across different parts of a heterogeneous system.
+						Users can define their own data structure libraries through IDDL files, which can be included in the IDL specification and reused.
+						This allows the creation of reusable message libraries shared across multiple IDL descriptions.
+						<br> Time: 45 seconds
 					</aside>
 				</section>
 
@@ -412,7 +453,13 @@
 
 						Isto tako korisnik moze da definise razne profile u brojnim HMML fajlovima koje se mogu ukljuciti u sam HML opis i koristiti u opisu, 
 						i time da gradi svoju biblioteku profila.
-						Vreme: 45 sekundi
+						<br>Vreme: 45 sekundi
+						<br> <br>
+						HML (Hardware Mapping Language) describes platform-specific hardware characteristics, available resources, synchronization mechanisms, and performance constraints.
+						Users can define multiple platforms with specific communication resources and properties.
+						In the example, SharedMemoryProfile specifies memory regions, access attributes, and synchronization behavior.
+						Users may also define multiple profiles in separate HMML files, include them in HML specifications, and build reusable profile libraries.
+						<br>Time: 45 seconds
 					</aside>
 				</section>
 
@@ -436,9 +483,14 @@
 							Na slici mozemo videti dva prikaza specifikacije - jedan je kroz DSL jezike koje smo spominjali, ono sto nisam naglasio jeste da se gramatika 
 							ovih jezika validara kroz TextX alat. 
 							Drugi prikaz je kroz UML model gde korisnici mogu da koriste standardne UML alate za modelovanje sistema uz koriscenje UML tagova kako bi oznacili komponentu, interfejs tj konekciju, 
-							strukturu podataka i profiil komunikacije. XCC alat proverava XMI fajl.
+							strukturu podataka i profiil komunikacije.
 							Obe specifikacije se transformišu u XCC-AST.
-							Vreme: 45 sekundi
+							<br>Vreme: 45 sekundi
+							<br> <br>
+							In the picture we can see two representations of specification - one is through the DSL languages we mentioned, what I didn't emphasize is that the grammar of these languages
+							is validated through the TextX tool. The other representation is through a UML model where users can use standard UML tools for system modeling using UML tags to mark a 
+							component, interface, connection, data structure, and communication profile. Both specifications are transformed into XCC-AST.
+							<br>Time: 45 seconds
 						</aside>
 					</section>
 
@@ -500,7 +552,11 @@
 					<aside class="notes">
 						Ovde mozemo videti primere gramatike za svaki od jezika - ADL, IDL i HML.
 						Ove gramatike su osnova za parsiranje specifikacije kako bi utvrdile da li je specifikacija ispravna.
-						Vreme: 1 minut
+						<br>Vreme: 30 minut
+						<br> <br>
+						Here we can see examples of grammar for each of the languages - ADL, IDL, and HML.
+						These grammars are the basis for parsing specifications to determine if the specification is correct.
+						<br>Time: 30 seconds
 					</section>
 
 				</section>
@@ -524,18 +580,15 @@
 					</div>
 
 					<aside class="notes">
-						<!-- Apstraktno sintaksno stablo koje dobijemo od XCC alata, sadrzi opsis sistema i komunikacije u formi PKL i JSON formata koji se dalje moze koristii za generisanje koda.
-						Generatori koda mogu da koriste ovaj AST kao jedini izvor istine za generisanje optimizovanog, platform-specifičnog koda sa statičkom 
-						alokacijom resursa i predvidljivim komunikacionim paternima, cime se osigurava konzistentnost kroz ceo sistem. Time se timovi fokusiraju na samu
-						intergraciju i funkcionalnost a ne na detalje implementacije komunikacije i kako da se ona uklopi u arhitekturu sistema i mogucim problemima ad-hoc integracije.
-						Ovim smo postigli da implementacija prati arhitekturu i da se komunikacioni interfejsi ne pokvare kasnije tokom razvoja kada arhitektura evoluira na jednoj platformi 
-						a pravi promene na drugoj. -->
-
 						XCC-AST predstavlja jedinstveni opis sistema i komunikacije u PKL i JSON formatu i služi kao osnova za generisanje platform-specifičnog koda.
 						Generatori ga koriste kao jedini izvor specifikacije, kako bi obezbedili statičku alokaciju resursa i predvidljivu komunikaciju. 
 						Time implementacija ostaje usklađena sa arhitekturom, a promene na jednoj platformi ne narušavaju komunikacione interfejse na drugoj.
-
-						Vreme: 1 minut
+						<br>Vreme: 1 minut
+						<br> <br>
+						XCC-AST serves as a unified representation of the system and communication in PKL and JSON format and is used as the basis for generating platform-specific code.
+						Generators use it as the single source of specification to ensure static resource allocation and predictable communication.
+						This keeps the implementation aligned with the architecture, and changes on one platform do not disrupt communication interfaces on another.
+						<br>Time: 1 minute
 					</aside>
 
 				</section>
@@ -561,8 +614,11 @@
 						Ključne prednosti XCC pristupa je da imamo potpuno mapiranje od specifikacije do koda kao i jedan izvor specifikacije za komunikaciju u heretogenom sistemu.
 						Promenom arhitekture i ponovnim generisanjem koda eliminisemo potrebu za ručnim intervencijama u kodu koji bi timovi morali 
 						da prave da bi se prilagodili promenama u arhitekturi.
-
-						Vreme: 1 minut
+						<br>Time: 1 minute
+						<br> <br>
+						Key benefits of the XCC approach include having full mapping from specification to code as well as a single source of specification for communication in a heterogeneous system.
+						By changing the architecture and regenerating code, we eliminate the need for manual interventions in the code that teams would have to make to adapt to changes in the architecture.
+						<br>Time: 1 minute
 					</aside>
 				</section>
 
@@ -581,15 +637,16 @@
 					</p>
 
 					<aside class="notes">
-						Iz navedenog mozemo zaključiti da XCC smanjuje vreme integracije i održavanja komunikacije u heterogenim sistemima.
+						Iz prilozenog mozemo zaključiti da XCC smanjuje vreme integracije i održavanja komunikacije u heterogenim sistemima.
 						Generatori koda mogu da koriste apstraktno sintaksno stablo kao jedini izvor specifikacije, kako bi obezbedili statičku alokaciju resursa i predvidljivu komunikaciju.
 						Timovi mogu sistematski da dizajniraju komunikacione interfejse i da ih validiraju rano u procesu razvoja 
 						i da ih bezbedno menjaju kako se arhitektura sistema menja tokom vremena.
-
-						Hvala na pažnji! 
-						Ima li nekih pitanja?
-
-						Vreme: 30 sekundi + pitanja
+						<br>Time: 30 seconds + questions
+						<br> <br>
+						From the above, we can conclude that XCC reduces integration and maintenance time for communication in heterogeneous systems.
+						Code generators can use the abstract syntax tree as the single source of specification to ensure static resource allocation and predictable communication.
+						Teams can systematically design communication interfaces and validate them early in the development process and evolve them safely as the system architecture changes over time.
+						<br>Time: 30 seconds + questions
 					</aside>
 				</section>
 
