@@ -13,6 +13,15 @@ This session is designed for the research group to review study goals, align on 
 
 > All registered participants will receive thank you gifts at the end of the event.
 
+### Lunch Options
+
+If you have dietary requirements, please include them in the registration form.
+
+Lunch will be served at the hotel and will include the following menu:
+
+![Menu](/images/SheratonMenu.png)
+
+
 ## Venue and Maps
 
 - **Location:** Sheraton Hotel Novi Sad, conference room
@@ -79,52 +88,6 @@ Participants will be asked to:
 
 This makes the comparison between the classical approach and HALO more credible, because both tasks use the same scenario and the same set of recorded attributes.
 
-## Lunch Options
-
-Lunch will be served at the hotel and will include the following menu:
-
-### Bread Selection
-
-- Selection of breads from the Sheraton bakery
-
-### Starters
-
-- Selection of fine cured meats served with pickles
-- Selection of local soft and hard cheeses with olives
-- Russian salad
-- Homemade gibanica
-
-### Main Dishes
-
-- Selection of grilled barbecue meat
-- Braised pork with caramelized red onion
-- Mlinci with Senicki cheese
-- Grilled peppers with garlic and parsley
-- Bakery-style potatoes
-- Prebranac
-
-### Salads
-
-- Selection of three seasonal salads
-
-### Desserts
-
-- Poppy seed strudel
-- Walnut baklava
-- Fresh seasonal fruit salad
-
-### Optional Add-on
-
-- Veal ragu soup, supplement **2 EUR**
-
-If you have dietary requirements, please include them in the registration form.
-
-## Registration
-
-Use the link below to register:
-- [Register](https://forms.office.com/r/2b0GsXpSwZ)
-
-
 ## Laptop and Preparation
 
 Please let us know one of the following when registering:
@@ -144,6 +107,12 @@ This section is reserved for preparation material that will be shared with the r
 - Reading pack link: _to be added_
 - Background paper: _to be added_
 - Workshop notes: _to be added_
+
+## Registration
+
+Use the link below to register:
+- [Register](https://forms.office.com/r/2b0GsXpSwZ)
+
 
 #### Toolchain installation Script
 
