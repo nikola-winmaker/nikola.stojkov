@@ -1,0 +1,87 @@
+<div class="event-card event-registration">
+  <h2>Register for the Study Event</h2>
+  <p>
+    Use the form below to prepare your registration email. It includes the laptop and preparation details needed for the workshop.
+  </p>
+  <form id="phd-study-registration-form" class="event-form">
+    <div class="form-grid">
+      <label>
+        <span>Full name</span>
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <label>
+        <span>Affiliation</span>
+        <input type="text" name="affiliation" placeholder="University, lab, company">
+      </label>
+      <label>
+        <span>Phone</span>
+        <input type="text" name="phone" autocomplete="tel" placeholder="Optional">
+      </label>
+      <label>
+        <span>Need a laptop provided?</span>
+        <select name="need_laptop" required>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </label>
+      <label>
+        <span>Will you bring your own laptop?</span>
+        <select name="bring_laptop" required>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Not sure yet">Not sure yet</option>
+        </select>
+      </label>
+      <label class="full-width">
+        <span>Dietary notes</span>
+        <textarea name="dietary_notes" rows="3" placeholder="Optional"></textarea>
+      </label>
+      <label class="full-width">
+        <span>Questions or preparation notes</span>
+        <textarea name="notes" rows="4" placeholder="Optional"></textarea>
+      </label>
+    </div>
+    <div class="form-actions">
+      <button type="submit">Prepare Registration Email</button>
+      <p class="form-help">
+        This opens your default email client and fills in the registration details automatically.
+      </p>
+    </div>
+  </form>
+</div>
+
+<script>
+  (function () {
+    var form = document.getElementById('phd-study-registration-form');
+    if (!form) {
+      return;
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      var data = new FormData(form);
+      var lines = [
+        'PhD Research Study Registration',
+        '',
+        'Full name: ' + (data.get('name') || ''),
+        'Email: ' + (data.get('email') || ''),
+        'Affiliation: ' + (data.get('affiliation') || ''),
+        'Phone: ' + (data.get('phone') || ''),
+        'Need a laptop provided: ' + (data.get('need_laptop') || ''),
+        'Bringing own laptop: ' + (data.get('bring_laptop') || ''),
+        'Dietary notes: ' + (data.get('dietary_notes') || ''),
+        'Questions or preparation notes: ' + (data.get('notes') || '')
+      ];
+
+      var subject = encodeURIComponent('Registration - PhD Research Study Event');
+      var body = encodeURIComponent(lines.join('\n'));
+
+      window.location.href = 'mailto:nikola.stojkov@outlook.com?subject=' + subject + '&body=' + body;
+    });
+  })();
+</script>

@@ -1,0 +1,117 @@
+.event-card {
+  margin: 3rem 0;
+  padding: 2.4rem;
+  border: 1px solid #e3e3e3;
+  border-radius: 1.2rem;
+  background: #fafafa;
+}
+
+.event-card h2 {
+  margin-bottom: 1.2rem;
+}
+
+.event-registration p:last-child {
+  margin-bottom: 0;
+}
+
+.event-form {
+  margin-top: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1.6rem;
+}
+
+@media (min-width: 55rem) {
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.event-form label {
+  display: block;
+  margin: 0;
+  font-weight: 600;
+}
+
+.event-form label span {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #333;
+}
+
+.event-form .full-width {
+  grid-column: 1 / -1;
+}
+
+.event-form input,
+.event-form select,
+.event-form textarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 1px solid #cfcfcf;
+  border-radius: 0.8rem;
+  background: #fff;
+  font: inherit;
+  color: #222;
+}
+
+.event-form textarea {
+  resize: vertical;
+  min-height: 10rem;
+}
+
+.form-actions {
+  margin-top: 2rem;
+}
+
+.form-actions button {
+  padding: 1rem 1.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: #2b5f3b;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form-actions button:hover,
+.form-actions button:focus {
+  background: #214a2d;
+}
+
+.event-button {
+  display: inline-block;
+  padding: 1rem 1.6rem;
+  border-radius: 999px;
+  background: #2b5f3b;
+  color: #fff;
+  font-weight: 700;
+}
+
+.event-button:hover,
+.event-button:focus {
+  background: #214a2d;
+  color: #fff;
+  text-decoration: none;
+}
+
+.registration-note {
+  background: #f5f8f3;
+}
+
+.emphasis-note {
+  margin: 2rem 0 3rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #b22222;
+}
+
+.form-help {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: #666;
+}

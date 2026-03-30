@@ -39,7 +39,7 @@ pygmentsUseClasses = true
 	# If false, use minified CSS (ui.min.css)
 	debugCSS = false
 	# Custom CSS
-	customCSS = []
+	customCSS = ["/css/custom.css"]
 
 	# Site meta description
 	#description = "Sweet little Hugo's theme for personal website or blog."
