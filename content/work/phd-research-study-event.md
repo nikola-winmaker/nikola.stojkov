@@ -13,15 +13,6 @@ This session is designed for the research group to review study goals, align on 
 
 > All registered participants will receive thank you gifts at the end of the event.
 
-### Lunch Options
-
-If you have dietary requirements, please include them in the registration form.
-
-Lunch will be served at the hotel and will include the following menu:
-
-![Menu](/images/SheratonMenu.png)
-
-
 ## Venue and Maps
 
 - **Location:** Sheraton Hotel Novi Sad, conference room
@@ -38,11 +29,13 @@ Lunch will be served at the hotel and will include the following menu:
 | --- | --- |
 | 12:30 PM - 12:50 PM | Gathering in front of the hotel and group arrival |
 | 1:00 PM - 1:30 PM | Welcome and event introduction |
-| 1:45 PM - 2:45 PM | Lunch break |
+| 1:45 PM - 2:45 PM | Lunch break organized at the hotel
 | 3:00 PM - 3:45 PM | Toolchain preparation |
 | 3:45 PM - 4:00 PM | Wrap-up discussion |
 | 4:00 PM - 6:45 PM | Hands-on study session and wrap-up discussion |
 | 6:45 PM - 7:00 PM | Thank you gifts and closing |
+
+If you have dietary requirements, please include them in the registration form.
 
 ## Research Study Goals
 
