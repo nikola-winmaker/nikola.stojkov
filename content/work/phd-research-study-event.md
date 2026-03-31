@@ -11,9 +11,9 @@ The PhD research study event will be held on **10 May 2026**, with **gathering i
 
 This session is designed for the research group to review study goals, align on workshop tasks, discuss the toolchain setup, and work through the planned study activities together.
 
-> All registered participants will receive thank you gifts at the end of the event.
+> Lunch is organized at the hotel and all participants will receive thank you gifts at the end of the event.
 
-## Venue and Maps
+## Venue
 
 - **Location:** Sheraton Hotel Novi Sad, conference room
 - **Date:** Sunday, 10 May 2026
@@ -29,9 +29,9 @@ This session is designed for the research group to review study goals, align on 
 | --- | --- |
 | 12:30 PM - 12:50 PM | Gathering in front of the hotel and group arrival |
 | 1:00 PM - 1:30 PM | Welcome and event introduction |
-| 1:30 PM - 2:45 PM | Toolchain check and wrap-up discussion |
-| 2:45 PM - 3:45 PM | Lunch break organized at the hotel
-| 4:00 PM - 6:45 PM | Hands-on study session and wrap-up discussion |
+| 1:30 PM - 1:45 PM | Toolchain check and wrap-up discussion |
+| 2:00 PM - 3:00 PM | Lunch break organized at the hotel
+| 3:15 PM - 6:45 PM | Hands-on study session and wrap-up discussion |
 | 6:45 PM - 7:00 PM | Thank you gifts and closing |
 
 If you have dietary requirements, please include them in the registration form.
@@ -42,7 +42,7 @@ The goal of the workshop is to compare how participants design communication arc
 in heterogeneous SoC using:
 
 - a classical approach / AD-HOC methods
-- the HALO framework (PhD deliverable)
+- the HALO framework approach (PhD deliverable)
 
 {{< emphasis-note >}}During the hands-on work, participants should solve the same design problem in both approaches and record the same information for both, so the comparison stays consistent.{{< /emphasis-note >}}
 
@@ -52,6 +52,15 @@ in heterogeneous SoC using:
 - **H2:** Designing software architectures using the HALO framework gives better overview and maintainability compared to traditional methods.
 - **H3:** The HALO framework provides portability and reuse of software architectural descriptions for different platforms with no or minimal effort.
 - **H4:** The HALO framework gives better scalability and flexibility for IPC communication in AMP systems compared to already available solutions.
+
+### Study Task for Classical and HALO Approach
+
+Participants will be asked to:
+
+- design the communication architecture between AMPs in SoC
+- define the same communication attributes in both approaches
+- update the design when a change request is introduced
+- compare how difficult it is to understand, modify, and maintain the solution
 
 ### What Participants Should Record
 
@@ -63,26 +72,15 @@ Link to the surveys:
 - [Survey HALO Framework method](https://forms.cloud.microsoft/r/rL9RqVx3iB)
 
 
-### Study Task for Both Approaches
-
-Participants will be asked to:
-
-- design the communication architecture between AMPs
-- define the same communication attributes in both approaches
-- update the design when a change request is introduced
-- compare how difficult it is to understand, modify, and maintain the solution
-
-This makes the comparison between the classical approach and HALO more credible, because both tasks use the same scenario and the same set of recorded attributes.
-
 ## Laptop and Preparation
 
 Please let us know one of the following when registering:
 
 - you need a laptop provided on site
 - you will bring your own laptop
-- you are not yet sure and will confirm later
 
-If you are bringing your own laptop, please also make sure you have administrator access so the required toolchain libraries can be installed during the workshop if needed.
+If you are bringing your own laptop, please also make sure you have administrator access so the required toolchain libraries can be installed.
+Please see [Toolchain installation](#toolchain-installation).
 
 # Participant Prerequisites
 
@@ -100,56 +98,18 @@ Use the link below to register:
 - [Register](https://forms.office.com/r/2b0GsXpSwZ)
 
 
-#### Toolchain installation Script
+#### Toolchain installation
 
-Participants should prepare their laptops before the event so the hands-on session can start on time.
+{{< emphasis-note >}}Participants should prepare their laptops before the event so the hands-on session can start on time.{{< /emphasis-note >}}
 
-TODO:
-The setup script will be published on GitHub later.
-
-- Setup script link: _add GitHub link here_
-
-The script will prepare **WSL** and install the required development environment inside **Debian/Ubuntu on WSL**.
-
-It will install:
-
-- `build-essential`
-- `cmake`
-- `ninja-build`
-- `git`
-- `qemu-system-misc`
-- `gcc-riscv64-unknown-elf`
-- `binutils-riscv64-unknown-elf`
-- `python3`
-- `python3-pip`
-- `python3-venv`
-- `pipx`
-- `device-tree-compiler`
-
-It will also ensure:
-
-- `west` is installed
-- `pyelftools` is available in the `west` environment
-
-#TODO:
-Additional HALO Python libraries will be listed here later once the final package is ready.
-
-### OneDrive Package
-
-- Download link: _add OneDrive link here_
-- Version / package name: _to be added_
-
-### Installation Commands
-
-Update this block once the package link and final toolchain dependencies are ready:
+The setup script  _add GitHub link here_
 
 ```bash
-# Step 1: download the package from OneDrive
-# TODO: add download instructions or local package path
-
-# Step 2: install required libraries
-# TODO: add platform-specific install commands
+# Step 1: download the Setup script
+# for Linux / Mac ./install_toolchain.sh 
+# for Windows ./install_toolchain.ps1
 
 # Step 3: verify the toolchain setup
-# TODO: add validation command
+# for Linux / Mac ./verify_toolchain.sh
+# for Windows ./verify_toolchain.ps1
 ```
