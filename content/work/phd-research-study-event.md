@@ -29,9 +29,8 @@ This session is designed for the research group to review study goals, align on 
 | --- | --- |
 | 12:30 PM - 12:50 PM | Gathering in front of the hotel and group arrival |
 | 1:00 PM - 1:30 PM | Welcome and event introduction |
-| 1:45 PM - 2:45 PM | Lunch break organized at the hotel
-| 3:00 PM - 3:45 PM | Toolchain preparation |
-| 3:45 PM - 4:00 PM | Wrap-up discussion |
+| 1:30 PM - 2:45 PM | Toolchain check and wrap-up discussion |
+| 2:45 PM - 3:45 PM | Lunch break organized at the hotel
 | 4:00 PM - 6:45 PM | Hands-on study session and wrap-up discussion |
 | 6:45 PM - 7:00 PM | Thank you gifts and closing |
 
@@ -39,36 +38,30 @@ If you have dietary requirements, please include them in the registration form.
 
 ## Research Study Goals
 
-The goal of the workshop is to compare how participants design communication architecture between AMPs using:
+The goal of the workshop is to compare how participants design communication architecture between partitions (AMPs)
+in heterogeneous SoC using:
 
-- a classical approach
-- the HALO framework
+- a classical approach / AD-HOC methods
+- the HALO framework (PhD deliverable)
 
-During the hands-on work, participants should solve the same design problem in both approaches and record the same information for both, so the comparison stays consistent.
+{{< emphasis-note >}}During the hands-on work, participants should solve the same design problem in both approaches and record the same information for both, so the comparison stays consistent.{{< /emphasis-note >}}
 
 ### Working Hypotheses
 
 - **H1:** Using the HALO framework speeds up integration and development of AMP systems compared to the traditional approach.
-- **H3:** Designing software architectures using the HALO framework gives better overview and maintainability compared to traditional methods.
-- **H4:** The HALO framework provides portability and reuse of software architectural descriptions for different platforms with no or minimal effort.
-- **H5:** The HALO framework gives better scalability and flexibility for IPC communication in AMP systems compared to already available solutions.
-- **H6:** The HALO framework provides easier application partitioning and communication in heterogeneous SoC systems.
+- **H2:** Designing software architectures using the HALO framework gives better overview and maintainability compared to traditional methods.
+- **H3:** The HALO framework provides portability and reuse of software architectural descriptions for different platforms with no or minimal effort.
+- **H4:** The HALO framework gives better scalability and flexibility for IPC communication in AMP systems compared to already available solutions.
 
 ### What Participants Should Record
 
 Participants should capture the same attributes for the **classical method** and for **HALO**:
 
-- time needed to complete the task
-- number of architecture elements or communication definitions created
-- ease of defining communication attributes
-- ease of updating or changing the architecture
-- clarity of the overall architecture overview
-- confidence in correctness of the solution
-- perceived maintainability
-- perceived scalability and flexibility
-- perceived portability and reuse potential
-- perceived ease of partitioning the application across AMPs
-- comments, blockers, and questions during the task
+Link to the surveys: 
+
+- [Survey Classical method](https://forms.cloud.microsoft/r/5s1SzaBPJv)
+- [Survey HALO Framework method](https://forms.cloud.microsoft/r/rL9RqVx3iB)
+
 
 ### Study Task for Both Approaches
 
