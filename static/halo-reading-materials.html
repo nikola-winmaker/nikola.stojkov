@@ -108,6 +108,17 @@
 				color: var(--ink);
 			}
 
+			.reveal a.inline-link {
+				color: var(--blue);
+				text-decoration: underline;
+				text-underline-offset: 0.14em;
+			}
+
+			.reveal a.inline-link:hover,
+			.reveal a.inline-link:focus {
+				color: #1d4ed8;
+			}
+
 			.reveal pre {
 				width: 100%;
 				margin: 0;
@@ -824,6 +835,22 @@ connection LinuxToRTOS {
 							<p>Generate a summary report of components, connections, warnings, and errors.</p>
 						</div>
 					</div>
+					<div class="panel cool" style="margin-top: 18px;">
+						<strong>How the composer is called</strong>
+						<pre><code>DSL inputs:
+halo compose --hadls-root "path to hadls" --output-dir "path to output directory" --include-stdlib-profiles
+
+UML/XMI input:
+halo compose --from-xmi "path to uml model" --output-dir "path to output directory"</code></pre>
+					</div>
+					<div class="takeaway">
+						<p>Argument --include-stdlib-profiles is important to include the standard library of profiles built-in HALO Composer which user can reference, for in example: </p>
+						<ul>
+							<li>SharedMemory profiles</li>
+							<li>BlackBoard profiles</li>
+							<li>EventChannel profiles</li>
+						</ul
+					</div>
 				</section>
 
 
@@ -895,22 +922,62 @@ connection LinuxToRTOS {
 				<section>
 					<div class="eyebrow">Extensibility</div>
 					<h2>HALO Is Designed as a Plugin Ecosystem</h2>
-					<div class="grid-3">
+					<div class="grid-2">
 						<div class="card">
 							<span class="tag teal">Scaffolding</span>
-							<p>`halo create-generator` can scaffold new <strong>platform</strong> or <strong>protocol</strong> generator packages with config, render logic, and Jinja2 templates.</p>
+							<p>CLI command "halo create-generator" can scaffold new <strong>platform</strong> or <strong>protocol</strong> generator packages with config, render logic, and Jinja2 templates.</p>
 						</div>
 						<div class="card">
 							<span class="tag blue">Discovery</span>
-							<p>Generators are auto-discovered through Python entry points: `halo.generators` for platforms and `halo.protocol_generators` for protocols.</p>
-						</div>
-						<div class="card">
-							<span class="tag rose">User Types</span>
-							<p>`--user-types` extends built-in HALO enums for component type, platform, function, and profile-related value domains without editing framework code.</p>
+							<p>Generators are auto-discovered through Python entry points for platforms and for protocols.</p>
 						</div>
 					</div>
 					<div class="takeaway">
-						This is a strong research-friendly design choice: the framework’s center is stable, while target-specific knowledge lives in installable extensions.
+						Users can create their own generators to target new platforms or support new protocols, and the scaffolding makes it easy to get started with the right structure and hooks for HALO code generation.
+					</div>
+				</section>
+
+				<section>
+					<div class="eyebrow">Generator Creation</div>
+					<h2>Scaffolding Platform and Protocol Generators</h2>
+					<div class="grid-3">
+						<div class="card">
+							<span class="tag teal">Wizard + Scaffold</span>
+							<p>CLI command "halo create-generator" runs an interactive questionnaire or accepts non-interactive flags, then routes to the scaffold factory to create either a platform or protocol generator package.</p>
+						</div>
+						<div class="card">
+							<span class="tag blue">Platform Package</span>
+							<p>Platform scaffolds creates an installable Python package with python render logic and platform Jinja2 templates that add startup, integration, and target-specific support files.</p>
+						</div>
+						<div class="card">
+							<span class="tag amber">Protocol Package</span>
+							<p>Protocol scaffolds creates creates an installable Python package with python render logic and platform Jinja2 templates for each supported platform, so one protocol can target multiple environments.</p>
+						</div>
+					</div>
+					<div class="two-col">
+						<div class="panel solution">
+							<strong>HALO Generator package</strong>
+							<ul class="checklist">
+								<li>A Python package with entry points so HALO can auto-discover the generator later.</li>
+								<li>Python render.py as the main implementation hook where users prepare data and decide which files to emit.</li>
+								<li>Python config.py containing generator metadata such as name, module path, output directory, and supported platforms.</li>
+								<li>A templates/ directory that becomes the main place to customize how the code will be generated.</li>
+							</ul>
+						</div>
+						<div class="panel warm">
+							<strong>How users expand it over time</strong>
+							<ul class="checklist">
+								<li>Edit render.py to add support for new features or modify existing behavior.</li>
+								<li>Edit or add Jinja2 templates under src/&lt;module&gt;/templates/ to change emitted headers, sources, and config/build files.</li>
+								<li>Install generator package with pip install -e . so the generator is installed and discovered. </li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel cool" style="margin-top: 18px;">
+						<strong>Example commands</strong>
+						<pre><code>Interactive mode: halo create-generator  
+Silent mode:      halo create-generator --generator-type platform --no-interactive --name my_platform --description "My Platform Generator" --author "Your Name" --email "you@example.com" --platform my_platform
+Silent mode:      halo create-generator --generator-type protocol --no-interactive --name my_protocol --description "My Protocol Generator" --author "Your Name" --email "you@example.com" --platform my_protocol --supported-platforms linux,freertos</code></pre>
 					</div>
 				</section>
 
@@ -925,60 +992,45 @@ connection LinuxToRTOS {
 					</div>
 				</section>
 
-				
-
 				<section>
-					<div class="eyebrow">Workshop Plan</div>
-					<h2>A Good Way to Present HALO to Newcomers</h2>
-					<div class="grid-2">
-						<div class="card">
-							<span class="tag teal">Suggested narrative</span>
-							<ul class="checklist">
-								<li>Start with the pain point of heterogeneous integration.</li>
-								<li>Show the four input views: ADL, IDL, IDDL, and HML.</li>
-								<li>Explain why the unified model is the central contract.</li>
-								<li>Only then move into code generation and plugins.</li>
-							</ul>
-						</div>
-						<div class="card">
-							<span class="tag amber">Best live demo path</span>
-							<ul class="checklist">
-								<li>`sw/composer/dsl/hadls/halo_test_system.adl`</li>
-								<li>`sw/composer/dsl/hadls/halo_interface1.idl`</li>
-								<li>`sw/composer/dsl/hadls/halo_hml_profiles.hml`</li>
-								<li>`output/halo_unified_model.json` and `output/uml/architecture.puml`</li>
-							</ul>
-						</div>
-					</div>
-					<div class="panel warm" style="margin-top: 18px;">
-						<strong>CLI flow to show on screen</strong>
-						<pre><code>halo compose --hadls-root "HALO/sw/composer/dsl/hadls" --output-dir "HALO/output"
-halo generate --composer-output-dir "HALO/output"</code></pre>
-					</div>
-				</section>
-
-				<section>
-					<div class="eyebrow">Takeaways</div>
-					<h2>What Participants Should Leave With</h2>
+					<div class="eyebrow">Jinja2 + Codegen</div>
+					<h2>HALO Code Generation with Jinja2</h2>
+					<p class="mini-note">Official Jinja2 docs:
+						<a class="inline-link" href="https://jinja.palletsprojects.com/en/stable/" target="_blank" rel="noopener noreferrer">jinja.palletsprojects.com/en/stable/</a>
+					</p>
 					<div class="grid-3">
-						<div class="panel solution">
-							<strong>HALO is a composition framework</strong>
-							<p>Its real center is the unified model, not just the final generated C files.</p>
+						<div class="card">
+							<span class="tag blue">1. Load + Analyze</span>
+							<p>The AST Parser loads unified model in PKL format, runs the analyzer, and selects all platforms from the unified model unless the user filters them explicitly through command-line arguments.</p>
 						</div>
-						<div class="panel cool">
-							<strong>HALO separates concerns deliberately</strong>
-							<p>Architecture, interfaces, data types, and hardware/memory mapping stay distinct until composition.</p>
+						<div class="card">
+							<span class="tag teal">2. Filter Per Target</span>
+							<p>Platform builder builds a platform-scoped model containing only relevant components, connections, interfaces, profiles, structs, and communication interfaces.</p>
 						</div>
-						<div class="panel warm">
-							<strong>HALO is research-ready but evolving</strong>
-							<p>It already supports parsing, validation, UML exchange, and extensible generation, while some protocol coverage is still growing.</p>
+						<div class="card">
+							<span class="tag rose">3. Rendered Code</span>
+							<p>HALO renders first internal, then platform-specific and lastly protocol-specific code. 
+								Jinja2 templates are what turns the unified model data into actual C/C++-style output code.</p>
 						</div>
 					</div>
-					<div class="footer-bar">
-						<span>Recommended discussion prompt: What analyses should be added next once the unified model already exists?</span>
-						<span>Recommended prompt: Which parts belong in the model and which should remain hand-written user code?</span>
+					<div class="one-col">
+						<div class="panel problem">
+							<strong>Extending Code Generators with templates</strong>
+							<ul class="checklist">
+								<li>Keep templates declarative and move complex computations into render.py and provide to jinja environment the necessary context.</li>
+								<li>Use Jinja2 when you want to change output structure, naming, boilerplate, or file layout without rewriting the whole generator.</li>
+								<li>Add new templates when a platform or protocol needs extra files instead of forcing everything into one render step.</li>
+								<li>The unified model decides what needs to be emitted; the Jinja2 generator decides how it should look on a given target.</li>
+								<li>Templates should contain preservation blocks which are used to not override user modifications done to the generated files. <strong>`/* HALO USER CODE BEGIN: ... */`</strong> and <strong>`/* HALO USER CODE END: ... */`</strong></li>
+								<li>This means users can safely place handwritten code, for in example: includes, init logic, ISR hooks, protocol extras, and declarations inside those markers without losing them on the next generate step or if generator is updated.</li>
+							</ul>
+							<pre style="margin-top: 16px;"><code>/* HALO USER CODE BEGIN: halo_disable_interrupts */
+// user implementation stays here across regeneration
+/* HALO USER CODE END: halo_disable_interrupts */</code></pre>
+						</div>
 					</div>
 				</section>
+
 			</div>
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
