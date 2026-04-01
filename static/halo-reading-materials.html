@@ -12,7 +12,7 @@
 		<style>
 			:root {
 				--app-height: 100vh;
-				--mobile-bottom-ui: 56px;
+				--mobile-bottom-ui: 88px;
 				--bg-1: #eff6ff;
 				--bg-2: #f8fafc;
 				--ink: #0f172a;
@@ -744,6 +744,28 @@
 				bottom: calc(env(safe-area-inset-bottom, 0px)) !important;
 			}
 
+			@supports (height: 100dvh) {
+				@media screen and (max-width: 768px) {
+					.reveal {
+						height: calc(100dvh - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px));
+					}
+
+					.reveal .slides {
+						height: calc(100dvh - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
+						max-height: calc(100dvh - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
+					}
+				}
+
+				html.mobile-view .reveal {
+					height: calc(100dvh - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px));
+				}
+
+				html.mobile-view .reveal .slides {
+					height: calc(100dvh - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
+					max-height: calc(100dvh - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
+				}
+			}
+
 			@media screen and (max-width: 480px) {
 				.reveal {
 					font-size: 16px;
@@ -1336,7 +1358,7 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 
 				if (isMobile) {
 					const resetMobileScroll = (event) => {
-						window.requestAnimationFrame(() => {
+						const applyReset = () => {
 							const slidesViewport = document.querySelector(".reveal .slides");
 							if (slidesViewport) {
 								slidesViewport.scrollTo(0, 0);
@@ -1346,11 +1368,19 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 							if (currentSlide) {
 								currentSlide.scrollTop = 0;
 							}
-						});
+							window.scrollTo(0, 0);
+							document.documentElement.scrollTop = 0;
+							document.body.scrollTop = 0;
+						};
+
+						window.requestAnimationFrame(applyReset);
+						window.setTimeout(applyReset, 60);
+						window.setTimeout(applyReset, 180);
 					};
 
 					Reveal.on("ready", resetMobileScroll);
 					Reveal.on("slidechanged", resetMobileScroll);
+					Reveal.on("slidetransitionend", resetMobileScroll);
 					window.addEventListener("hashchange", resetMobileScroll);
 				}
 			</script>
