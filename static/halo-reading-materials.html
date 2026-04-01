@@ -177,6 +177,20 @@
 				margin-bottom: 0.75em;
 			}
 
+			.closing-slide {
+				text-align: center !important;
+				padding-top: 48px !important;
+			}
+
+			.closing-slide .hero-shell {
+				max-width: 900px;
+			}
+
+			.closing-slide p {
+				font-size: 0.72em;
+				color: var(--muted);
+			}
+
 			.lede {
 				font-size: 0.88em;
 				max-width: 920px;
@@ -1028,6 +1042,70 @@ Silent mode:      halo create-generator --generator-type protocol --no-interacti
 // user implementation stays here across regeneration
 /* HALO USER CODE END: halo_disable_interrupts */</code></pre>
 						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="eyebrow">Project Integration</div>
+					<h2>Existing Application Projects</h2>
+					<div class="grid-3">
+						<div class="panel solution">
+							<strong>Build-Time Integration</strong>
+							<p>User runs halo compose and halo generate during its normal code-generation step.</p>
+						</div>
+						<div class="panel cool">
+							<strong>Generated Package Layout</strong>
+							<p>HALO emits a generated package with an include/ tree and a src/ tree. Those generated headers and sources are then added to the existing application build system.</p>
+						</div>
+						<div class="panel warm">
+							<strong>Application-Level Usage</strong>
+							<p>The existing application includes generated headers like halo_api.h, calls generated platform init functions, and uses generated typed APIs such as halo_send_*() and halo_recv_*().</p>
+						</div>
+					</div>
+					<div class="two-col">
+						<div class="panel solution">
+							<strong>What gets integrated</strong>
+							<ul class="checklist">
+								<li>Generated common HALO files such as halo_api.h, halo_cfg.h, halo_structs.h, halo_api.c, and halo_channels.c.</li>
+								<li>Generated platform files such as halo_platform_init.h and halo_platform_init.c.</li>
+								<li>Generated protocol files placed alongside the platform output in the same HALO layer.</li>
+								<li>Optional custom platform/protocol generator packages installed prior to running the generators.</li>
+							</ul>
+						</div>
+						<div class="panel problem">
+							<strong>What remains owned by the application project</strong>
+							<ul class="checklist">
+								<li>Business logic, control loops, scheduling, services, and application-specific behavior.</li>
+								<li>Hardware handles, RTOS objects, external buffers, interrupts, and other target-specific integration details.</li>
+								<li>Build system wiring that compiles generated src/ files and exports generated include/ directories.</li>
+								<li>Custom code placed inside preserved `HALO USER CODE BEGIN/END` blocks.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel cool" style="margin-top: 18px;">
+						<strong>Representative integration flow</strong>
+						<pre><code># 1. Generate HALO layer for the project
+halo compose --hadls-root "./hadls" --output-dir "./halo_out" --include-stdlib-profiles
+halo generate --composer-output-dir "./halo_out" --output-dir "./generated"
+
+# 2. Add HALO layer to the existing application build
+- add ./generated/codegen/&lt;target&gt;/include to include paths
+- add ./generated/codegen/&lt;target&gt;/src/*.c to sources
+
+# 3. Use HALO from existing application code
+						#include "halo_api.h"
+halo_core4_init_BareMetal();
+halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
+					</div>
+				</section>
+
+				<section class="closing-slide">
+					<div class="hero-shell">
+						<div class="eyebrow">Closing</div>
+						<h1>Thank You</h1>
+						<p>
+							Thank you for exploring HALO's model-driven workflow.
+						</p>
 					</div>
 				</section>
 
