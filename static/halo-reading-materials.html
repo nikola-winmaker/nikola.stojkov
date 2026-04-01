@@ -12,7 +12,8 @@
 		<style>
 			:root {
 				--app-height: 100vh;
-				--mobile-bottom-ui: 88px;
+				--mobile-bottom-ui: clamp(18px, 2.5vh, 30px);
+				--mobile-slide-bottom-padding: calc(42px + env(safe-area-inset-bottom, 0px));
 				--bg-1: #eff6ff;
 				--bg-2: #f8fafc;
 				--ink: #0f172a;
@@ -572,7 +573,7 @@
 					overflow-x: hidden !important;
 					border-width: 3px;
 					border-radius: 18px;
-					padding: 15px 5px !important;
+					padding: 15px 5px var(--mobile-slide-bottom-padding) !important;
 					-webkit-overflow-scrolling: touch;
 				}
 
@@ -676,7 +677,7 @@
 				overflow-x: hidden !important;
 				border-width: 3px;
 				border-radius: 18px;
-				padding: 15px 5px !important;
+				padding: 15px 5px var(--mobile-slide-bottom-padding) !important;
 				-webkit-overflow-scrolling: touch;
 			}
 
@@ -1039,7 +1040,7 @@ connection LinuxToRTOS {
 						<div class="pipeline-step">
 							<div class="num">02</div>
 							<h4>Parse</h4>
-							<p>`textX` grammars load ADL, IDL, IDDL or HML into structured models.</p>
+							<p>Python module textX grammar parses ADL, IDL, IDDL, HMML and HML into structured models.</p>
 						</div>
 						<div class="pipeline-step">
 							<div class="num">03</div>
