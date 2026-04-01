@@ -630,6 +630,100 @@
 				}
 			}
 
+			html.mobile-view,
+			html.mobile-view body {
+				height: 100%;
+				overflow: hidden;
+			}
+
+			html.mobile-view .reveal {
+				font-size: 20px;
+				width: 100vw;
+				height: 100vh;
+			}
+
+			html.mobile-view .reveal h1 {
+				font-size: 1.8em;
+			}
+
+			html.mobile-view .reveal h2 {
+				font-size: 1.5em;
+			}
+
+			html.mobile-view .reveal h3 {
+				font-size: 1.05em;
+			}
+
+			html.mobile-view .reveal h4 {
+				font-size: 0.95em;
+			}
+
+			html.mobile-view .reveal .slides {
+				height: 100% !important;
+				overflow-y: auto !important;
+				overflow-x: hidden !important;
+				border-width: 3px;
+				border-radius: 18px;
+				padding: 15px 5px !important;
+				-webkit-overflow-scrolling: touch;
+			}
+
+			html.mobile-view .reveal section {
+				height: auto !important;
+				max-height: none !important;
+				min-height: 0 !important;
+				padding: 10px !important;
+				overflow: visible !important;
+				top: 0 !important;
+			}
+
+			html.mobile-view .hero-shell {
+				padding: 24px 22px;
+				border-radius: 20px;
+			}
+
+			html.mobile-view .hero-shell,
+			html.mobile-view .card,
+			html.mobile-view .panel,
+			html.mobile-view .pipeline-step,
+			html.mobile-view .stat,
+			html.mobile-view .takeaway,
+			html.mobile-view .json-box {
+				max-width: 100%;
+				min-width: 0;
+				box-sizing: border-box;
+			}
+
+			html.mobile-view .grid-2,
+			html.mobile-view .grid-3,
+			html.mobile-view .grid-4,
+			html.mobile-view .two-col,
+			html.mobile-view .stat-grid,
+			html.mobile-view .pipeline,
+			html.mobile-view .workflow-pipeline {
+				grid-template-columns: 1fr;
+			}
+
+			html.mobile-view .pipeline-step::after,
+			html.mobile-view .workflow-pipeline .pipeline-step::after {
+				content: "";
+			}
+
+			html.mobile-view .reveal pre {
+				font-size: 0.4em;
+			}
+
+			html.mobile-view .reveal pre code,
+			html.mobile-view .json-box code {
+				white-space: pre-wrap;
+				overflow-wrap: anywhere;
+				word-break: break-word;
+			}
+
+			html.mobile-view .footer-bar {
+				flex-direction: column;
+			}
+
 			@media screen and (max-width: 480px) {
 				.reveal {
 					font-size: 16px;
@@ -1190,7 +1284,9 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
 		<script>
-			const isMobile = window.matchMedia("(max-width: 768px)").matches;
+			const shortEdge = Math.min(window.screen.width || window.innerWidth, window.screen.height || window.innerHeight);
+			const isMobile = shortEdge <= 430 || window.matchMedia("(max-width: 430px), (pointer: coarse)").matches;
+			document.documentElement.classList.toggle("mobile-view", isMobile);
 
 			Reveal.initialize({
 				hash: true,
