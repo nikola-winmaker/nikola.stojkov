@@ -666,37 +666,37 @@
 					bottom: calc(env(safe-area-inset-bottom, 0px)) !important;
 				}
 
-				.reveal .slides > section:nth-of-type(2) .grid-3,
-				.reveal .slides > section:nth-of-type(12) .grid-2 {
-					margin-top: 12px;
-					gap: 12px;
+				.slide-motivation .grid-3,
+				.slide-extensibility .grid-2 {
+					margin-top: 12px !important;
+					gap: 12px !important;
 				}
 
-				.reveal .slides > section:nth-of-type(2) .panel,
-				.reveal .slides > section:nth-of-type(12) .card {
-					padding: 12px 14px;
+				.slide-motivation .panel,
+				.slide-extensibility .card {
+					padding: 12px 14px !important;
 				}
 
-				.reveal .slides > section:nth-of-type(2) .panel p,
-				.reveal .slides > section:nth-of-type(12) .card p {
-					font-size: 0.62em;
+				.slide-motivation .panel p,
+				.slide-extensibility .card p {
+					font-size: 0.62em !important;
 				}
 
-				.reveal .slides > section:nth-of-type(6) img,
-				.reveal .slides > section:nth-of-type(8) img,
-				.reveal .slides > section:nth-of-type(14) img {
+				.slide-dsl-overview img,
+				.slide-composer-diagram img,
+				.slide-generator-diagram img {
 					max-width: 100% !important;
-					max-height: 46vh;
-					margin: 12px 0 !important;
+					max-height: 38vh !important;
+					margin: 10px 0 !important;
 				}
 
-				.reveal .slides > section:nth-of-type(6) .takeaway,
-				.reveal .slides > section:nth-of-type(8) .takeaway,
-				.reveal .slides > section:nth-of-type(12) .takeaway,
-				.reveal .slides > section:nth-of-type(14) .takeaway {
-					margin-top: 12px;
-					padding: 12px 14px;
-					font-size: 0.6em;
+				.slide-dsl-overview .takeaway,
+				.slide-composer-diagram .takeaway,
+				.slide-extensibility .takeaway,
+				.slide-generator-diagram .takeaway {
+					margin-top: 10px !important;
+					padding: 10px 12px !important;
+					font-size: 0.58em !important;
 				}
 			}
 
@@ -828,37 +828,37 @@
 				bottom: calc(env(safe-area-inset-bottom, 0px)) !important;
 			}
 
-			html.mobile-view .reveal .slides > section:nth-of-type(2) .grid-3,
-			html.mobile-view .reveal .slides > section:nth-of-type(12) .grid-2 {
-				margin-top: 12px;
-				gap: 12px;
+			html.mobile-view .slide-motivation .grid-3,
+			html.mobile-view .slide-extensibility .grid-2 {
+				margin-top: 12px !important;
+				gap: 12px !important;
 			}
 
-			html.mobile-view .reveal .slides > section:nth-of-type(2) .panel,
-			html.mobile-view .reveal .slides > section:nth-of-type(12) .card {
-				padding: 12px 14px;
+			html.mobile-view .slide-motivation .panel,
+			html.mobile-view .slide-extensibility .card {
+				padding: 12px 14px !important;
 			}
 
-			html.mobile-view .reveal .slides > section:nth-of-type(2) .panel p,
-			html.mobile-view .reveal .slides > section:nth-of-type(12) .card p {
-				font-size: 0.62em;
+			html.mobile-view .slide-motivation .panel p,
+			html.mobile-view .slide-extensibility .card p {
+				font-size: 0.62em !important;
 			}
 
-			html.mobile-view .reveal .slides > section:nth-of-type(6) img,
-			html.mobile-view .reveal .slides > section:nth-of-type(8) img,
-			html.mobile-view .reveal .slides > section:nth-of-type(14) img {
+			html.mobile-view .slide-dsl-overview img,
+			html.mobile-view .slide-composer-diagram img,
+			html.mobile-view .slide-generator-diagram img {
 				max-width: 100% !important;
-				max-height: 46vh;
-				margin: 12px 0 !important;
+				max-height: 38vh !important;
+				margin: 10px 0 !important;
 			}
 
-			html.mobile-view .reveal .slides > section:nth-of-type(6) .takeaway,
-			html.mobile-view .reveal .slides > section:nth-of-type(8) .takeaway,
-			html.mobile-view .reveal .slides > section:nth-of-type(12) .takeaway,
-			html.mobile-view .reveal .slides > section:nth-of-type(14) .takeaway {
-				margin-top: 12px;
-				padding: 12px 14px;
-				font-size: 0.6em;
+			html.mobile-view .slide-dsl-overview .takeaway,
+			html.mobile-view .slide-composer-diagram .takeaway,
+			html.mobile-view .slide-extensibility .takeaway,
+			html.mobile-view .slide-generator-diagram .takeaway {
+				margin-top: 10px !important;
+				padding: 10px 12px !important;
+				font-size: 0.58em !important;
 			}
 
 			@supports (height: 100dvh) {
@@ -930,7 +930,7 @@
 					</div>
 				</section>
 
-				<section>
+				<section class="slide-motivation">
 					<div class="eyebrow">Motivation</div>
 					<h2>Why HALO Exists</h2>
 					<div class="grid-3">
@@ -952,7 +952,7 @@
 					</div>
 				</section>
 
-				<section>
+				<section class="slide-dsl-overview">
 					<div class="eyebrow">Meta Model</div>
 					<h2>The HALO Concept</h2>
 					<div class="grid-4">
@@ -989,7 +989,7 @@
 					</div>
 				</section>
 
-				<section>
+				<section class="slide-composer-diagram">
 					<div class="eyebrow">Repo Example</div>
 					<h2>HALO Domain Specific Language Inputs</h2>
 					<div class="grid-3">
@@ -1049,7 +1049,7 @@ connection LinuxToRTOS {
 					</div>
 				</section>
 
-				<section>
+				<section class="slide-extensibility">
 					<div class="eyebrow">UML View</div>
 					<h2>HALO UML Inputs</h2>
 					<div class="grid-3">
@@ -1086,7 +1086,7 @@ connection LinuxToRTOS {
 					</div>
 				</section>
 
-				<section>
+				<section class="slide-generator-diagram"> 
 					<div class="eyebrow">HALO DSL <-> UML</div>
 					<h2>HALO Inputs Overview</h2>
 					<div style="text-align:center;">
