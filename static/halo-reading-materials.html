@@ -31,6 +31,7 @@
 
 			html,
 			body {
+				overflow-x: hidden;
 				background:
 					radial-gradient(circle at top left, rgba(14, 165, 164, 0.14), transparent 30%),
 					radial-gradient(circle at top right, rgba(37, 99, 235, 0.16), transparent 34%),
@@ -136,6 +137,11 @@
 				font-family: "IBM Plex Mono", monospace;
 				line-height: 1.5;
 				border-radius: 18px;
+			}
+
+			.reveal img {
+				max-width: 100%;
+				height: auto;
 			}
 
 			.hero {
@@ -530,8 +536,20 @@
 
 			@media screen and (max-width: 900px) {
 				.reveal {
-					font-size: 22px;
-					width: 100vw;
+					font-size: 20px;
+					width: 100%;
+				}
+
+				.reveal h1 {
+					font-size: 1.95em;
+				}
+
+				.reveal h2 {
+					font-size: 1.4em;
+				}
+
+				.reveal h3 {
+					font-size: 0.95em;
 				}
 
 				.reveal .slides {
@@ -541,7 +559,7 @@
 				}
 
 				.reveal section {
-					padding: 10px 12px !important;
+					padding: 10px 14px !important;
 				}
 
 				.hero-shell {
@@ -549,17 +567,44 @@
 					border-radius: 20px;
 				}
 
+				.hero-shell,
+				.card,
+				.panel,
+				.pipeline-step,
+				.stat,
+				.takeaway,
+				.json-box {
+					max-width: 100%;
+					min-width: 0;
+					box-sizing: border-box;
+				}
+
 				.grid-2,
 				.grid-3,
 				.grid-4,
 				.two-col,
 				.stat-grid,
-				.pipeline {
+				.pipeline,
+				.workflow-pipeline {
 					grid-template-columns: 1fr;
 				}
 
-				.pipeline-step::after {
+				.pipeline-step::after,
+				.workflow-pipeline .pipeline-step::after {
 					content: "";
+				}
+
+				.reveal pre {
+					font-size: 0.5em;
+					overflow: auto;
+					-webkit-overflow-scrolling: touch;
+				}
+
+				.reveal pre code,
+				.json-box code {
+					white-space: pre-wrap;
+					overflow-wrap: anywhere;
+					word-break: break-word;
 				}
 
 				.footer-bar {
@@ -1117,19 +1162,21 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
 		<script>
+			const isMobile = window.matchMedia("(max-width: 900px)").matches;
+
 			Reveal.initialize({
 				hash: true,
 				transition: "fade",
 				transitionSpeed: "default",
 				controls: true,
 				progress: true,
-				center: true,
+				center: !isMobile,
 				slideNumber: "c/t",
-				width: "100%",
-				height: "100%",
-				margin: 0.04,
-				minScale: 0.2,
-				maxScale: 2.0,
+				width: isMobile ? 1280 : "100%",
+				height: isMobile ? 840 : "100%",
+				margin: isMobile ? 0.02 : 0.04,
+				minScale: isMobile ? 0.1 : 0.2,
+				maxScale: isMobile ? 1.5 : 2.0,
 				embedded: false
 			});
 		</script>
