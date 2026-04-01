@@ -618,6 +618,31 @@
 					content: "";
 				}
 
+				.pipeline-step,
+				.workflow-pipeline .pipeline-step {
+					min-height: 0;
+					padding: 12px 12px;
+				}
+
+				.workflow-pipeline {
+					gap: 12px;
+					margin-top: 18px;
+				}
+
+				.pipeline-step .num {
+					margin-bottom: 6px;
+				}
+
+				.pipeline-step h4 {
+					font-size: 0.72em;
+					margin-bottom: 0.22em;
+				}
+
+				.pipeline-step p {
+					font-size: 0.58em;
+					line-height: 1.3;
+				}
+
 				.reveal pre {
 					font-size: 0.4em;
 				}
@@ -639,6 +664,39 @@
 
 				.reveal .progress {
 					bottom: calc(env(safe-area-inset-bottom, 0px)) !important;
+				}
+
+				.reveal .slides > section:nth-of-type(2) .grid-3,
+				.reveal .slides > section:nth-of-type(12) .grid-2 {
+					margin-top: 12px;
+					gap: 12px;
+				}
+
+				.reveal .slides > section:nth-of-type(2) .panel,
+				.reveal .slides > section:nth-of-type(12) .card {
+					padding: 12px 14px;
+				}
+
+				.reveal .slides > section:nth-of-type(2) .panel p,
+				.reveal .slides > section:nth-of-type(12) .card p {
+					font-size: 0.62em;
+				}
+
+				.reveal .slides > section:nth-of-type(6) img,
+				.reveal .slides > section:nth-of-type(8) img,
+				.reveal .slides > section:nth-of-type(14) img {
+					max-width: 100% !important;
+					max-height: 46vh;
+					margin: 12px 0 !important;
+				}
+
+				.reveal .slides > section:nth-of-type(6) .takeaway,
+				.reveal .slides > section:nth-of-type(8) .takeaway,
+				.reveal .slides > section:nth-of-type(12) .takeaway,
+				.reveal .slides > section:nth-of-type(14) .takeaway {
+					margin-top: 12px;
+					padding: 12px 14px;
+					font-size: 0.6em;
 				}
 			}
 
@@ -722,6 +780,31 @@
 				content: "";
 			}
 
+			html.mobile-view .pipeline-step,
+			html.mobile-view .workflow-pipeline .pipeline-step {
+				min-height: 0;
+				padding: 12px 12px;
+			}
+
+			html.mobile-view .workflow-pipeline {
+				gap: 12px;
+				margin-top: 18px;
+			}
+
+			html.mobile-view .pipeline-step .num {
+				margin-bottom: 6px;
+			}
+
+			html.mobile-view .pipeline-step h4 {
+				font-size: 0.72em;
+				margin-bottom: 0.22em;
+			}
+
+			html.mobile-view .pipeline-step p {
+				font-size: 0.58em;
+				line-height: 1.3;
+			}
+
 			html.mobile-view .reveal pre {
 				font-size: 0.4em;
 			}
@@ -743,6 +826,39 @@
 
 			html.mobile-view .reveal .progress {
 				bottom: calc(env(safe-area-inset-bottom, 0px)) !important;
+			}
+
+			html.mobile-view .reveal .slides > section:nth-of-type(2) .grid-3,
+			html.mobile-view .reveal .slides > section:nth-of-type(12) .grid-2 {
+				margin-top: 12px;
+				gap: 12px;
+			}
+
+			html.mobile-view .reveal .slides > section:nth-of-type(2) .panel,
+			html.mobile-view .reveal .slides > section:nth-of-type(12) .card {
+				padding: 12px 14px;
+			}
+
+			html.mobile-view .reveal .slides > section:nth-of-type(2) .panel p,
+			html.mobile-view .reveal .slides > section:nth-of-type(12) .card p {
+				font-size: 0.62em;
+			}
+
+			html.mobile-view .reveal .slides > section:nth-of-type(6) img,
+			html.mobile-view .reveal .slides > section:nth-of-type(8) img,
+			html.mobile-view .reveal .slides > section:nth-of-type(14) img {
+				max-width: 100% !important;
+				max-height: 46vh;
+				margin: 12px 0 !important;
+			}
+
+			html.mobile-view .reveal .slides > section:nth-of-type(6) .takeaway,
+			html.mobile-view .reveal .slides > section:nth-of-type(8) .takeaway,
+			html.mobile-view .reveal .slides > section:nth-of-type(12) .takeaway,
+			html.mobile-view .reveal .slides > section:nth-of-type(14) .takeaway {
+				margin-top: 12px;
+				padding: 12px 14px;
+				font-size: 0.6em;
 			}
 
 			@supports (height: 100dvh) {
