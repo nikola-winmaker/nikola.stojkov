@@ -535,9 +535,16 @@
 			}
 
 			@media screen and (max-width: 768px) {
+				html,
+				body {
+					height: 100%;
+					overflow: hidden;
+				}
+
 				.reveal {
 					font-size: 20px;
 					width: 100vw;
+					height: 100vh;
 				}
 
 				.reveal h1 {
@@ -557,13 +564,18 @@
 				}
 
 				.reveal .slides {
+					height: 100% !important;
 					border-width: 3px;
 					border-radius: 18px;
 					padding: 15px 5px !important;
 				}
 
 				.reveal section {
+					height: calc(100vh - 36px) !important;
+					max-height: calc(100vh - 36px) !important;
 					padding: 10px !important;
+					overflow-y: auto !important;
+					-webkit-overflow-scrolling: touch;
 				}
 
 				.hero-shell {
