@@ -12,6 +12,7 @@
 		<style>
 			:root {
 				--app-height: 100vh;
+				--mobile-bottom-ui: 56px;
 				--bg-1: #eff6ff;
 				--bg-2: #f8fafc;
 				--ink: #0f172a;
@@ -545,7 +546,7 @@
 				.reveal {
 					font-size: 20px;
 					width: 100vw;
-					height: var(--app-height);
+					height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px));
 				}
 
 				.reveal h1 {
@@ -565,8 +566,8 @@
 				}
 
 				.reveal .slides {
-					height: var(--app-height) !important;
-					max-height: var(--app-height) !important;
+					height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
+					max-height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
 					overflow-y: auto !important;
 					overflow-x: hidden !important;
 					border-width: 3px;
@@ -630,6 +631,14 @@
 				.footer-bar {
 					flex-direction: column;
 				}
+
+				.reveal .controls {
+					bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+				}
+
+				.reveal .progress {
+					bottom: calc(env(safe-area-inset-bottom, 0px)) !important;
+				}
 			}
 
 			html.mobile-view,
@@ -641,7 +650,7 @@
 			html.mobile-view .reveal {
 				font-size: 20px;
 				width: 100vw;
-				height: var(--app-height);
+				height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px));
 			}
 
 			html.mobile-view .reveal h1 {
@@ -661,8 +670,8 @@
 			}
 
 			html.mobile-view .reveal .slides {
-				height: var(--app-height) !important;
-				max-height: var(--app-height) !important;
+				height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
+				max-height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
 				overflow-y: auto !important;
 				overflow-x: hidden !important;
 				border-width: 3px;
@@ -725,6 +734,14 @@
 
 			html.mobile-view .footer-bar {
 				flex-direction: column;
+			}
+
+			html.mobile-view .reveal .controls {
+				bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+			}
+
+			html.mobile-view .reveal .progress {
+				bottom: calc(env(safe-area-inset-bottom, 0px)) !important;
 			}
 
 			@media screen and (max-width: 480px) {
@@ -1319,19 +1336,22 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 
 				if (isMobile) {
 					const resetMobileScroll = (event) => {
-						const slidesViewport = document.querySelector(".reveal .slides");
-						if (slidesViewport) {
-							slidesViewport.scrollTop = 0;
-						}
+						window.requestAnimationFrame(() => {
+							const slidesViewport = document.querySelector(".reveal .slides");
+							if (slidesViewport) {
+								slidesViewport.scrollTo(0, 0);
+							}
 
-						const currentSlide = event?.currentSlide || Reveal.getCurrentSlide();
-						if (currentSlide) {
-							currentSlide.scrollTop = 0;
-						}
+							const currentSlide = event?.currentSlide || Reveal.getCurrentSlide();
+							if (currentSlide) {
+								currentSlide.scrollTop = 0;
+							}
+						});
 					};
 
 					Reveal.on("ready", resetMobileScroll);
 					Reveal.on("slidechanged", resetMobileScroll);
+					window.addEventListener("hashchange", resetMobileScroll);
 				}
 			</script>
 	</body>
