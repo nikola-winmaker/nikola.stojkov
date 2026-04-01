@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/sky.min.css">
 		<style>
 			:root {
+				--app-height: 100vh;
 				--bg-1: #eff6ff;
 				--bg-2: #f8fafc;
 				--ink: #0f172a;
@@ -544,7 +545,7 @@
 				.reveal {
 					font-size: 20px;
 					width: 100vw;
-					height: 100vh;
+					height: var(--app-height);
 				}
 
 				.reveal h1 {
@@ -564,7 +565,8 @@
 				}
 
 				.reveal .slides {
-					height: 100% !important;
+					height: var(--app-height) !important;
+					max-height: var(--app-height) !important;
 					overflow-y: auto !important;
 					overflow-x: hidden !important;
 					border-width: 3px;
@@ -639,7 +641,7 @@
 			html.mobile-view .reveal {
 				font-size: 20px;
 				width: 100vw;
-				height: 100vh;
+				height: var(--app-height);
 			}
 
 			html.mobile-view .reveal h1 {
@@ -659,7 +661,8 @@
 			}
 
 			html.mobile-view .reveal .slides {
-				height: 100% !important;
+				height: var(--app-height) !important;
+				max-height: var(--app-height) !important;
 				overflow-y: auto !important;
 				overflow-x: hidden !important;
 				border-width: 3px;
@@ -1288,9 +1291,19 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 			const isMobile = shortEdge <= 430 || window.matchMedia("(max-width: 430px), (pointer: coarse)").matches;
 			document.documentElement.classList.toggle("mobile-view", isMobile);
 
-			Reveal.initialize({
-				hash: true,
-				transition: "fade",
+			const setAppHeight = () => {
+				document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+			};
+
+				if (isMobile) {
+					setAppHeight();
+					window.addEventListener("resize", setAppHeight);
+					window.addEventListener("orientationchange", setAppHeight);
+				}
+
+				Reveal.initialize({
+					hash: true,
+					transition: "fade",
 				transitionSpeed: "default",
 				controls: true,
 				progress: true,
@@ -1300,9 +1313,26 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 				height: "100%",
 				margin: 0.04,
 				minScale: 0.2,
-				maxScale: 2.0,
-				embedded: false
-			});
-		</script>
+					maxScale: 2.0,
+					embedded: false
+				});
+
+				if (isMobile) {
+					const resetMobileScroll = (event) => {
+						const slidesViewport = document.querySelector(".reveal .slides");
+						if (slidesViewport) {
+							slidesViewport.scrollTop = 0;
+						}
+
+						const currentSlide = event?.currentSlide || Reveal.getCurrentSlide();
+						if (currentSlide) {
+							currentSlide.scrollTop = 0;
+						}
+					};
+
+					Reveal.on("ready", resetMobileScroll);
+					Reveal.on("slidechanged", resetMobileScroll);
+				}
+			</script>
 	</body>
 </html>
