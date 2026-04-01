@@ -115,3 +115,15 @@
   margin-bottom: 0;
   color: #666;
 }
+
+.centered-cta-link {
+  margin: 2.4rem 0 2.8rem;
+  text-align: center;
+}
+
+.centered-cta-link a {
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}

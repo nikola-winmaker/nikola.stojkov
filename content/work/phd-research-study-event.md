@@ -13,6 +13,7 @@ This session is designed for the research group to review study goals, align on 
 
 > Lunch is organized at the hotel and all participants will receive thank you gifts at the end of the event.
 
+
 ## Venue
 
 - **Location:** Sheraton Hotel Novi Sad, conference room
@@ -20,6 +21,8 @@ This session is designed for the research group to review study goals, align on 
 - **Gathering in front of the hotel:** 12:30 PM
 - **Main session:** 1:00 PM to 6:00 PM
 - **Maps:** [Open in Google Maps](https://www.google.com/maps/search/Sheraton+Hotel+Novi+Sad/) or [Open in OpenStreetMap](https://www.openstreetmap.org/search?query=Sheraton%20Hotel%20Novi%20Sad)
+
+{{< centered-cta-link "#toolchain-installation" "Registration" >}}
 
 {{< emphasis-note >}}Please meet in front of the hotel at **12:30 PM** so the group can gather before moving into the conference room for the opening session.{{< /emphasis-note >}}
 
@@ -71,8 +74,9 @@ Link to the surveys:
 - [Survey Classical method](https://forms.cloud.microsoft/r/5s1SzaBPJv)
 - [Survey HALO Framework method](https://forms.cloud.microsoft/r/rL9RqVx3iB)
 
+# Participant Prerequisites
 
-## Laptop and Preparation
+### Laptop and Preparation
 
 Please let us know one of the following when registering:
 
@@ -82,27 +86,21 @@ Please let us know one of the following when registering:
 If you are bringing your own laptop, please also make sure you have administrator access so the required toolchain libraries can be installed.
 Please see [Toolchain installation](#toolchain-installation).
 
-# Participant Prerequisites
 
 ### Reading Materials
 
 This section is reserved for preparation material that will be shared with the research group before the event.
 
-- Reading pack link: _to be added_
-- Background paper: _to be added_
-- Workshop notes: _to be added_
+- [HALO Presentation](/halo-reading-materials.html)
+- [HALO Papers](https://unsacrs-my.sharepoint.com/:f:/r/personal/stojkov_dp20_2022_uns_ac_rs/Documents/HALO/HaloPublications?csf=1&web=1&e=2AUtg3)
+- [Halo API](/_to_be_added_)
 
-## Registration
-
-Use the link below to register:
-- [Register](https://forms.office.com/r/2b0GsXpSwZ)
-
-
-#### Toolchain installation
+## Toolchain installation
 
 {{< emphasis-note >}}Participants should prepare their laptops before the event so the hands-on session can start on time.{{< /emphasis-note >}}
 
-The setup script  _add GitHub link here_
+The setup script is located in Github repo.
+Please clone [HALO repository](https://github.com/nikola-winmaker/PhdHaloRSG.git)
 
 ```bash
 # Step 1: download the Setup script
@@ -113,3 +111,6 @@ The setup script  _add GitHub link here_
 # for Linux / Mac ./verify_toolchain.sh
 # for Windows ./verify_toolchain.ps1
 ```
+
+{{< centered-cta-link "https://forms.office.com/r/2b0GsXpSwZ" "Register for the event" >}}
+

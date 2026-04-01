@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>HALO Reading Materials</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/sky.min.css">
+		<style>
+			.reveal {
+				font-size: 32px;
+				width: 95vw;
+				max-width: 1300px;
+				margin: 0 auto;
+			}
+
+			.reveal .slides {
+				width: 100% !important;
+				box-sizing: border-box;
+				border: 8px solid rgba(0, 0, 0, 0.3);
+				box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.3);
+				padding: 30px 0 !important;
+			}
+
+			.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+				text-transform: none;
+				font-weight: bold;
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			.reveal section {
+				padding: 0 !important;
+				text-align: center;
+				margin: 0 auto;
+				width: 100%;
+				box-sizing: border-box;
+			}
+
+			.reveal ul {
+				width: 100%;
+				font-size: 0.85em;
+			}
+
+			.reveal li {
+				margin: 10px 0;
+				line-height: 1.3;
+			}
+
+			.highlight-box {
+				background: rgba(255, 200, 0, 0.1);
+				border-left: 4px solid #ffc800;
+				padding: 15px 20px;
+				margin: 15px auto;
+				font-size: 0.85em;
+				width: 85%;
+				max-width: 1000px;
+				box-sizing: border-box;
+			}
+
+			.problem-box {
+				background: rgba(255, 100, 100, 0.1);
+				border-left: 4px solid #ff6464;
+				padding: 15px 20px;
+				margin: 15px auto;
+				font-size: 0.85em;
+				width: 85%;
+				max-width: 1000px;
+				box-sizing: border-box;
+			}
+
+			.solution-box {
+				background: rgba(100, 255, 100, 0.1);
+				border-left: 4px solid #64ff64;
+				padding: 15px 20px;
+				margin: 15px auto;
+				font-size: 0.85em;
+				width: 85%;
+				max-width: 1000px;
+				box-sizing: border-box;
+			}
+
+			.material-grid {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 22px;
+				width: 88%;
+				margin: 25px auto 0;
+			}
+
+			.material-card {
+				padding: 24px 20px;
+				border-radius: 18px;
+				text-align: left;
+				box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+				min-height: 280px;
+			}
+
+			.material-card h4 {
+				margin-bottom: 10px;
+			}
+
+			.material-card p {
+				font-size: 0.78em;
+				line-height: 1.45;
+				margin-bottom: 14px;
+			}
+
+			.material-card--pack {
+				background: rgba(255, 200, 0, 0.12);
+				border-top: 6px solid #ffc800;
+			}
+
+			.material-card--paper {
+				background: rgba(255, 100, 100, 0.1);
+				border-top: 6px solid #ff6464;
+			}
+
+			.material-card--notes {
+				background: rgba(100, 255, 100, 0.1);
+				border-top: 6px solid #64ff64;
+			}
+
+			.material-tag {
+				display: inline-block;
+				padding: 6px 12px;
+				margin-bottom: 16px;
+				border-radius: 999px;
+				background: rgba(0, 0, 0, 0.08);
+				font-size: 0.44em;
+				font-weight: bold;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.subtitle {
+				color: #888;
+				font-size: 0.8em;
+				margin-top: 10px;
+			}
+
+			.key-point {
+				color: #ffc800;
+				font-weight: bold;
+				font-size: 1.1em;
+				margin: 15px 0;
+			}
+
+			@media screen and (max-width: 768px) {
+				.reveal {
+					font-size: 20px;
+					width: 100vw;
+				}
+
+				.reveal .slides {
+					border: 3px solid rgba(0, 0, 0, 0.3);
+					box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.3);
+					padding: 15px 5px !important;
+				}
+
+				.reveal section {
+					padding: 0 10px !important;
+				}
+
+				.reveal h1 {
+					font-size: 1.8em;
+				}
+
+				.reveal h2 {
+					font-size: 1.5em;
+				}
+
+				.reveal h3 {
+					font-size: 1.2em;
+				}
+
+				.reveal h4 {
+					font-size: 1em;
+				}
+
+				.highlight-box, .problem-box, .solution-box {
+					width: 95%;
+					padding: 10px 12px;
+					margin: 10px auto;
+					font-size: 0.75em;
+				}
+
+				.material-grid {
+					grid-template-columns: 1fr;
+					width: 95%;
+					gap: 14px;
+				}
+
+				.material-card {
+					min-height: auto;
+					padding: 18px 16px;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				.reveal {
+					font-size: 16px;
+				}
+
+				.reveal .slides {
+					border: 2px solid rgba(0, 0, 0, 0.3);
+					padding: 10px 3px !important;
+				}
+
+				.reveal h1 {
+					font-size: 1.6em;
+				}
+
+				.reveal h2 {
+					font-size: 1.3em;
+				}
+
+				.highlight-box, .problem-box, .solution-box {
+					width: 98%;
+					padding: 8px 10px;
+					font-size: 0.7em;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1>HALO</h1>
+					<h3>Reading Materials</h3>
+					<p style="margin-top: 55px; font-size: 0.75em;">
+						Preparation presentation for workshop participants
+					</p>
+					<p class="subtitle">Placeholder deck ready for later HALO content</p>
+				</section>
+
+				<section>
+					<h2>Purpose of This Pack</h2>
+					<div class="highlight-box">
+						<p><strong>Goal:</strong> provide participants with the core material they should read before the event</p>
+					</div>
+					<div class="highlight-box">
+						<p><strong>Use this deck</strong> to organize links, papers, notes, and onboarding instructions for HALO</p>
+					</div>
+					<p class="key-point" style="margin-top: 30px;">Prepared now, content can be populated later</p>
+				</section>
+
+				<section>
+					<h2>Reading Materials Overview</h2>
+					<div class="material-grid">
+						<div class="material-card material-card--pack">
+							<span class="material-tag">Placeholder</span>
+							<h4>Reading Pack</h4>
+							<p>Main HALO onboarding material for participants.</p>
+							<p><strong>Audience:</strong> workshop attendees</p>
+							<p><strong>Link:</strong> to be added</p>
+						</div>
+						<div class="material-card material-card--paper">
+							<span class="material-tag">Placeholder</span>
+							<h4>Background Paper</h4>
+							<p>Reference paper that introduces the HALO approach and context.</p>
+							<p><strong>Audience:</strong> all participants</p>
+							<p><strong>Link:</strong> to be added</p>
+						</div>
+						<div class="material-card material-card--notes">
+							<span class="material-tag">Placeholder</span>
+							<h4>Workshop Notes</h4>
+							<p>Companion notes, examples, or practical preparation guidance.</p>
+							<p><strong>Audience:</strong> hands-on session participants</p>
+							<p><strong>Link:</strong> to be added</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Suggested Structure</h2>
+					<div class="solution-box">
+						<p><strong>1.</strong> Start with the HALO concept overview and motivation</p>
+					</div>
+					<div class="solution-box">
+						<p><strong>2.</strong> Add the key background paper or internal document</p>
+					</div>
+					<div class="solution-box">
+						<p><strong>3.</strong> Finish with workshop notes and practical instructions</p>
+					</div>
+				</section>
+
+				<section>
+					<h2>To Populate Later</h2>
+					<div class="problem-box">
+						<p><strong>Replace placeholders</strong> with final HALO links, titles, summaries, and notes.</p>
+					</div>
+					<div class="highlight-box">
+						<p>This file is intended as a presentation shell, following the same Reveal-based style as the XCC deck.</p>
+					</div>
+					<p style="margin-top: 40px; font-size: 0.9em;">
+						<strong>File:</strong><br>
+						<span class="subtitle">/halo-reading-materials.html</span>
+					</p>
+				</section>
+
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				transition: "slide",
+				transitionSpeed: "default",
+				controls: true,
+				progress: true,
+				center: true,
+				slideNumber: "c/t",
+				width: "100%",
+				height: "100%",
+				margin: 0.04,
+				minScale: 0.2,
+				maxScale: 2.0,
+				embedded: false
+			});
+		</script>
+	</body>
+</html>
