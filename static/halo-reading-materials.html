@@ -3,222 +3,556 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>HALO Reading Materials</title>
+		<title>HALO Workshop Primer</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/sky.min.css">
 		<style>
+			:root {
+				--bg-1: #eff6ff;
+				--bg-2: #f8fafc;
+				--ink: #0f172a;
+				--muted: #475569;
+				--line: rgba(15, 23, 42, 0.12);
+				--panel: rgba(255, 255, 255, 0.82);
+				--panel-strong: rgba(255, 255, 255, 0.94);
+				--teal: #0f766e;
+				--teal-soft: rgba(15, 118, 110, 0.12);
+				--amber: #d97706;
+				--amber-soft: rgba(217, 119, 6, 0.12);
+				--rose: #dc2626;
+				--rose-soft: rgba(220, 38, 38, 0.11);
+				--blue: #2563eb;
+				--blue-soft: rgba(37, 99, 235, 0.1);
+				--shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+			}
+
+			html,
+			body {
+				background:
+					radial-gradient(circle at top left, rgba(14, 165, 164, 0.14), transparent 30%),
+					radial-gradient(circle at top right, rgba(37, 99, 235, 0.16), transparent 34%),
+					linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 45%, #edf2f7 100%);
+				color: var(--ink);
+				font-family: "IBM Plex Sans", sans-serif;
+			}
+
 			.reveal {
-				font-size: 32px;
+				font-family: "IBM Plex Sans", sans-serif;
+				font-size: 30px;
 				width: 95vw;
-				max-width: 1300px;
+				max-width: 1320px;
 				margin: 0 auto;
+				color: var(--ink);
 			}
 
 			.reveal .slides {
 				width: 100% !important;
 				box-sizing: border-box;
-				border: 8px solid rgba(0, 0, 0, 0.3);
-				box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.3);
-				padding: 30px 0 !important;
-			}
-
-			.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-				text-transform: none;
-				font-weight: bold;
-				margin-left: 0;
-				margin-right: 0;
+				border: 10px solid rgba(255, 255, 255, 0.55);
+				border-radius: 34px;
+				box-shadow: var(--shadow);
+				background: rgba(255, 255, 255, 0.16);
+				backdrop-filter: blur(10px);
+				padding: 26px 0 !important;
 			}
 
 			.reveal section {
-				padding: 0 !important;
-				text-align: center;
-				margin: 0 auto;
 				width: 100%;
 				box-sizing: border-box;
+				padding: 12px 26px !important;
+				text-align: left;
+			}
+
+			.reveal h1,
+			.reveal h2,
+			.reveal h3,
+			.reveal h4,
+			.reveal h5,
+			.reveal h6 {
+				font-family: "Space Grotesk", sans-serif;
+				text-transform: none;
+				font-weight: 700;
+				letter-spacing: -0.03em;
+				color: var(--ink);
+				margin: 0 0 0.3em 0;
+			}
+
+			.reveal h1 {
+				font-size: 2.35em;
+			}
+
+			.reveal h2 {
+				font-size: 1.7em;
+			}
+
+			.reveal p,
+			.reveal li {
+				color: var(--muted);
+				line-height: 1.42;
 			}
 
 			.reveal ul {
-				width: 100%;
-				font-size: 0.85em;
+				display: block;
+				margin: 0.3em 0 0 1em;
+				font-size: 0.86em;
 			}
 
 			.reveal li {
-				margin: 10px 0;
-				line-height: 1.3;
+				margin: 0.28em 0;
 			}
 
-			.highlight-box {
-				background: rgba(255, 200, 0, 0.1);
-				border-left: 4px solid #ffc800;
-				padding: 15px 20px;
-				margin: 15px auto;
-				font-size: 0.85em;
-				width: 85%;
-				max-width: 1000px;
-				box-sizing: border-box;
+			.reveal strong {
+				color: var(--ink);
 			}
 
-			.problem-box {
-				background: rgba(255, 100, 100, 0.1);
-				border-left: 4px solid #ff6464;
-				padding: 15px 20px;
-				margin: 15px auto;
-				font-size: 0.85em;
-				width: 85%;
-				max-width: 1000px;
-				box-sizing: border-box;
-			}
-
-			.solution-box {
-				background: rgba(100, 255, 100, 0.1);
-				border-left: 4px solid #64ff64;
-				padding: 15px 20px;
-				margin: 15px auto;
-				font-size: 0.85em;
-				width: 85%;
-				max-width: 1000px;
-				box-sizing: border-box;
-			}
-
-			.material-grid {
-				display: grid;
-				grid-template-columns: repeat(3, minmax(0, 1fr));
-				gap: 22px;
-				width: 88%;
-				margin: 25px auto 0;
-			}
-
-			.material-card {
-				padding: 24px 20px;
+			.reveal pre {
+				width: 100%;
+				margin: 0;
+				box-shadow: none;
+				font-size: 0.49em;
 				border-radius: 18px;
-				text-align: left;
-				box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-				min-height: 280px;
+				overflow: hidden;
 			}
 
-			.material-card h4 {
-				margin-bottom: 10px;
+			.reveal pre code {
+				display: block;
+				padding: 1.1em 1.2em;
+				background: #0f172a;
+				color: #dbeafe;
+				font-family: "IBM Plex Mono", monospace;
+				line-height: 1.5;
+				border-radius: 18px;
 			}
 
-			.material-card p {
-				font-size: 0.78em;
-				line-height: 1.45;
-				margin-bottom: 14px;
+			.hero {
+				text-align: center;
+				padding-top: 18px !important;
 			}
 
-			.material-card--pack {
-				background: rgba(255, 200, 0, 0.12);
-				border-top: 6px solid #ffc800;
-			}
-
-			.material-card--paper {
-				background: rgba(255, 100, 100, 0.1);
-				border-top: 6px solid #ff6464;
-			}
-
-			.material-card--notes {
-				background: rgba(100, 255, 100, 0.1);
-				border-top: 6px solid #64ff64;
-			}
-
-			.material-tag {
+			.eyebrow {
 				display: inline-block;
-				padding: 6px 12px;
-				margin-bottom: 16px;
+				padding: 9px 16px;
 				border-radius: 999px;
-				background: rgba(0, 0, 0, 0.08);
-				font-size: 0.44em;
-				font-weight: bold;
-				letter-spacing: 0.08em;
+				background: rgba(15, 118, 110, 0.1);
+				border: 1px solid rgba(15, 118, 110, 0.16);
+				color: var(--teal);
+				font-size: 0.42em;
+				font-weight: 700;
+				letter-spacing: 0.14em;
 				text-transform: uppercase;
+				margin-bottom: 18px;
+			}
+
+			.hero-shell {
+				background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.82));
+				border: 1px solid rgba(255, 255, 255, 0.75);
+				border-radius: 30px;
+				padding: 42px 48px;
+				box-shadow: 0 20px 50px rgba(37, 99, 235, 0.12);
+				max-width: 1080px;
+				margin: 0 auto;
+			}
+
+			.hero-shell h1 {
+				margin-bottom: 0.1em;
+			}
+
+			.hero-shell h3 {
+				font-size: 1em;
+				color: var(--teal);
+				margin-bottom: 0.75em;
+			}
+
+			.lede {
+				font-size: 0.88em;
+				max-width: 920px;
+				margin: 0.8em auto 0;
 			}
 
 			.subtitle {
-				color: #888;
+				font-size: 0.6em;
+				color: #64748b;
+				margin-top: 1.2em;
+			}
+
+			.panel {
+				background: var(--panel);
+				border: 1px solid var(--line);
+				border-radius: 24px;
+				padding: 18px 22px;
+				box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+			}
+
+			.panel strong {
+				display: block;
+				font-size: 0.95em;
+				margin-bottom: 0.28em;
+			}
+
+			.panel p {
+				font-size: 0.67em;
+				margin: 0;
+			}
+
+			.panel.problem {
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(220, 38, 38, 0.06));
+				border-color: rgba(220, 38, 38, 0.18);
+			}
+
+			.panel.solution {
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(15, 118, 110, 0.07));
+				border-color: rgba(15, 118, 110, 0.2);
+			}
+
+			.panel.warm {
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(217, 119, 6, 0.08));
+				border-color: rgba(217, 119, 6, 0.18);
+			}
+
+			.panel.cool {
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(37, 99, 235, 0.08));
+				border-color: rgba(37, 99, 235, 0.16);
+			}
+
+			.grid-2,
+			.grid-3,
+			.grid-4 {
+				display: grid;
+				gap: 18px;
+				margin-top: 22px;
+			}
+
+			.grid-2 {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+
+			.grid-3 {
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+			}
+
+			.grid-4 {
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+			}
+
+			.card {
+				background: var(--panel-strong);
+				border: 1px solid var(--line);
+				border-radius: 24px;
+				padding: 20px 22px;
+				box-shadow: 0 18px 40px rgba(15, 23, 42, 0.07);
+			}
+
+			.card h4 {
 				font-size: 0.8em;
-				margin-top: 10px;
+				margin-bottom: 0.45em;
 			}
 
-			.key-point {
-				color: #ffc800;
-				font-weight: bold;
-				font-size: 1.1em;
-				margin: 15px 0;
+			.card p {
+				font-size: 0.67em;
+				margin: 0;
 			}
 
-			@media screen and (max-width: 768px) {
+			.tag {
+				display: inline-block;
+				padding: 6px 10px;
+				border-radius: 999px;
+				font-size: 0.37em;
+				font-weight: 700;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				margin-bottom: 12px;
+			}
+
+			.tag.teal {
+				background: var(--teal-soft);
+				color: var(--teal);
+			}
+
+			.tag.amber {
+				background: var(--amber-soft);
+				color: var(--amber);
+			}
+
+			.tag.rose {
+				background: var(--rose-soft);
+				color: var(--rose);
+			}
+
+			.tag.blue {
+				background: var(--blue-soft);
+				color: var(--blue);
+			}
+
+			.pipeline {
+				display: grid;
+				grid-template-columns: repeat(6, minmax(0, 1fr));
+				gap: 12px;
+				margin-top: 24px;
+				align-items: stretch;
+			}
+
+			.workflow-pipeline {
+				grid-template-columns: repeat(5, minmax(0, 1fr));
+				gap: 22px;
+				margin-top: 28px;
+			}
+
+			.workflow-pipeline .pipeline-step {
+				min-height: 158px;
+				padding: 18px 16px;
+			}
+
+			.workflow-pipeline .pipeline-step:not(:last-child)::after {
+				right: -17px;
+			}
+
+			.pipeline-step {
+				background: var(--panel-strong);
+				border: 1px solid var(--line);
+				border-radius: 22px;
+				padding: 16px 14px;
+				position: relative;
+				min-height: 138px;
+				box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+			}
+
+			.pipeline-step:not(:last-child)::after {
+				content: "→";
+				position: absolute;
+				right: -11px;
+				top: 50%;
+				transform: translateY(-50%);
+				font-size: 1.05em;
+				color: #94a3b8;
+			}
+
+			.pipeline-step .num {
+				font-family: "IBM Plex Mono", monospace;
+				font-size: 0.42em;
+				color: var(--teal);
+				margin-bottom: 10px;
+			}
+
+			.pipeline-step h4 {
+				font-size: 0.63em;
+				margin-bottom: 0.35em;
+			}
+
+			.pipeline-step p {
+				font-size: 0.52em;
+				margin: 0;
+			}
+
+			.stat-grid {
+				display: grid;
+				grid-template-columns: repeat(5, minmax(0, 1fr));
+				gap: 14px;
+				margin-top: 20px;
+			}
+
+			.stat {
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(15, 118, 110, 0.08));
+				border: 1px solid rgba(15, 118, 110, 0.15);
+				border-radius: 22px;
+				padding: 18px 14px;
+				text-align: center;
+				box-shadow: 0 14px 32px rgba(15, 23, 42, 0.07);
+			}
+
+			.stat .value {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 1.35em;
+				line-height: 1;
+				color: var(--ink);
+			}
+
+			.stat .label {
+				font-size: 0.46em;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: var(--muted);
+				margin-top: 8px;
+			}
+
+			.pill-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin-top: 14px;
+			}
+
+			.pill {
+				padding: 9px 14px;
+				border-radius: 999px;
+				background: rgba(15, 23, 42, 0.06);
+				font-size: 0.5em;
+				font-weight: 600;
+				color: var(--ink);
+			}
+
+			.json-box {
+				background: #0b1220;
+				border-radius: 24px;
+				padding: 18px 20px;
+				margin-top: 16px;
+				box-shadow: 0 18px 42px rgba(2, 6, 23, 0.24);
+			}
+
+			.json-box code {
+				display: block;
+				white-space: pre-wrap;
+				font-family: "IBM Plex Mono", monospace;
+				font-size: 0.56em;
+				line-height: 1.5;
+				color: #bfdbfe;
+			}
+
+			.two-col {
+				display: grid;
+				grid-template-columns: 1.12fr 0.88fr;
+				gap: 20px;
+				align-items: start;
+				margin-top: 20px;
+			}
+
+			.checklist {
+				margin: 0.5em 0 0 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			.checklist li {
+				margin: 0 0 0.62em 0;
+				padding-left: 1.35em;
+				position: relative;
+				font-size: 0.68em;
+				list-style: none;
+			}
+
+			.checklist li::marker {
+				content: "";
+			}
+
+			.checklist li::before {
+				content: "•";
+				position: absolute;
+				left: 0;
+				top: 0;
+				color: var(--teal);
+				font-size: 1.25em;
+				line-height: 1;
+			}
+
+			.takeaway {
+				margin-top: 18px;
+				padding: 14px 18px;
+				border-radius: 18px;
+				background: rgba(15, 118, 110, 0.09);
+				border: 1px solid rgba(15, 118, 110, 0.16);
+				font-size: 0.66em;
+				color: var(--ink);
+			}
+
+			.mini-note {
+				font-size: 0.54em;
+				margin-top: 12px;
+				color: #64748b;
+			}
+
+			.footer-bar {
+				display: flex;
+				justify-content: space-between;
+				gap: 12px;
+				margin-top: 22px;
+				font-size: 0.46em;
+				color: #64748b;
+			}
+
+			.reveal .progress {
+				color: var(--teal);
+			}
+
+			.reveal .controls {
+				color: var(--teal);
+			}
+
+			@media screen and (max-width: 1200px) {
+				.pipeline {
+					grid-template-columns: repeat(4, minmax(0, 1fr));
+				}
+
+				.workflow-pipeline {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+					gap: 18px;
+				}
+
+				.workflow-pipeline .pipeline-step::after {
+					content: "";
+				}
+
+				.pipeline-step:nth-child(4)::after {
+					content: "";
+				}
+			}
+
+			@media screen and (max-width: 900px) {
 				.reveal {
-					font-size: 20px;
+					font-size: 22px;
 					width: 100vw;
 				}
 
 				.reveal .slides {
-					border: 3px solid rgba(0, 0, 0, 0.3);
-					box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.3);
-					padding: 15px 5px !important;
+					border-width: 4px;
+					border-radius: 18px;
+					padding: 10px 0 !important;
 				}
 
 				.reveal section {
-					padding: 0 10px !important;
+					padding: 10px 12px !important;
 				}
 
-				.reveal h1 {
-					font-size: 1.8em;
+				.hero-shell {
+					padding: 24px 22px;
+					border-radius: 20px;
 				}
 
-				.reveal h2 {
-					font-size: 1.5em;
-				}
-
-				.reveal h3 {
-					font-size: 1.2em;
-				}
-
-				.reveal h4 {
-					font-size: 1em;
-				}
-
-				.highlight-box, .problem-box, .solution-box {
-					width: 95%;
-					padding: 10px 12px;
-					margin: 10px auto;
-					font-size: 0.75em;
-				}
-
-				.material-grid {
+				.grid-2,
+				.grid-3,
+				.grid-4,
+				.two-col,
+				.stat-grid,
+				.pipeline {
 					grid-template-columns: 1fr;
-					width: 95%;
-					gap: 14px;
 				}
 
-				.material-card {
-					min-height: auto;
-					padding: 18px 16px;
+				.pipeline-step::after {
+					content: "";
+				}
+
+				.footer-bar {
+					flex-direction: column;
 				}
 			}
 
 			@media screen and (max-width: 480px) {
 				.reveal {
-					font-size: 16px;
+					font-size: 17px;
 				}
 
-				.reveal .slides {
-					border: 2px solid rgba(0, 0, 0, 0.3);
-					padding: 10px 3px !important;
+				.card,
+				.panel,
+				.pipeline-step,
+				.stat {
+					border-radius: 16px;
+					padding: 14px 15px;
 				}
 
-				.reveal h1 {
-					font-size: 1.6em;
-				}
-
-				.reveal h2 {
-					font-size: 1.3em;
-				}
-
-				.highlight-box, .problem-box, .solution-box {
-					width: 98%;
-					padding: 8px 10px;
-					font-size: 0.7em;
+				.reveal pre {
+					font-size: 0.44em;
 				}
 			}
 		</style>
@@ -226,88 +560,432 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
+				<section class="hero">
+					<div class="hero-shell">
+						<div class="eyebrow">Workshop Primer</div>
+						<h1>HALO</h1>
+						<h3>Harmonizing Asymmetric Multi-core Architectures with Linked communication for Optimal design</h3>
+						<p class="lede">
+							A model-driven workflow for describing heterogeneous systems, validating communication intent across domains,
+							and generating portable and platform-specific implementation artifacts from one unified model.
+						</p>
+						<p class="subtitle">
+							Built from the current HALO repository, example HADL files, composer/generator code, and generated outputs.
+						</p>
+					</div>
+				</section>
 
 				<section>
-					<h1>HALO</h1>
-					<h3>Reading Materials</h3>
-					<p style="margin-top: 55px; font-size: 0.75em;">
-						Preparation presentation for workshop participants
+					<div class="eyebrow">Motivation</div>
+					<h2>Why HALO Exists</h2>
+					<div class="grid-3">
+						<div class="panel problem">
+							<strong>Heterogeneous systems example</strong>
+							<p>Linux applications, RTOS tasks, bare-metal firmware, and accelerator logic all need to exchange data reliably.</p>
+						</div>
+						<div class="panel problem">
+							<strong>Communication intent gets fragmented</strong>
+							<p>Architecture diagrams, memory maps, code, and protocol assumptions often live in different places and drift apart.</p>
+						</div>
+						<div class="panel solution">
+							<strong>HALO makes the contract explicit</strong>
+							<p>Architecture, interfaces, and hardware/mapping are modeled separately and then composed into one system view.</p>
+						</div>
+					</div>
+					<div class="takeaway">
+						The central idea is simple: stop rewriting the same integration knowledge in multiple notations and let the model become the source of truth.
+					</div>
+				</section>
+
+				<section>
+					<div class="eyebrow">Meta Model</div>
+					<h2>The HALO Concept</h2>
+					<div class="grid-4">
+						<div class="card">
+							<span class="tag teal">ADL - Architecture Description Language</span>
+							<h4>System Architecture</h4>
+							<p>Describes Components, platforms, functions, and logical connections between endpoints.</p>
+						</div>
+						<div class="card">
+							<span class="tag amber">IDDL - Interface Definition Description Library</span>
+							<h4>Data Types</h4>
+							<p>Provides a library of pre-defined data structures used by interfaces. Definitions can be reused across multiple interfaces.</p>
+						</div>
+						<div class="card">
+							<span class="tag blue">IDL - Interface Description Language</span>
+							<h4>Interfaces</h4>
+							<p>Describes IDL defines the interfaces between components, focusing on the data being exchanged with access and integrity rules.</p>
+						</div>
+
+						<div class="card">
+							<span class="tag rose">HML - Hardware Mapping Language</span>
+							<h4>Hardware Mapping</h4>
+							<p>HML defines the profile of components data exchange, focusing on the data placement, synchronization and transfer behaviour. 
+							   HML profile is mapped uniquely to the ”communication” type defined in ADL.</p>
+						</div>
+						<div class="card">
+							<span class="tag rose">HMML - Hardware Module Mapping Language</span>
+							<h4>Hardware Mapping Library</h4>
+							<p>Provides a library of pre-defined hardware mappings used by HML Descriptions.</p>
+						</div>
+					</div>
+					<div class="takeaway">
+						HALO is strongest when these concerns stay separate during authoring and become unified only during composition.
+					</div>
+				</section>
+
+				<section>
+					<div class="eyebrow">Repo Example</div>
+					<h2>HALO Domain Specific Language Inputs</h2>
+					<div class="grid-3">
+						<div class="card">
+							<span class="tag teal">ADL Snippet</span>
+							<pre><code>Core1 : Component { 
+  Type: Application,
+  Platform: Linux, 
+  Function: GeneralProcessing 
+}
+
+connection LinuxToRTOS {
+  from Core1 to Core2
+  interface: TstIf_1
+  profile: sharedMemoryProfile1
+}</code></pre>
+						</div>
+						<div class="card">
+							<span class="tag blue">IDL Snippet</span>
+							<pre><code>interface TstIf_1 {
+  access {
+    read { SharedData SharedData2 }
+    write { SharedData SharedData2 }
+  }
+  integrity {
+    crc16 { SharedData2 }
+  }
+}</code></pre>
+						</div>
+						<div class="card">
+							<span class="tag rose">HML Snippet - with overrides</span>
+							<pre><code>SharedMemory sharedMemoryProfile1 {
+  memSize: 64MB
+  baseAddress: 0x80000000
+}
+</code></pre>
+						</div>
+						<div class="card">
+							<span class="tag rose">HMML Snippet</span>
+							<pre><code>Profiles {
+	SharedMemory {
+		memSize: 64MB
+		baseAddress: 0x80000000
+		cacheable: True
+		policy: WriteBack
+		cacheLine: 64B
+		coherence: Software
+		syncType: AcquireRelease
+		permissions: RW
+		priority: High
+		syncBlocking: True
+		syncPrimitive: mutex
+	}
+}
+</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="eyebrow">UML View</div>
+					<h2>HALO UML Inputs</h2>
+					<div class="grid-3">
+						<div class="card">
+							<span class="tag blue">Components</span>
+							<p>HALO components represented as UML classes with component stereotypes and attributes such as type, platform, and function.</p>
+						</div>
+						<div class="card">
+							<span class="tag teal">Interfaces + Data</span>
+							<p>Interfaces are UML interface-like classes with operations for read, write, and integrity rules, while referenced structs become data-type classes.</p>
+						</div>
+						<div class="card">
+							<span class="tag rose">Profiles + Connections</span>
+							<p>Profiles are stereotyped UML classes, and connections are represented as association classes linking source and destination components.</p>
+						</div>
+					</div>
+					<div class="takeaway">
+							<p>If DSL Inputs are the "source code" of HALO, then UML artifacts will be generated for analysis and visualization in UML tools.</p>
+					</div>
+					<div class="one-col">
+						<div class="panel cool">
+							<strong>UML Artifacts</strong>
+							<ul class="checklist">
+								<li>architecture.puml - PlantUML model of the architecture</li>
+								<li>interfaces/*.puml - PlantUML views of the interfaces</li>
+								<li>profiles/*.puml - PlantUML views of the profiles</li>
+								<li>halo_model.uml - UML model of the HALO system (importable into UML tools)</li>
+								<li>halo_profile.xmi - XMI representation of the HALO profiles (for UML tools)</li>
+							</ul>
+						</div>
+					</div>
+					<div class="takeaway">
+						The UML/XMI representation lets HALO describe the same system in a notation that is comfortable for model-driven engineering, tool exchange, and architecture reviews.
+					</div>
+				</section>
+
+				<section>
+					<div class="eyebrow">HALO DSL <-> UML</div>
+					<h2>HALO Inputs Overview</h2>
+					<div style="text-align:center;">
+						<img src="/images/HALO_DSL.png" alt="HALO DSL Diagram" style="max-width: 90%; border-radius: 1px; box-shadow: 0 8px 32px rgba(15,23,42,0.13); margin: 24px 0;" />
+					</div>
+					<div class="takeaway">
+						This diagram visualizes the structure and flow of the HALO inputs which can be authored in either the textual DSL or the UML notation.
+					</div>
+				</section>
+
+				<section>
+					<div class="eyebrow">HALO Workflow</div>
+					<h2>HALO supports DSL and UML inputs</h2>
+					<div class="pipeline workflow-pipeline">
+						<div class="pipeline-step">
+							<div class="num">A</div>
+							<h4>Author in DSL</h4>
+							<p>Create ADL, IDL, IDDL, HMML, and HML files in the textual HALO workflow.</p>
+						</div>
+						<div class="pipeline-step">
+							<div class="num">B</div>
+							<h4>Compose</h4>
+							<p>Build the unified HALO model.</p>
+						</div>
+						<div class="pipeline-step">
+							<div class="num">C</div>
+							<h4>Export</h4>
+							<p>Write unified model in JSON and XMI format with PlantUML views for external tools.</p>
+						</div>
+						<div class="pipeline-step">
+							<div class="num">D</div>
+							<h4>UML Tools</h4>
+							<p>Users can import a HALO model as XMI, design and analyze it in UML tools, and export it back in XMI format.</p>
+						</div>
+						<div class="pipeline-step">
+							<div class="num">E</div>
+							<h4>UML XMI Import</h4>
+							<p>HALO can import UML XMI and export DSL descriptions, supporting reproducible round-trips.</p>
+						</div>
+					</div>
+					<div class="takeaway">
+							<p>NOTE: Users can create UML diagrams and export them as XMI files for HALO import without having to write them in the DSL first.</p>
+					</div>
+				</section>
+
+				<section>
+					<div class="eyebrow">HALO Composer Diagram</div>
+					<h2>HALO Composer Overview</h2>
+					<div style="text-align:center;">
+						<img src="/images/halo_composer.png" alt="HALO Composer Diagram" style="max-width: 90%; border-radius: 18px; box-shadow: 0 8px 32px rgba(15,23,42,0.13); margin: 24px 0;" />
+					</div>
+					<div class="takeaway">
+						This diagram shows the main workflow and modules of the HALO composer, illustrating how models and artifacts flow through the system.
+					</div>
+				</section>
+
+
+				<section>
+					<div class="eyebrow">Composer Pipeline</div>
+					<h2>End-to-End Flow</h2>
+					<div class="pipeline">
+						<div class="pipeline-step">
+							<div class="num">01</div>
+							<h4>Author Models</h4>
+							<p>Write HADL files or import a UML XMI model.</p>
+						</div>
+						<div class="pipeline-step">
+							<div class="num">02</div>
+							<h4>Parse</h4>
+							<p>`textX` grammars load ADL, IDL, IDDL or HML into structured models.</p>
+						</div>
+						<div class="pipeline-step">
+							<div class="num">03</div>
+							<h4>Compose</h4>
+							<p>The composer resolves cross-references and builds one unified HALO model.</p>
+						</div>
+						<div class="pipeline-step">
+							<div class="num">04</div>
+							<h4>Validate</h4>
+							<p>Check interfaces, profiles, connection semantics, and basic referential integrity.</p>
+						</div>
+						<div class="pipeline-step">
+							<div class="num">05</div>
+							<h4>Emit Artifacts</h4>
+							<p>Write JSON, Pickle, DOT, SVG, PlantUML, UML XMI, and DSL artifacts.</p>
+						</div>
+						<div class="pipeline-step">
+							<div class="num">06</div>
+							<h4>Analyze</h4>
+							<p>Generate a summary report of components, connections, warnings, and errors.</p>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<div class="eyebrow">Core Artifact</div>
+					<h2>The Unified Model</h2>
+					<div class="grid-3">
+						<div class="card">
+							<h4>For humans and tools</h4>
+							<p>One inspectable and tool importable JSON view of the full communication architecture.</p>
+						</div>
+						<div class="card">
+							<h4>For tools</h4>
+							<p>1. Pickle file with structured dictionaries for future tooling. <br>2. UML XMI file for integration with UML tools.</p>
+						</div>
+						<div class="card">
+							<h4>For traceability</h4>
+							<p>Every generated platform or protocol artifact can be traced back to components, interfaces, and profiles.</p>
+						</div>
+					</div>
+					<div class="json-box">
+						<code>{
+  "name": "LinuxToRTOS",
+  "from_component": "Core1",
+  "to_component": "Core2",
+  "interface": "TstIf_1",
+  "profile": "sharedMemoryProfile1"
+}</code>
+					</div>
+					<p class="mini-note">
+						In practice, the model bundles <strong>components</strong>, <strong>connections</strong>, <strong>interfaces</strong>,
+						<strong>profiles</strong>, <strong>dataTypes</strong>, and value-domain metadata in one place.
 					</p>
-					<p class="subtitle">Placeholder deck ready for later HALO content</p>
 				</section>
 
 				<section>
-					<h2>Purpose of This Pack</h2>
-					<div class="highlight-box">
-						<p><strong>Goal:</strong> provide participants with the core material they should read before the event</p>
-					</div>
-					<div class="highlight-box">
-						<p><strong>Use this deck</strong> to organize links, papers, notes, and onboarding instructions for HALO</p>
-					</div>
-					<p class="key-point" style="margin-top: 30px;">Prepared now, content can be populated later</p>
-				</section>
-
-				<section>
-					<h2>Reading Materials Overview</h2>
-					<div class="material-grid">
-						<div class="material-card material-card--pack">
-							<span class="material-tag">Placeholder</span>
-							<h4>Reading Pack</h4>
-							<p>Main HALO onboarding material for participants.</p>
-							<p><strong>Audience:</strong> workshop attendees</p>
-							<p><strong>Link:</strong> to be added</p>
+					<div class="eyebrow">Generation</div>
+					<h2>HALO Code Generator</h2>
+					<div class="grid-3">
+						<div class="card">
+							<span class="tag blue">HALO Core Generator</span>
+							<p>Built-in plugin that generates HALO API for each target platform which contains the core functionality and abstractions.</p>
 						</div>
-						<div class="material-card material-card--paper">
-							<span class="material-tag">Placeholder</span>
-							<h4>Background Paper</h4>
-							<p>Reference paper that introduces the HALO approach and context.</p>
-							<p><strong>Audience:</strong> all participants</p>
-							<p><strong>Link:</strong> to be added</p>
+						<div class="card">
+							<span class="tag teal">Platform Generators</span>
+							<p>Independent plugins that generates platform-specific code for the target platform, including initialization and integration files.</p>
 						</div>
-						<div class="material-card material-card--notes">
-							<span class="material-tag">Placeholder</span>
-							<h4>Workshop Notes</h4>
-							<p>Companion notes, examples, or practical preparation guidance.</p>
-							<p><strong>Audience:</strong> hands-on session participants</p>
-							<p><strong>Link:</strong> to be added</p>
+						<div class="card">
+							<span class="tag amber">Protocol Generators</span>
+							<p>Independent plugins that generates communication protocol-specific code based on the profiles used in the ADL communication description.</p>
+						</div>
+					</div>
+					<div class="two-col">
+						<div class="panel problem">
+							<strong>Platform Generators</strong>
+							<p>The HALO Framework allows user to generate platform generator for the target platform, including initialization and integration files. 
+								User can continue to develop and customize these generators based on their specific requirements.</p>
+							<p>Each platform generator is designed to work with a specific target platform, ensuring compatibility and seamless integration.</p>
+						</div>
+						<div class="panel warm">
+							<strong>Protocol Generators</strong>
+							<p>Each protocol generator covers a specific set of profiles. For example, the SharedMemory generator handles profiles that involve shared memory communication patterns.</p>
+							<p>The HALO Framework allows user to generate protocol generators as plugins, which can be developed and installed independently from the core framework. 
+								This design allows for extensibility and customization of the code generation process to support a wide range of communication protocols and profiles.</p>
 						</div>
 					</div>
 				</section>
 
 				<section>
-					<h2>Suggested Structure</h2>
-					<div class="solution-box">
-						<p><strong>1.</strong> Start with the HALO concept overview and motivation</p>
+					<div class="eyebrow">Extensibility</div>
+					<h2>HALO Is Designed as a Plugin Ecosystem</h2>
+					<div class="grid-3">
+						<div class="card">
+							<span class="tag teal">Scaffolding</span>
+							<p>`halo create-generator` can scaffold new <strong>platform</strong> or <strong>protocol</strong> generator packages with config, render logic, and Jinja2 templates.</p>
+						</div>
+						<div class="card">
+							<span class="tag blue">Discovery</span>
+							<p>Generators are auto-discovered through Python entry points: `halo.generators` for platforms and `halo.protocol_generators` for protocols.</p>
+						</div>
+						<div class="card">
+							<span class="tag rose">User Types</span>
+							<p>`--user-types` extends built-in HALO enums for component type, platform, function, and profile-related value domains without editing framework code.</p>
+						</div>
 					</div>
-					<div class="solution-box">
-						<p><strong>2.</strong> Add the key background paper or internal document</p>
+					<div class="takeaway">
+						This is a strong research-friendly design choice: the framework’s center is stable, while target-specific knowledge lives in installable extensions.
 					</div>
-					<div class="solution-box">
-						<p><strong>3.</strong> Finish with workshop notes and practical instructions</p>
+				</section>
+
+				<section> 
+					<div class="eyebrow">HALO Generator Diagram</div>
+					<h2>HALO Generator Overview</h2>
+					<div style="text-align:center;">
+						<img src="/images/halo_generator.png" alt="HALO Generator Diagram" style="max-width: 90%; border-radius: 18px; box-shadow: 0 8px 32px rgba(15,23,42,0.13); margin: 24px 0;" />
+					</div>
+					<div class="takeaway">
+						This diagram illustrates the generator architecture, showing how the unified model is transformed into platform and protocol-specific outputs.
+					</div>
+				</section>
+
+				
+
+				<section>
+					<div class="eyebrow">Workshop Plan</div>
+					<h2>A Good Way to Present HALO to Newcomers</h2>
+					<div class="grid-2">
+						<div class="card">
+							<span class="tag teal">Suggested narrative</span>
+							<ul class="checklist">
+								<li>Start with the pain point of heterogeneous integration.</li>
+								<li>Show the four input views: ADL, IDL, IDDL, and HML.</li>
+								<li>Explain why the unified model is the central contract.</li>
+								<li>Only then move into code generation and plugins.</li>
+							</ul>
+						</div>
+						<div class="card">
+							<span class="tag amber">Best live demo path</span>
+							<ul class="checklist">
+								<li>`sw/composer/dsl/hadls/halo_test_system.adl`</li>
+								<li>`sw/composer/dsl/hadls/halo_interface1.idl`</li>
+								<li>`sw/composer/dsl/hadls/halo_hml_profiles.hml`</li>
+								<li>`output/halo_unified_model.json` and `output/uml/architecture.puml`</li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel warm" style="margin-top: 18px;">
+						<strong>CLI flow to show on screen</strong>
+						<pre><code>halo compose --hadls-root "HALO/sw/composer/dsl/hadls" --output-dir "HALO/output"
+halo generate --composer-output-dir "HALO/output"</code></pre>
 					</div>
 				</section>
 
 				<section>
-					<h2>To Populate Later</h2>
-					<div class="problem-box">
-						<p><strong>Replace placeholders</strong> with final HALO links, titles, summaries, and notes.</p>
+					<div class="eyebrow">Takeaways</div>
+					<h2>What Participants Should Leave With</h2>
+					<div class="grid-3">
+						<div class="panel solution">
+							<strong>HALO is a composition framework</strong>
+							<p>Its real center is the unified model, not just the final generated C files.</p>
+						</div>
+						<div class="panel cool">
+							<strong>HALO separates concerns deliberately</strong>
+							<p>Architecture, interfaces, data types, and hardware/memory mapping stay distinct until composition.</p>
+						</div>
+						<div class="panel warm">
+							<strong>HALO is research-ready but evolving</strong>
+							<p>It already supports parsing, validation, UML exchange, and extensible generation, while some protocol coverage is still growing.</p>
+						</div>
 					</div>
-					<div class="highlight-box">
-						<p>This file is intended as a presentation shell, following the same Reveal-based style as the XCC deck.</p>
+					<div class="footer-bar">
+						<span>Recommended discussion prompt: What analyses should be added next once the unified model already exists?</span>
+						<span>Recommended prompt: Which parts belong in the model and which should remain hand-written user code?</span>
 					</div>
-					<p style="margin-top: 40px; font-size: 0.9em;">
-						<strong>File:</strong><br>
-						<span class="subtitle">/halo-reading-materials.html</span>
-					</p>
 				</section>
-
 			</div>
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
 		<script>
 			Reveal.initialize({
 				hash: true,
-				transition: "slide",
+				transition: "fade",
 				transitionSpeed: "default",
 				controls: true,
 				progress: true,

@@ -51,10 +51,10 @@ in heterogeneous SoC using:
 
 ### Working Hypotheses
 
-- **H1:** Using the HALO framework speeds up integration and development of AMP systems compared to the traditional approach.
-- **H2:** Designing software architectures using the HALO framework gives better overview and maintainability compared to traditional methods.
-- **H3:** The HALO framework provides portability and reuse of software architectural descriptions for different platforms with no or minimal effort.
-- **H4:** The HALO framework gives better scalability and flexibility for IPC communication in AMP systems compared to already available solutions.
+- **H1:** HALO reduces development and integration time, measured in engineering effort and integration iterations, compared to traditional AMP development approaches.
+- **H2:** HALO improves architectural clarity and maintainability, measured through artifact consistency and modification effort, compared to traditional design methods.
+- **H3:** HALO enables portable and reusable architecture specifications, measured by the degree of reuse and required platform-specific adaptations.
+- **H4:** The HALO framework improves architectural scalability and flexibility of inter-processor communication in AMP systems compared to existing IPC mechanisms.
 
 ### Study Task for Classical and HALO Approach
 
