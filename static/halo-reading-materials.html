@@ -746,43 +746,34 @@
 			}
 
 			html.mobile-view .reveal .slides {
-				display: block;
 				height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
 				max-height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
 				overflow-y: auto !important;
-				scroll-snap-type: y proximity;
 				overflow-x: hidden !important;
 				border-width: 3px;
 				border-radius: 18px;
-				display: block !important;
-				position: relative !important;
-				inset: auto !important;
-				transform: none !important;
-				width: 100% !important;
 				padding: 15px 5px var(--mobile-slide-bottom-padding) !important;
 				-webkit-overflow-scrolling: touch;
 			}
 
 			html.ios.mobile-view .reveal .slides {
-
-			html.ios.mobile-view .reveal .slides > section,
-			html.ios.mobile-view .reveal .slides > section > section {
-				position: relative !important;
-				inset: auto !important;
-				transform: none !important;
-				width: 100% !important;
-				min-height: 0 !important;
-			}
+				scroll-padding-top: 24px;
+				scroll-padding-bottom: 72px;
 				touch-action: pan-y;
 				overscroll-behavior: contain;
-				scroll-padding-bottom: 32px;
+				scroll-snap-type: y proximity;
 			}
 
 			html.ios.mobile-view .reveal section {
+				display: block !important;
+				position: relative !important;
+				transform: none !important;
+				width: 100% !important;
 				touch-action: pan-y;
-				margin-bottom: 32px !important;
-				padding-bottom: 36px !important;
-				scroll-margin-bottom: 24px;
+				margin-bottom: 48px !important;
+				padding-bottom: 72px !important;
+				scroll-snap-align: start;
+				scroll-snap-stop: always;
 			}
 
 			html.ios.mobile-view .reveal {
@@ -796,7 +787,7 @@
 				height: auto !important;
 				max-height: none !important;
 				min-height: 0 !important;
-				padding: 10px 10px 20px !important;
+				padding: 10px !important;
 				overflow: visible !important;
 				top: 0 !important;
 			}
@@ -1526,8 +1517,6 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 					transition: "fade",
 					view: isIOS ? "scroll" : "slide",
 					scrollProgress: isIOS ? true : false,
-					scrollLayout: isIOS ? "compact" : "full",
-					scrollSnap: isIOS ? "proximity" : "mandatory",
 				transitionSpeed: "default",
 				controls: true,
 				progress: true,
