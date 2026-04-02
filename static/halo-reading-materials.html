@@ -792,7 +792,7 @@
 			html.mobile-view .reveal .slides > section,
 			html.mobile-view .reveal .slides > section > section {
 				display: block !important;
-				position: relative !important;
+				position: static !important;
 				top: auto !important;
 				left: auto !important;
 				right: auto !important;
@@ -800,9 +800,9 @@
 				transform: none !important;
 				width: 100% !important;
 				height: auto !important;
-				min-height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
+				min-height: 100vh !important;
+				margin: 0 0 48px 0 !important;
 				padding-bottom: calc(var(--mobile-slide-bottom-padding) + 36px) !important;
-				margin-bottom: 0 !important;
 				box-sizing: border-box;
 			}
 
@@ -812,7 +812,7 @@
 			}
 
 			html.mobile-view .slide-dsl-overview {
-				height: 210vh !important;
+				min-height: 140vh !important;
 			}
 
 			html.mobile-view .slide-dsl-overview .grid-4 {
@@ -824,15 +824,15 @@
 			}
 
 			html.mobile-view .slide-composer-diagram {
-				height: 240vh !important;
+				min-height: 170vh !important;
 			}
 
 			html.mobile-view .slide-extensibility {
-				height: 175vh !important;
+				min-height: 120vh !important;
 			}
 
 			html.mobile-view .slide-generator-diagram {
-				height: 130vh !important;
+				min-height: 120vh !important;
 			}
 
 			html.mobile-view .hero-shell,
