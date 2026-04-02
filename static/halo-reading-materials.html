@@ -718,11 +718,11 @@
 				}
 			}
 
-			html.mobile-view,
+			/* html.mobile-view,
 			html.mobile-view body {
 				height: 100%;
 				overflow: hidden;
-			}
+			} */
 
 			html.mobile-view .reveal {
 				font-size: 20px;
@@ -1077,7 +1077,7 @@
 				</section>
 
 				<section class="slide-composer-diagram">
-					<div class="eyebrow">Repo Example</div>
+					<div class="eyebrow">Example</div>
 					<h2>HALO Domain Specific Language Inputs</h2>
 					<div class="grid-3">
 						<div class="card">
@@ -1539,43 +1539,35 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 		<script>
 			const shortEdge = Math.min(window.screen.width || window.innerWidth, window.screen.height || window.innerHeight);
 			const isMobile = shortEdge <= 430 || window.matchMedia("(max-width: 430px), (pointer: coarse)").matches;
-			const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-			document.documentElement.classList.toggle("mobile-view", isMobile);
-			document.documentElement.classList.toggle("ios", isIOS);
 			const deckWidth = isMobile ? "100%" : 1920;
 			const deckHeight = isMobile ? "100%" : 1080;
+			const slidesContainer = document.querySelector(".reveal .slides");
 
-			const setAppHeight = () => {
-				document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+			const resetSlidesScroll = () => {
+				if (slidesContainer) {
+					slidesContainer.scrollTo({ top: 0, left: 0, behavior: "auto" });
+				}
 			};
 
-				if (isMobile) {
-					setAppHeight();
-					window.addEventListener("resize", setAppHeight);
-					window.addEventListener("orientationchange", setAppHeight);
-				}
-
-				Reveal.initialize({
-					hash: true,
-					transition: "fade",
-					view: isMobile ? "scroll" : "slide",
-					scrollProgress: isMobile ? true : false,
-					scrollLayout: isMobile ? "full" : "full",
-					scrollSnap: isMobile ? false : "mandatory",
+			Reveal.initialize({
+				hash: true,
+				transition: "fade",
 				transitionSpeed: "default",
 				controls: true,
 				progress: true,
-				center: !isMobile,
+				center: true,
 				slideNumber: "c/t",
 				width: deckWidth,
 				height: deckHeight,
 				margin: 0.02,
 				minScale: 0.2,
-					maxScale: 2.0,
-					embedded: false
-				});
+				maxScale: 2.0,
+				embedded: false
+			});
 
-				
+			Reveal.on("ready", resetSlidesScroll);
+			Reveal.on("slidechanged", resetSlidesScroll);
+			window.addEventListener("resize", resetSlidesScroll);
 			</script>
 	</body>
 </html>

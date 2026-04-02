@@ -91,7 +91,7 @@ Please see [Toolchain installation](#toolchain-installation).
 
 This section is reserved for preparation material that will be shared with the research group before the event.
 
-- [HALO Presentation](/halo-reading-materials.html)
+- [HALO Presentation](/halo-reading-materials-switch.html)
 - [HALO Papers](https://unsacrs-my.sharepoint.com/:f:/r/personal/stojkov_dp20_2022_uns_ac_rs/Documents/HALO/HaloPublications?csf=1&web=1&e=2AUtg3)
 - [Halo API](/_to_be_added_)
 

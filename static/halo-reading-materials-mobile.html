@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<title>HALO Workshop Primer - Mobile</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg-1: #eff6ff;
+			--bg-2: #f8fafc;
+			--ink: #0f172a;
+			--muted: #475569;
+			--line: rgba(15, 23, 42, 0.12);
+			--panel: rgba(255, 255, 255, 0.92);
+			--shadow: 0 20px 48px rgba(15, 23, 42, 0.12);
+		}
+
+		html,
+		body {
+			margin: 0;
+			min-height: 100%;
+			background:
+				radial-gradient(circle at top left, rgba(14, 165, 164, 0.14), transparent 30%),
+				radial-gradient(circle at top right, rgba(37, 99, 235, 0.14), transparent 34%),
+				linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 50%, #edf2f7 100%);
+			color: var(--ink);
+			font-family: "IBM Plex Sans", sans-serif;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+
+		body {
+			padding: 14px;
+			box-sizing: border-box;
+		}
+
+		main {
+			width: min(760px, 100%);
+			margin: 0 auto;
+		}
+
+		section {
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+			padding: 16px;
+			box-sizing: border-box;
+			margin: 0 0 14px 0;
+			min-width: 0;
+			overflow-wrap: anywhere;
+		}
+
+		section * {
+			min-width: 0;
+		}
+
+		section h1,
+		section h2,
+		section h3,
+		section h4,
+		section p,
+		section li,
+		section td,
+		section th,
+		section code {
+			overflow-wrap: anywhere;
+			word-break: break-word;
+		}
+
+		section pre {
+			margin: 0;
+			padding: 0;
+			max-width: 100%;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		section pre code {
+			display: block;
+			white-space: pre-wrap;
+			line-height: 1.45;
+		}
+
+		section .json-box,
+		section .panel {
+			max-width: 100%;
+			min-width: 0;
+		}
+
+		section img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		#status {
+			font-size: 0.92rem;
+			color: #64748b;
+			padding: 0 2px 8px;
+		}
+
+		.footer {
+			text-align: center;
+			padding: 6px 0 18px;
+			color: #64748b;
+			font-size: 0.8rem;
+		}
+
+		.loading {
+			padding: 20px 16px;
+			color: #64748b;
+		}
+
+		@media (max-width: 768px) {
+			main {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<!-- <div id="status" class="loading">Loading desktop sections...</div> -->
+		<div id="content"></div>
+		<div class="footer">HALO Workshop Primer</div>
+	</main>
+	<script>
+		const desktopUrl = "/halo-reading-materials.html";
+		const content = document.getElementById("content");
+		const status = document.getElementById("status");
+
+		function cloneSection(section) {
+			const clone = document.createElement("section");
+			const classes = Array.from(section.classList);
+			for (const className of classes) {
+				clone.classList.add(className);
+			}
+			if (!classes.length) {
+				clone.classList.add("desktop-section");
+			}
+			clone.innerHTML = section.innerHTML;
+			return clone;
+		}
+
+		function flattenSections(slides) {
+			const output = [];
+			for (const section of slides.children) {
+				if (section.tagName !== "SECTION") {
+					continue;
+				}
+				const nestedSections = section.querySelectorAll(":scope > section");
+				if (nestedSections.length) {
+					const outerClone = cloneSection(section);
+					outerClone.querySelectorAll(":scope > section").forEach((nested) => nested.remove());
+					if (outerClone.textContent.trim() || outerClone.querySelector("img, .panel, .card, .takeaway, .code-block, .json-box")) {
+						output.push(outerClone);
+					}
+					for (const nestedSection of nestedSections) {
+						output.push(cloneSection(nestedSection));
+					}
+				} else {
+					output.push(cloneSection(section));
+				}
+			}
+			return output;
+		}
+
+		async function loadDesktopSections() {
+			try {
+				const response = await fetch(desktopUrl, { cache: "no-store" });
+				if (!response.ok) {
+					throw new Error(`Failed to load ${desktopUrl}: ${response.status}`);
+				}
+				const html = await response.text();
+				const documentParser = new DOMParser();
+				const desktopDocument = documentParser.parseFromString(html, "text/html");
+				const slides = desktopDocument.querySelector(".slides");
+				if (!slides) {
+					throw new Error("Desktop deck has no .slides container");
+				}
+				const sections = flattenSections(slides);
+				content.replaceChildren(...sections);
+			} catch (error) {
+				content.innerHTML = `<section><strong>Load error</strong><p>${String(error.message || error)}</p></section>`;
+			}
+		}
+
+		loadDesktopSections();
+	</script>
+</body>
+</html>
