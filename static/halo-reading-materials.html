@@ -767,6 +767,9 @@
 
 			html.ios.mobile-view .reveal {
 				font-size: 18px;
+				width: 100%;
+				max-width: 100%;
+				margin: 0 auto;
 			}
 
 			html.mobile-view .reveal section {
@@ -1514,7 +1517,7 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 					embedded: false
 				});
 
-				if (isMobile) {
+				if (isMobile && !isIOS) {
 					const resetMobileScroll = (event) => {
 						const applyReset = () => {
 							const slidesViewport = document.querySelector(".reveal .slides");
