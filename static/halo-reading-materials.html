@@ -756,6 +756,19 @@
 				-webkit-overflow-scrolling: touch;
 			}
 
+			html.ios.mobile-view .reveal .slides {
+				touch-action: pan-y;
+				overscroll-behavior: contain;
+			}
+
+			html.ios.mobile-view .reveal section {
+				touch-action: pan-y;
+			}
+
+			html.ios.mobile-view .reveal {
+				font-size: 18px;
+			}
+
 			html.mobile-view .reveal section {
 				height: auto !important;
 				max-height: none !important;
@@ -1469,7 +1482,9 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 		<script>
 			const shortEdge = Math.min(window.screen.width || window.innerWidth, window.screen.height || window.innerHeight);
 			const isMobile = shortEdge <= 430 || window.matchMedia("(max-width: 430px), (pointer: coarse)").matches;
+			const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			document.documentElement.classList.toggle("mobile-view", isMobile);
+			document.documentElement.classList.toggle("ios", isIOS);
 			const deckWidth = isMobile ? "100%" : 1920;
 			const deckHeight = isMobile ? "100%" : 1080;
 
