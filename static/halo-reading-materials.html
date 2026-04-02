@@ -70,6 +70,23 @@
 				text-align: left;
 			}
 
+			html:not(.mobile-view) .flow-slide {
+				text-align: left;
+			}
+
+			html:not(.mobile-view) .flow-slide .flow-arrow {
+				font-size: 2.2em;
+				line-height: 1;
+				color: var(--teal);
+				margin: 0.2em 0 0.4em;
+			}
+
+			html:not(.mobile-view) .flow-slide .panel.cool {
+				max-width: 1080px;
+				margin: 0;
+				text-align: left;
+			}
+
 			.reveal h1,
 			.reveal h2,
 			.reveal h3,
@@ -1329,7 +1346,7 @@ Silent mode:      halo create-generator --generator-type protocol --no-interacti
 					<div class="eyebrow">HALO Generator Diagram</div>
 					<h2>HALO Generator Overview</h2>
 					<div style="text-align:center;">
-						<img src="/images/halo_generator.png" alt="HALO Generator Diagram" style="max-width: 90%; border-radius: 18px; box-shadow: 0 8px 32px rgba(15,23,42,0.13); margin: 24px 0;" />
+						<img src="/images/halo_generator.png" alt="HALO Generator Diagram" style="max-width: 96%; width: 70%; border-radius: 18px; box-shadow: 0 8px 32px rgba(15,23,42,0.13); margin: 24px 0;" />
 					</div>
 					<div class="takeaway">
 						This diagram illustrates the generator architecture, showing how the unified model is transformed into platform and protocol-specific outputs.
@@ -1376,45 +1393,51 @@ Silent mode:      halo create-generator --generator-type protocol --no-interacti
 				</section>
 
 				<section>
-					<div class="eyebrow">Project Integration</div>
-					<h2>Existing Application Projects</h2>
-					<div class="grid-3">
-						<div class="panel solution">
-							<strong>Build-Time Integration</strong>
-							<p>User runs halo compose and halo generate during its normal code-generation step.</p>
+					<section class="tall-slide">
+						<div class="eyebrow">Project Integration</div>
+						<h2>Existing Application Projects</h2>
+						<div class="grid-3">
+							<div class="panel solution">
+								<strong>Build-Time Integration</strong>
+								<p>User runs halo compose and halo generate during its normal code-generation step.</p>
+							</div>
+							<div class="panel cool">
+								<strong>Generated Package Layout</strong>
+								<p>HALO emits a generated package with an include/ tree and a src/ tree. Those generated headers and sources are then added to the existing application build system.</p>
+							</div>
+							<div class="panel warm">
+								<strong>Application-Level Usage</strong>
+								<p>The existing application includes generated headers like halo_api.h, calls generated platform init functions, and uses generated typed APIs such as halo_send_*() and halo_recv_*().</p>
+							</div>
 						</div>
+						<div class="two-col">
+							<div class="panel solution">
+								<strong>What gets integrated</strong>
+								<ul class="checklist">
+									<li>Generated common HALO files such as halo_api.h, halo_cfg.h, halo_structs.h, halo_api.c, and halo_channels.c.</li>
+									<li>Generated platform files such as halo_platform_init.h and halo_platform_init.c.</li>
+									<li>Generated protocol files placed alongside the platform output in the same HALO layer.</li>
+									<li>Optional custom platform/protocol generator packages installed prior to running the generators.</li>
+								</ul>
+							</div>
+							<div class="panel problem">
+								<strong>What remains owned by the application project</strong>
+								<ul class="checklist">
+									<li>Business logic, control loops, scheduling, services, and application-specific behavior.</li>
+									<li>Hardware handles, RTOS objects, external buffers, interrupts, and other target-specific integration details.</li>
+									<li>Build system wiring that compiles generated src/ files and exports generated include/ directories.</li>
+									<li>Custom code placed inside preserved `HALO USER CODE BEGIN/END` blocks.</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+
+					<section class="flow-slide">
+						<div class="eyebrow">Representative Flow</div>
+						<h2>Representative integration flow</h2>
 						<div class="panel cool">
-							<strong>Generated Package Layout</strong>
-							<p>HALO emits a generated package with an include/ tree and a src/ tree. Those generated headers and sources are then added to the existing application build system.</p>
-						</div>
-						<div class="panel warm">
-							<strong>Application-Level Usage</strong>
-							<p>The existing application includes generated headers like halo_api.h, calls generated platform init functions, and uses generated typed APIs such as halo_send_*() and halo_recv_*().</p>
-						</div>
-					</div>
-					<div class="two-col">
-						<div class="panel solution">
-							<strong>What gets integrated</strong>
-							<ul class="checklist">
-								<li>Generated common HALO files such as halo_api.h, halo_cfg.h, halo_structs.h, halo_api.c, and halo_channels.c.</li>
-								<li>Generated platform files such as halo_platform_init.h and halo_platform_init.c.</li>
-								<li>Generated protocol files placed alongside the platform output in the same HALO layer.</li>
-								<li>Optional custom platform/protocol generator packages installed prior to running the generators.</li>
-							</ul>
-						</div>
-						<div class="panel problem">
-							<strong>What remains owned by the application project</strong>
-							<ul class="checklist">
-								<li>Business logic, control loops, scheduling, services, and application-specific behavior.</li>
-								<li>Hardware handles, RTOS objects, external buffers, interrupts, and other target-specific integration details.</li>
-								<li>Build system wiring that compiles generated src/ files and exports generated include/ directories.</li>
-								<li>Custom code placed inside preserved `HALO USER CODE BEGIN/END` blocks.</li>
-							</ul>
-						</div>
-					</div>
-					<div class="panel cool" style="margin-top: 18px;">
-						<strong>Representative integration flow</strong>
-						<pre><code># 1. Generate HALO layer for the project
+							<strong>Representative integration flow</strong>
+							<pre><code># 1. Generate HALO layer for the project
 halo compose --hadls-root "./hadls" --output-dir "./halo_out" --include-stdlib-profiles
 halo generate --composer-output-dir "./halo_out" --output-dir "./generated"
 
@@ -1423,10 +1446,11 @@ halo generate --composer-output-dir "./halo_out" --output-dir "./generated"
 - add ./generated/codegen/&lt;target&gt;/src/*.c to sources
 
 # 3. Use HALO from existing application code
-						#include "halo_api.h"
+							#include "halo_api.h"
 halo_core4_init_BareMetal();
 halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
-					</div>
+						</div>
+					</section>
 				</section>
 
 				<section class="closing-slide">
@@ -1446,6 +1470,8 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 			const shortEdge = Math.min(window.screen.width || window.innerWidth, window.screen.height || window.innerHeight);
 			const isMobile = shortEdge <= 430 || window.matchMedia("(max-width: 430px), (pointer: coarse)").matches;
 			document.documentElement.classList.toggle("mobile-view", isMobile);
+			const deckWidth = isMobile ? "100%" : 1920;
+			const deckHeight = isMobile ? "100%" : 1080;
 
 			const setAppHeight = () => {
 				document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
@@ -1465,9 +1491,9 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 				progress: true,
 				center: !isMobile,
 				slideNumber: "c/t",
-				width: "100%",
-				height: "100%",
-				margin: 0.04,
+				width: deckWidth,
+				height: deckHeight,
+				margin: 0.02,
 				minScale: 0.2,
 					maxScale: 2.0,
 					embedded: false
