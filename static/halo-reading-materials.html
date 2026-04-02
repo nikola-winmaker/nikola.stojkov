@@ -1445,7 +1445,6 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 		<script>
 			const shortEdge = Math.min(window.screen.width || window.innerWidth, window.screen.height || window.innerHeight);
 			const isMobile = shortEdge <= 430 || window.matchMedia("(max-width: 430px), (pointer: coarse)").matches;
-			const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			document.documentElement.classList.toggle("mobile-view", isMobile);
 
 			const setAppHeight = () => {
@@ -1475,36 +1474,7 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 				});
 
 				if (isMobile) {
-					let isUserScrolling = false;
-					let scrollTimeout;
-					const slidesViewport = document.querySelector(".reveal .slides");
-
-					// iOS momentum scrolling support
-					if (isIOS && slidesViewport) {
-						slidesViewport.addEventListener("scroll", () => {
-							isUserScrolling = true;
-							clearTimeout(scrollTimeout);
-							scrollTimeout = setTimeout(() => {
-								isUserScrolling = false;
-							}, 100);
-						}, { passive: true });
-
-						slidesViewport.addEventListener("touchstart", () => {
-							isUserScrolling = true;
-							clearTimeout(scrollTimeout);
-						}, { passive: true });
-
-						slidesViewport.addEventListener("touchend", () => {
-							scrollTimeout = setTimeout(() => {
-								isUserScrolling = false;
-							}, 300);
-						}, { passive: true });
-					}
-
 					const resetMobileScroll = (event) => {
-						// Skip reset on iOS during user scrolling to preserve momentum
-						if (isIOS && isUserScrolling) return;
-
 						const applyReset = () => {
 							const slidesViewport = document.querySelector(".reveal .slides");
 							if (slidesViewport) {
