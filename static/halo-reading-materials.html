@@ -746,22 +746,20 @@
 			}
 
 			html.mobile-view .reveal .slides {
+				display: block !important;
 				height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
 				max-height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
 				overflow-y: auto !important;
 				overflow-x: hidden !important;
 				border-width: 3px;
 				border-radius: 18px;
-				padding: 15px 5px var(--mobile-slide-bottom-padding) !important;
+				padding: 15px 5px calc(var(--mobile-slide-bottom-padding) + 24px) !important;
 				-webkit-overflow-scrolling: touch;
 			}
 
 			html.ios.mobile-view .reveal .slides {
-				scroll-padding-top: 24px;
-				scroll-padding-bottom: 72px;
 				touch-action: pan-y;
 				overscroll-behavior: contain;
-				scroll-snap-type: y proximity;
 			}
 
 			html.ios.mobile-view .reveal section {
@@ -770,10 +768,8 @@
 				transform: none !important;
 				width: 100% !important;
 				touch-action: pan-y;
-				margin-bottom: 48px !important;
-				padding-bottom: 72px !important;
-				scroll-snap-align: start;
-				scroll-snap-stop: always;
+				margin-bottom: 0 !important;
+				padding-bottom: 0 !important;
 			}
 
 			html.ios.mobile-view .reveal {
@@ -787,9 +783,24 @@
 				height: auto !important;
 				max-height: none !important;
 				min-height: 0 !important;
-				padding: 10px !important;
+				padding: 12px 10px 36px !important;
 				overflow: visible !important;
 				top: 0 !important;
+			}
+
+			html.mobile-view .reveal .slides > section,
+			html.mobile-view .reveal .slides > section > section {
+				display: block !important;
+				position: relative !important;
+				top: auto !important;
+				left: auto !important;
+				right: auto !important;
+				bottom: auto !important;
+				transform: none !important;
+				width: 100% !important;
+				height: auto !important;
+				min-height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
+				box-sizing: border-box;
 			}
 
 			html.mobile-view .hero-shell {
@@ -1515,8 +1526,10 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 				Reveal.initialize({
 					hash: true,
 					transition: "fade",
-					view: isIOS ? "scroll" : "slide",
-					scrollProgress: isIOS ? true : false,
+					view: isMobile ? "scroll" : "slide",
+					scrollProgress: isMobile ? true : false,
+					scrollLayout: isMobile ? "full" : "full",
+					scrollSnap: isMobile ? false : "mandatory",
 				transitionSpeed: "default",
 				controls: true,
 				progress: true,
@@ -1530,33 +1543,7 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 					embedded: false
 				});
 
-				if (isMobile && !isIOS) {
-					const resetMobileScroll = (event) => {
-						const applyReset = () => {
-							const slidesViewport = document.querySelector(".reveal .slides");
-							if (slidesViewport) {
-								slidesViewport.scrollTo(0, 0);
-							}
-
-							const currentSlide = event?.currentSlide || Reveal.getCurrentSlide();
-							if (currentSlide) {
-								currentSlide.scrollTop = 0;
-							}
-							window.scrollTo(0, 0);
-							document.documentElement.scrollTop = 0;
-							document.body.scrollTop = 0;
-						};
-
-						window.requestAnimationFrame(applyReset);
-						window.setTimeout(applyReset, 60);
-						window.setTimeout(applyReset, 180);
-					};
-
-					Reveal.on("ready", resetMobileScroll);
-					Reveal.on("slidechanged", resetMobileScroll);
-					Reveal.on("slidetransitionend", resetMobileScroll);
-					window.addEventListener("hashchange", resetMobileScroll);
-				}
+				
 			</script>
 	</body>
 </html>
