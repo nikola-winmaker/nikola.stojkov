@@ -748,6 +748,10 @@
 
 			html.mobile-view .reveal .slides {
 				display: block !important;
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: stretch !important;
+				gap: 48px !important;
 				height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
 				max-height: calc(var(--app-height) - var(--mobile-bottom-ui) - env(safe-area-inset-bottom, 0px)) !important;
 				overflow-y: auto !important;
@@ -792,6 +796,7 @@
 			html.mobile-view .reveal .slides > section,
 			html.mobile-view .reveal .slides > section > section {
 				display: block !important;
+				flex: 0 0 auto !important;
 				position: static !important;
 				top: auto !important;
 				left: auto !important;
@@ -801,7 +806,7 @@
 				width: 100% !important;
 				height: auto !important;
 				min-height: 100vh !important;
-				margin: 0 0 48px 0 !important;
+				margin: 0 !important;
 				padding-bottom: calc(var(--mobile-slide-bottom-padding) + 36px) !important;
 				box-sizing: border-box;
 			}
