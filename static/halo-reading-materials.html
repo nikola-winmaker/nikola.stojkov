@@ -61,8 +61,15 @@
 				background: rgba(255, 255, 255, 0.16);
 				backdrop-filter: blur(10px);
 				padding: 26px 0 !important;
-					-webkit-user-select: none;
-					user-select: none;
+			}
+
+			.reveal section {
+				width: 100%;
+				box-sizing: border-box;
+				padding: 12px 26px !important;
+				text-align: left;
+			}
+
 			.reveal h1,
 			.reveal h2,
 			.reveal h3,
@@ -730,11 +737,15 @@
 				border-radius: 18px;
 				padding: 15px 5px var(--mobile-slide-bottom-padding) !important;
 				-webkit-overflow-scrolling: touch;
-					-webkit-user-select: none;
-					user-select: none;
-					scroll-behavior: smooth;
-					position: relative;
-					-webkit-touch-callout: none;
+			}
+
+			html.mobile-view .reveal section {
+				height: auto !important;
+				max-height: none !important;
+				min-height: 0 !important;
+				padding: 10px !important;
+				overflow: visible !important;
+				top: 0 !important;
 			}
 
 			html.mobile-view .hero-shell {
@@ -1434,6 +1445,7 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 		<script>
 			const shortEdge = Math.min(window.screen.width || window.innerWidth, window.screen.height || window.innerHeight);
 			const isMobile = shortEdge <= 430 || window.matchMedia("(max-width: 430px), (pointer: coarse)").matches;
+			const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			document.documentElement.classList.toggle("mobile-view", isMobile);
 
 			const setAppHeight = () => {
@@ -1465,19 +1477,18 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 				if (isMobile) {
 					let isUserScrolling = false;
 					let scrollTimeout;
-
 					const slidesViewport = document.querySelector(".reveal .slides");
-					if (slidesViewport) {
-						// Detect if user is actively scrolling
+
+					// iOS momentum scrolling support
+					if (isIOS && slidesViewport) {
 						slidesViewport.addEventListener("scroll", () => {
 							isUserScrolling = true;
 							clearTimeout(scrollTimeout);
 							scrollTimeout = setTimeout(() => {
 								isUserScrolling = false;
-							}, 150);
+							}, 100);
 						}, { passive: true });
 
-						// Prevent scroll interruption on touch devices
 						slidesViewport.addEventListener("touchstart", () => {
 							isUserScrolling = true;
 							clearTimeout(scrollTimeout);
@@ -1491,17 +1502,19 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 					}
 
 					const resetMobileScroll = (event) => {
-						// Only reset scroll if user is not actively scrolling
-						if (isUserScrolling) return;
+						// Skip reset on iOS during user scrolling to preserve momentum
+						if (isIOS && isUserScrolling) return;
 
 						const applyReset = () => {
-							if (isUserScrolling) return;
-
 							const slidesViewport = document.querySelector(".reveal .slides");
-							if (slidesViewport && slidesViewport.scrollTop !== 0) {
-								slidesViewport.scrollTop = 0;
+							if (slidesViewport) {
+								slidesViewport.scrollTo(0, 0);
 							}
 
+							const currentSlide = event?.currentSlide || Reveal.getCurrentSlide();
+							if (currentSlide) {
+								currentSlide.scrollTop = 0;
+							}
 							window.scrollTo(0, 0);
 							document.documentElement.scrollTop = 0;
 							document.body.scrollTop = 0;
@@ -1509,6 +1522,7 @@ halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
 
 						window.requestAnimationFrame(applyReset);
 						window.setTimeout(applyReset, 60);
+						window.setTimeout(applyReset, 180);
 					};
 
 					Reveal.on("ready", resetMobileScroll);
