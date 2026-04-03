@@ -131,6 +131,7 @@
 		const desktopUrl = "/halo-reading-materials.html";
 		const content = document.getElementById("content");
 		const status = document.getElementById("status");
+		const styleSignature = "data-mobile-style-source";
 
 		function cloneSection(section) {
 			const clone = document.createElement("section");
@@ -168,6 +169,76 @@
 			return output;
 		}
 
+		function syncDesktopStyles(desktopDocument) {
+			const desktopHead = desktopDocument.head;
+			if (!desktopHead) {
+				return;
+			}
+
+			const mobileHead = document.head;
+			const styleNodes = desktopHead.querySelectorAll('link[rel="stylesheet"], style');
+			for (const node of styleNodes) {
+				const clone = node.cloneNode(true);
+				clone.setAttribute(styleSignature, "true");
+				mobileHead.appendChild(clone);
+			}
+
+			const scrollFix = document.createElement("style");
+			scrollFix.setAttribute(styleSignature, "scroll-fix");
+			scrollFix.textContent = `
+				html,
+				body {
+					height: auto !important;
+					overflow: auto !important;
+					min-height: 100%;
+				}
+
+				body {
+					overflow-x: hidden !important;
+					overflow-y: auto !important;
+				}
+			`;
+			mobileHead.appendChild(scrollFix);
+
+			const arrowFix = document.createElement("style");
+			arrowFix.setAttribute(styleSignature, "arrow-fix");
+			arrowFix.textContent = `
+				html[data-pipeline-mode="stack"] .pipeline,
+				html[data-pipeline-mode="stack"] .workflow-pipeline {
+					gap: 28px !important;
+				}
+
+				html[data-pipeline-mode="stack"] .pipeline .pipeline-step,
+				html[data-pipeline-mode="stack"] .workflow-pipeline .pipeline-step {
+					position: relative;
+				}
+
+				html[data-pipeline-mode="stack"] .pipeline .pipeline-step:not(:last-child)::after,
+				html[data-pipeline-mode="stack"] .workflow-pipeline .pipeline-step:not(:last-child)::after {
+					content: "↓" !important;
+					position: absolute;
+					left: 50%;
+					top: auto;
+					right: auto;
+					bottom: -22px;
+					transform: translateX(-50%);
+					font-size: 1.15rem;
+					line-height: 1;
+					color: #94a3b8;
+				}
+			`;
+			mobileHead.appendChild(arrowFix);
+		}
+
+		function updatePipelineMode() {
+			const isStacked = window.matchMedia("(max-width: 768px)").matches;
+			if (isStacked) {
+				document.documentElement.setAttribute("data-pipeline-mode", "stack");
+			} else {
+				document.documentElement.removeAttribute("data-pipeline-mode");
+			}
+		}
+
 		async function loadDesktopSections() {
 			try {
 				const response = await fetch(desktopUrl, { cache: "no-store" });
@@ -177,17 +248,21 @@
 				const html = await response.text();
 				const documentParser = new DOMParser();
 				const desktopDocument = documentParser.parseFromString(html, "text/html");
+				syncDesktopStyles(desktopDocument);
 				const slides = desktopDocument.querySelector(".slides");
 				if (!slides) {
 					throw new Error("Desktop deck has no .slides container");
 				}
 				const sections = flattenSections(slides);
 				content.replaceChildren(...sections);
+				updatePipelineMode();
 			} catch (error) {
 				content.innerHTML = `<section><strong>Load error</strong><p>${String(error.message || error)}</p></section>`;
 			}
 		}
 
+		window.addEventListener("resize", updatePipelineMode);
+		window.addEventListener("orientationchange", updatePipelineMode);
 		loadDesktopSections();
 	</script>
 </body>
