@@ -106,7 +106,7 @@ Usage of Docker is necessary, and Docker Desktop can be used for free if you are
    1. Run Docker Desktop.
    2. Select `Personal` use, or skip the initial setup if needed.
 2. Install [Visual Studio Code](https://code.visualstudio.com/).
-   1. In VS Code, install the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker).
+   1. Install the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker).
    2. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 3. Clone the PhD Research Study repository from [GitHub](https://github.com/nikola-winmaker/PhdHaloRSG.git).
 4. Open the repository in VS Code, then open a terminal in the repository root.
