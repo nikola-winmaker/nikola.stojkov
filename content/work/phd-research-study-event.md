@@ -118,13 +118,13 @@ Usage of Docker is necessary, and Docker Desktop can be used for free if you are
 
 6. In VS Code, press `Ctrl+Shift+P` or on MAC OS `Cmd+Shift+P`, search for `Reopen in Container`, and run that command.
 7. Inside the container, install the [Tasks extension](https://marketplace.visualstudio.com/items?itemName=actboy168.tasks)
-8. Run `Setup environment` tab on the VS Code bottom bar
+8. Run `Setup environment` in the VS Code bottom bar.
+
    Wait until all submodules and tools are fully installed.
 
 9. From the bottom bar, try `Clean build all & Run`.
-10. Run `QEMU Sys Run`.
 
-After starting `QEMU Sys Run`, you should see Linux boot in the console and messages in the form `[APPx]`, where `x` is `1`, `2`, `3`, and `4`.
+You should see Linux boot in the console and messages in the form `[APPx]`, where `x` is `1`, `2`, `3`, and `4`.
 
 {{< centered-cta-link "https://forms.office.com/r/2b0GsXpSwZ" "Register for the event" >}}
 
