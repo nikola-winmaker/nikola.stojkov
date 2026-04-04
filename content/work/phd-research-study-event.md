@@ -108,7 +108,6 @@ Usage of Docker is necessary, and Docker Desktop can be used for free if you are
 2. Install [Visual Studio Code](https://code.visualstudio.com/).
    1. Install the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker).
    2. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
-   3. Install the [Tasks extension](https://marketplace.visualstudio.com/items?itemName=actboy168.tasks)
 3. Clone the PhD Research Study repository from [GitHub](https://github.com/nikola-winmaker/PhdHaloRSG.git).
 4. Open the repository in VS Code, then open a terminal in the repository root.
 5. Run the following command:
@@ -118,13 +117,8 @@ Usage of Docker is necessary, and Docker Desktop can be used for free if you are
    ```
 
 6. In VS Code, press `Ctrl+Shift+P` or on MAC OS `Cmd+Shift+P`, search for `Reopen in Container`, and run that command.
-7. Inside the container, install the `Tasks` extension.
-8. Open the terminal in the container and run:
-
-   ```bash
-   bash /workspaces/PhdHaloRSG/tools/scripts/bootstrap_env.sh
-   ```
-
+7. Inside the container, install the [Tasks extension](https://marketplace.visualstudio.com/items?itemName=actboy168.tasks)
+8. Run `Setup environment` tab on the VS Code bottom bar
    Wait until all submodules and tools are fully installed.
 
 9. From the bottom bar, try `Clean build all & Run`.
