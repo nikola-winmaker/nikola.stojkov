@@ -7,7 +7,7 @@ draft = false
 
 ## Event Overview
 
-The PhD research study event will be held on **10 May 2026**, with **gathering in front of the hotel at 12:30 PM** and the main program running from **1:00 PM to 6:00 PM** at the **Sheraton Hotel Novi Sad conference room**.
+The PhD research study event will be held on **10 May 2026**, with **gathering in front of the hotel at 12:30 PM** and the main program running from **1:00 PM to 7:00 PM** at the **Sheraton Hotel Novi Sad conference room**.
 
 This session is designed for the research group to review study goals, align on workshop tasks, discuss the toolchain setup, and work through the planned study activities together.
 
@@ -19,7 +19,7 @@ This session is designed for the research group to review study goals, align on 
 - **Location:** Sheraton Hotel Novi Sad, conference room
 - **Date:** Sunday, 10 May 2026
 - **Gathering in front of the hotel:** 12:30 PM
-- **Main session:** 1:00 PM to 6:00 PM
+- **Main session:** 1:00 PM to 7:00 PM
 - **Maps:** [Open in Google Maps](https://www.google.com/maps/search/Sheraton+Hotel+Novi+Sad/) or [Open in OpenStreetMap](https://www.openstreetmap.org/search?query=Sheraton%20Hotel%20Novi%20Sad)
 
 {{< centered-cta-link "#toolchain-installation" "Registration" >}}
@@ -31,8 +31,7 @@ This session is designed for the research group to review study goals, align on 
 | Time | Activity |
 | --- | --- |
 | 12:30 PM - 12:50 PM | Gathering in front of the hotel and group arrival |
-| 1:00 PM - 1:30 PM | Welcome and event introduction |
-| 1:30 PM - 1:45 PM | Toolchain check and wrap-up discussion |
+| 1:00 PM - 1:45 PM | Welcome and event introduction |
 | 2:00 PM - 3:00 PM | Lunch break organized at the hotel
 | 3:15 PM - 6:45 PM | Hands-on study session and wrap-up discussion |
 | 6:45 PM - 7:00 PM | Thank you gifts and closing |
