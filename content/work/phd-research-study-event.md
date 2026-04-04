@@ -116,7 +116,7 @@ Usage of Docker is necessary, and Docker Desktop can be used for free if you are
    docker compose build dev
    ```
 
-6. In VS Code, press `Ctrl+Shift+P`, search for `Reopen in Container`, and run that command.
+6. In VS Code, press `Ctrl+Shift+P` or on MAC OS `Cmd+Shift+P`, search for `Reopen in Container`, and run that command.
 7. Inside the container, install the `Tasks` extension.
 8. Open the terminal in the container and run:
 
