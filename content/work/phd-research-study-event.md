@@ -78,12 +78,7 @@ Link to the surveys:
 
 ### Laptop and Preparation
 
-Please let us know one of the following when registering:
-
-- you need a laptop provided on site
-- you will bring your own laptop
-
-If you are bringing your own laptop, please also make sure you have administrator access so the required toolchain libraries can be installed.
+Laptop for the event is necessary! Please make sure you have administrator access so the required toolchain libraries can be installed.
 Please see [Toolchain installation](#toolchain-installation).
 
 
