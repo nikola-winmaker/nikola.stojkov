@@ -95,21 +95,31 @@ This section is reserved for preparation material that will be shared with the r
 - [HALO Papers](https://unsacrs-my.sharepoint.com/:f:/r/personal/stojkov_dp20_2022_uns_ac_rs/Documents/HALO/HaloPublications?csf=1&web=1&e=2AUtg3)
 - [Halo API](/_to_be_added_)
 
-## Toolchain installation
+## GIT Repo and Toolchain installation
 
 {{< emphasis-note >}}Participants should prepare their laptops before the event so the hands-on session can start on time.{{< /emphasis-note >}}
 
-The setup script is located in Github repo.
-Please clone [HALO repository](https://github.com/nikola-winmaker/PhdHaloRSG.git)
+Instalation for repo and tools will require approximatelly 30GB of storage!
+
+Ussage of Docker is nessesary but you can use Docker Desktop for free if you are:
+- Individual / personal use
+- Student
 
 ```bash
-# Step 1: download the Setup script
-# for Linux / Mac ./install_toolchain.sh 
-# for Windows ./install_toolchain.ps1
+# Step 1: Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)  and Install [VS Code](https://code.visualstudio.com/)
+# Step 2: in VS Code install [Docler plugin](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 
-# Step 3: verify the toolchain setup
-# for Linux / Mac ./verify_toolchain.sh
-# for Windows ./verify_toolchain.ps1
+# Step 3: Clone repository for PhD Research Study from [here](https://github.com/nikola-winmaker/PhdHaloRSG.git)
+# Step 4: Open repo in VS Code and then open terminal in root of repo
+# Step 5: Run:   docker compose build dev
+# Step 6: in VS Code run Ctrl+Shift+P then type "Reopen in Container"
+# Step 7: Install Tasks plugin in Container
+# Step 7: Open terminal and run bash /workspaces/PhdHaloRSG/tools/scripts/bootstrap_env.sh
+# wait untill all submodules and tools are installed
+
+# Step 8: Try "Clean build all & Run" from bottom bar 
+# Step 9: Run "QEMU Sys Run" -> you should see linux boot and [APPx] where x is 1, 2, 3 and 4 shown on console
+
 ```
 
 {{< centered-cta-link "https://forms.office.com/r/2b0GsXpSwZ" "Register for the event" >}}
