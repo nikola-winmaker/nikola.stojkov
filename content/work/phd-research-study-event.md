@@ -22,7 +22,7 @@ This session is designed for the research group to review study goals, align on 
 - **Main session:** 1:00 PM to 7:00 PM
 - **Maps:** [Open in Google Maps](https://www.google.com/maps/search/Sheraton+Hotel+Novi+Sad/) or [Open in OpenStreetMap](https://www.openstreetmap.org/search?query=Sheraton%20Hotel%20Novi%20Sad)
 
-{{< centered-cta-link "#toolchain-installation" "Registration" >}}
+{{< centered-cta-link "#setup-steps" "Registration" >}}
 
 {{< emphasis-note >}}Please meet in front of the hotel at **12:30 PM** so the group can gather before moving into the conference room for the opening session.{{< /emphasis-note >}}
 
@@ -78,7 +78,7 @@ Link to the surveys:
 ### Laptop and Preparation
 
 Laptop for the event is necessary! Please make sure you have administrator access so the required toolchain libraries can be installed.
-Please see [Toolchain installation](#toolchain-installation).
+Please see [Toolchain installation](#setup-steps).
 
 
 ### Reading Materials
@@ -93,7 +93,7 @@ This section is reserved for preparation material that will be shared with the r
 
 {{< emphasis-note >}}Participants should prepare their laptops before the event so the hands-on session can start on time.{{< /emphasis-note >}}
 
-Installation of the repository and tools requires approximately **30 GB** of free disk space.
+Installation of the repository and tools requires approximately **15 GB** of free disk space.
 
 Usage of Docker is necessary, and Docker Desktop can be used for free if you are:
 - Individual / personal use
