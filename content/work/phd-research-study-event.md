@@ -94,28 +94,38 @@ This section is reserved for preparation material that will be shared with the r
 
 {{< emphasis-note >}}Participants should prepare their laptops before the event so the hands-on session can start on time.{{< /emphasis-note >}}
 
-Instalation for repo and tools will require approximatelly 30GB of storage!
+Installation of the repository and tools requires approximately **30 GB** of free disk space.
 
-Ussage of Docker is nessesary but you can use Docker Desktop for free if you are:
+Usage of Docker is necessary, and Docker Desktop can be used for free if you are:
 - Individual / personal use
 - Student
 
-```bash
-# Step 1: Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)  and Install [VS Code](https://code.visualstudio.com/)
-# Step 2: in VS Code install [Docler plugin](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+### Setup Steps
 
-# Step 3: Clone repository for PhD Research Study from [here](https://github.com/nikola-winmaker/PhdHaloRSG.git)
-# Step 4: Open repo in VS Code and then open terminal in root of repo
-# Step 5: Run:   docker compose build dev
-# Step 6: in VS Code run Ctrl+Shift+P then type "Reopen in Container"
-# Step 7: Install Tasks plugin in Container
-# Step 7: Open terminal and run bash /workspaces/PhdHaloRSG/tools/scripts/bootstrap_env.sh
-# wait untill all submodules and tools are installed
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and [Visual Studio Code](https://code.visualstudio.com/).
+2. In VS Code, install the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker).
+3. Clone the PhD Research Study repository from [GitHub](https://github.com/nikola-winmaker/PhdHaloRSG.git).
+4. Open the repository in VS Code, then open a terminal in the repository root.
+5. Run the following command:
 
-# Step 8: Try "Clean build all & Run" from bottom bar 
-# Step 9: Run "QEMU Sys Run" -> you should see linux boot and [APPx] where x is 1, 2, 3 and 4 shown on console
+   ```bash
+   docker compose build dev
+   ```
 
-```
+6. In VS Code, press `Ctrl+Shift+P`, search for `Reopen in Container`, and run that command.
+7. Inside the container, install the `Tasks` extension.
+8. Open the terminal in the container and run:
+
+   ```bash
+   bash /workspaces/PhdHaloRSG/tools/scripts/bootstrap_env.sh
+   ```
+
+   Wait until all submodules and tools are fully installed.
+
+9. From the bottom bar, try `Clean build all & Run`.
+10. Run `QEMU Sys Run`.
+
+After starting `QEMU Sys Run`, you should see Linux boot in the console and messages in the form `[APPx]`, where `x` is `1`, `2`, `3`, and `4`.
 
 {{< centered-cta-link "https://forms.office.com/r/2b0GsXpSwZ" "Register for the event" >}}
 
