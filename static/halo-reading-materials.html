@@ -1056,19 +1056,19 @@
 						<div class="card">
 							<span class="tag blue">IDL - Interface Description Language</span>
 							<h4>Interfaces</h4>
-							<p>Describes IDL defines the interfaces between components, focusing on the data being exchanged with access and integrity rules.</p>
+							<p>IDL defines the interfaces between components, focusing on the data being exchanged with access and integrity rules.</p>
 						</div>
 
 						<div class="card">
 							<span class="tag rose">HML - Hardware Mapping Language</span>
 							<h4>Hardware Mapping</h4>
-							<p>HML defines the profile of components data exchange, focusing on the data placement, synchronization and transfer behaviour. 
+							<p>HML defines the profile of how components exchange data, focusing on the data placement, synchronization and transfer behaviour. 
 							   HML profile is mapped uniquely to the ”communication” type defined in ADL.</p>
 						</div>
 						<div class="card">
 							<span class="tag rose">HMML - Hardware Module Mapping Language</span>
 							<h4>Hardware Mapping Library</h4>
-							<p>Provides a library of pre-defined hardware mappings used by HML Descriptions.</p>
+							<p>Contains various descriptions of profiles which can be imported into HML.</p>
 						</div>
 					</div>
 					<div class="takeaway">
@@ -1078,25 +1078,36 @@
 
 				<section class="slide-composer-diagram">
 					<div class="eyebrow">Example</div>
-					<h2>HALO Domain Specific Language Inputs</h2>
+					<h2>HALO Domain Specific Language (DSL) Inputs</h2>
 					<div class="grid-3">
 						<div class="card">
 							<span class="tag teal">ADL Snippet</span>
-							<pre><code>Core1 : Component { 
-  Type: Application,
-  Platform: Linux, 
-  Function: GeneralProcessing 
-}
-
-connection LinuxToRTOS {
-  from Core1 to Core2
-  interface: TstIf_1
-  profile: sharedMemoryProfile1
+							<pre><code>MySystem {
+	components {
+		Core1 : Component { 
+			Type: Application,
+			Platform: Linux, 
+			Function: GeneralProcessing 
+		}
+		Core2 : Component { 
+			Type: Application,  
+			Platform: FreeRTOS,  
+			Function: RealTimeProcessing 
+		}
+	}
+	connections {
+		connection LinuxToRTOS {
+			from Core1 to Core2
+			interface: TstIf_1
+			profile: sharedMemoryProfile1
+		}
+	}
 }</code></pre>
 						</div>
 						<div class="card">
 							<span class="tag blue">IDL Snippet</span>
-							<pre><code>interface TstIf_1 {
+							<pre><code>include *.iddl
+interface TstIf_1 {
   access {
     read { SharedData SharedData2 }
     write { SharedData SharedData2 }
@@ -1106,11 +1117,25 @@ connection LinuxToRTOS {
   }
 }</code></pre>
 						</div>
+<div class="card">
+							<span class="tag blue">IDDL Snippet</span>
+							<pre><code>dataStructures {
+    SharedData {
+        integer cnt
+        integer dataId
+        byte dataPayload[1024] = 0
+	  }
+    SharedData2 { 
+        integer dataPayload[1024] 
+    }
+}</code></pre>
+						</div>
 						<div class="card">
 							<span class="tag rose">HML Snippet - with overrides</span>
-							<pre><code>SharedMemory sharedMemoryProfile1 {
-  memSize: 64MB
-  baseAddress: 0x80000000
+							<pre><code>#include *.hmml
+SharedMemory sharedMemoryProfile1 {
+  memSize: 4MB
+  baseAddress: 0xA0000000
 }
 </code></pre>
 						</div>
@@ -1190,7 +1215,7 @@ connection LinuxToRTOS {
 					<div class="pipeline workflow-pipeline">
 						<div class="pipeline-step">
 							<div class="num">A</div>
-							<h4>Author in DSL</h4>
+							<h4>Author in HADL</h4>
 							<p>Create ADL, IDL, IDDL, HMML, and HML files in the textual HALO workflow.</p>
 						</div>
 						<div class="pipeline-step">
@@ -1214,8 +1239,10 @@ connection LinuxToRTOS {
 							<p>HALO can import UML XMI and export DSL descriptions, supporting reproducible round-trips.</p>
 						</div>
 					</div>
+					
 					<div class="takeaway">
-							<p>NOTE: Users can create UML diagrams and export them as XMI files for HALO import without having to write them in the DSL first.</p>
+							<p>HADL - Hardware Architecture Description Language (ADL / IDL / HML)<br>
+							NOTE: Users can create UML diagrams and export them as XMI files for HALO import without having to write them in the DSL first.</p>
 					</div>
 				</section>
 
@@ -1238,12 +1265,12 @@ connection LinuxToRTOS {
 						<div class="pipeline-step">
 							<div class="num">01</div>
 							<h4>Author Models</h4>
-							<p>Write HADL files or import a UML XMI model.</p>
+							<p>Write DSL files or import a UML XMI model.</p>
 						</div>
 						<div class="pipeline-step">
 							<div class="num">02</div>
 							<h4>Parse</h4>
-							<p>Python module textX grammar parses ADL, IDL, IDDL, HMML and HML into structured models.</p>
+							<p>Composer parses the input files into structured IR models.</p>
 						</div>
 						<div class="pipeline-step">
 							<div class="num">03</div>
@@ -1272,10 +1299,11 @@ connection LinuxToRTOS {
 halo compose --hadls-root "path to hadls" --output-dir "path to output directory" --include-stdlib-profiles
 
 UML/XMI input:
-halo compose --from-xmi "path to uml model" --output-dir "path to output directory"</code></pre>
+halo compose --from-xmi "path to uml file" --output-dir "path to output directory"</code></pre>
 					</div>
 					<div class="takeaway">
-						<p>Argument --include-stdlib-profiles is important to include the standard library of profiles built-in HALO Composer which user can reference, for in example: </p>
+						<p>IR - Intermediate Representation<br>
+						Argument --include-stdlib-profiles is important to include the standard library of profiles built-in HALO Composer which user can reference, for in example: </p>
 						<ul>
 							<li>SharedMemory profiles</li>
 							<li>BlackBoard profiles</li>
@@ -1382,7 +1410,7 @@ halo compose --from-xmi "path to uml model" --output-dir "path to output directo
 						</div>
 						<div class="card">
 							<span class="tag amber">Protocol Package</span>
-							<p>Protocol scaffolds creates creates an installable Python package with python render logic and platform Jinja2 templates for each supported platform, so one protocol can target multiple environments.</p>
+							<p>Protocol scaffolds creates an installable Python package with python render logic and platform Jinja2 templates for each supported platform, so one protocol can target multiple environments.</p>
 						</div>
 					</div>
 					<div class="two-col">
@@ -1390,9 +1418,9 @@ halo compose --from-xmi "path to uml model" --output-dir "path to output directo
 							<strong>HALO Generator package</strong>
 							<ul class="checklist">
 								<li>A Python package with entry points so HALO can auto-discover the generator later.</li>
-								<li>Python render.py as the main implementation hook where users prepare data and decide which files to emit.</li>
+								<li>Python render.py as the main implementation hook where users prepare data and decide which files to generate.</li>
 								<li>Python config.py containing generator metadata such as name, module path, output directory, and supported platforms.</li>
-								<li>A templates/ directory that becomes the main place to customize how the code will be generated.</li>
+								<li>A templates/directory that becomes the main place to customize how the code will be generated.</li>
 							</ul>
 						</div>
 						<div class="panel warm">
@@ -1408,7 +1436,7 @@ halo compose --from-xmi "path to uml model" --output-dir "path to output directo
 						<strong>Example commands</strong>
 						<pre><code>Interactive mode: halo create-generator  
 Silent mode:      halo create-generator --generator-type platform --no-interactive --name my_platform --description "My Platform Generator" --author "Your Name" --email "you@example.com" --platform my_platform
-Silent mode:      halo create-generator --generator-type protocol --no-interactive --name my_protocol --description "My Protocol Generator" --author "Your Name" --email "you@example.com" --platform my_protocol --supported-platforms linux,freertos</code></pre>
+Silent mode:      halo create-generator --generator-type protocol --no-interactive --name my_protocol --description "My Protocol Generator" --author "Your Name" --email "you@example.com" --platform my_protocol --supported-platforms my_platform</code></pre>
 					</div>
 				</section>
 
@@ -1516,9 +1544,9 @@ halo generate --composer-output-dir "./halo_out" --output-dir "./generated"
 - add ./generated/codegen/&lt;target&gt;/src/*.c to sources
 
 # 3. Use HALO from existing application code
-							#include "halo_api.h"
-halo_core4_init_BareMetal();
-halo_send_BlackBoardData_BareMetalToPL(&tx_data);</code></pre>
+#include "halo_api.h"
+halo_core1_init_BareMetal();
+halo_send_BlackBoardData_Core1ToCore2(&tx_data);</code></pre>
 						</div>
 					</section>
 				</section>
