@@ -70,6 +70,10 @@
 				text-align: left;
 			}
 
+			html:not(.mobile-view) .reveal .slides section {
+				top: 0 !important;
+			}
+
 			html:not(.mobile-view) .flow-slide {
 				text-align: left;
 			}
@@ -208,8 +212,24 @@
 				padding-top: 48px !important;
 			}
 
+			html:not(.mobile-view) .reveal section.closing-slide {
+				display: flex !important;
+				flex-direction: column;
+				justify-content: center;
+				min-height: 100% !important;
+				padding-top: 12px !important;
+				padding-bottom: 12px !important;
+			}
+
 			.closing-slide .hero-shell {
 				max-width: 900px;
+			}
+
+			.closing-slide .eyebrow {
+				display: block;
+				width: fit-content;
+				margin-left: 0;
+				margin-right: auto;
 			}
 
 			.closing-slide p {
@@ -286,6 +306,46 @@
 
 			.grid-4 {
 				grid-template-columns: repeat(4, minmax(0, 1fr));
+			}
+
+			.composer-grid {
+				grid-template-columns: repeat(6, minmax(0, 1fr));
+				gap: 16px;
+				align-items: start;
+			}
+
+			.composer-grid > .card {
+				padding: 16px 18px;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.composer-grid > .card:nth-child(-n + 3) {
+				grid-column: span 2;
+			}
+
+			.composer-grid > .card:nth-child(n + 4) {
+				grid-column: span 3;
+			}
+
+			.slide-composer-diagram h2 {
+				margin-bottom: 0.1em;
+			}
+
+			.slide-composer-diagram .tag {
+				margin-bottom: 8px;
+			}
+
+			.slide-composer-diagram pre {
+				font-size: 0.42em;
+				flex: 1;
+				max-height: none;
+				min-height: 16em;
+				overflow: auto;
+			}
+
+			.slide-composer-diagram pre code {
+				padding: 1em 1.05em;
 			}
 
 			.card {
@@ -832,6 +892,14 @@
 				min-height: 170vh !important;
 			}
 
+			html.mobile-view .composer-grid {
+				grid-template-columns: 1fr;
+			}
+
+			html.mobile-view .composer-grid > .card:nth-child(n) {
+				grid-column: span 1;
+			}
+
 			html.mobile-view .slide-extensibility {
 				min-height: 120vh !important;
 			}
@@ -1079,7 +1147,7 @@
 				<section class="slide-composer-diagram">
 					<div class="eyebrow">Example</div>
 					<h2>HALO Domain Specific Language (DSL) Inputs</h2>
-					<div class="grid-3">
+					<div class="grid-3 composer-grid">
 						<div class="card">
 							<span class="tag teal">ADL Snippet</span>
 							<pre><code>MySystem {
@@ -1583,7 +1651,7 @@ halo_send_BlackBoardData_Core1ToCore2(&tx_data);</code></pre>
 				transitionSpeed: "default",
 				controls: true,
 				progress: true,
-				center: true,
+				center: false,
 				slideNumber: "c/t",
 				width: deckWidth,
 				height: deckHeight,
