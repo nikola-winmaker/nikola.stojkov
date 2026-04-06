@@ -13,6 +13,7 @@ This session is designed for the research group to review study goals, align on 
 
 > Lunch is organized at the hotel and all participants will receive thank you gifts at the end of the event.
 
+{{< emphasis-note2 >}}Participants should be familiar with C Programming Language, basic understanding of SoC architecture, and familiarity with inter-processor communication concepts.{{< /emphasis-note2 >}}
 
 ## Venue
 
