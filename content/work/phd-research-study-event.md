@@ -88,7 +88,8 @@ This section is reserved for preparation material that will be shared with the r
 
 - [HALO Presentation](/halo-reading-materials-switch.html)
 - [HALO Papers](https://unsacrs-my.sharepoint.com/:f:/r/personal/stojkov_dp20_2022_uns_ac_rs/Documents/HALO/HaloPublications?csf=1&web=1&e=2AUtg3)
-- [Halo API](https://nikola-winmaker.github.io/PhdHaloRSG/)
+- [HALO API](https://nikola-winmaker.github.io/PhdHaloRSG/)
+- [HALO Workshop](/system_specification.html)
 
 ## GIT Repo and Toolchain installation
 
