@@ -167,6 +167,20 @@
       <li>breaker state (<code>breaker_closed</code>)</li>
       <li>fault/status flags (<code>fault_flags</code>)</li>
     </ul>
+    <p><strong>fault_flags definition (bitmask, uint32):</strong></p>
+    <ul>
+      <li>bit 0 (<code>0x01</code>): over-temperature</li>
+      <li>bit 1 (<code>0x02</code>): over-current</li>
+      <li>bit 2 (<code>0x04</code>): over-voltage</li>
+      <li>bit 3 (<code>0x08</code>): undervoltage</li>
+      <li>bit 4 (<code>0x10</code>): breaker open/tripped</li>
+      <li>bit 5 (<code>0x20</code>): sensor invalid/stale</li>
+      <li>bits 6-31: reserved (must be 0 for now)</li>
+    </ul>
+    <p>
+      Multiple faults can be set at once using bitwise OR.
+      Example: <code>fault_flags = 0x03</code> means over-temperature and over-current.
+    </p>
 
     <h3>ChargeCommandIf</h3>
     <ul>
