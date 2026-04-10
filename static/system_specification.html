@@ -161,11 +161,11 @@
 
     <h3>SensorFrameIf</h3>
     <ul>
-      <li>battery voltage (<code>battery_voltage_mv</code>)</li>
-      <li>charge current (<code>charge_current_ma</code>)</li>
-      <li>battery temperature (<code>battery_temp_c</code>)</li>
-      <li>breaker state (<code>breaker_closed</code>)</li>
-      <li>fault/status flags (<code>fault_flags</code>)</li>
+      <li>battery voltage (<code>battery_voltage_mv</code>, <code>unsigned int</code>)</li>
+      <li>charge current (<code>charge_current_ma</code>, <code>int</code>)</li>
+      <li>battery temperature (<code>battery_temp_c</code>, <code>float</code>)</li>
+      <li>breaker state (<code>breaker_closed</code>, <code>bool</code>)</li>
+      <li>fault/status flags (<code>fault_flags</code>, <code>unsigned int</code>)</li>
     </ul>
     <p><strong>fault_flags definition (bitmask, uint32):</strong></p>
     <ul>
@@ -184,32 +184,32 @@
 
     <h3>ChargeCommandIf</h3>
     <ul>
-      <li>enable charging (<code>enable_charging</code>)</li>
-      <li>current limit (<code>current_limit_ma</code>)</li>
-      <li>voltage limit (<code>voltage_limit_mv</code>)</li>
-      <li>charging mode (<code>charging_mode</code>)</li>
+      <li>enable charging (<code>enable_charging</code>, <code>bool</code>)</li>
+      <li>current limit (<code>current_limit_ma</code>, <code>unsigned int</code>)</li>
+      <li>voltage limit (<code>voltage_limit_mv</code>, <code>unsigned int</code>)</li>
+      <li>charging mode (<code>charging_mode</code>, <code>string</code>)</li>
     </ul>
 
     <h3>ChargeStatusIf</h3>
     <ul>
-      <li>charger state (<code>charger_state</code>)</li>
-      <li>requested current (<code>requested_current_ma</code>)</li>
-      <li>requested voltage (<code>requested_voltage_mv</code>)</li>
-      <li>fault state (<code>fault_state</code>)</li>
+      <li>charger state (<code>charger_state</code>, <code>string</code>)</li>
+      <li>requested current (<code>requested_current_ma</code>, <code>unsigned int</code>)</li>
+      <li>requested voltage (<code>requested_voltage_mv</code>, <code>unsigned int</code>)</li>
+      <li>fault state (<code>fault_state</code>, <code>unsigned int</code>)</li>
     </ul>
 
     <h3>SafetyStateIf</h3>
     <ul>
-      <li>safe mode (<code>safe_mode</code>)</li>
-      <li>breaker open (<code>breaker_open</code>)</li>
-      <li>charging allowed (<code>charging_allowed</code>)</li>
-      <li>heartbeat (<code>heartbeat_counter</code>)</li>
+      <li>safe mode (<code>safe_mode</code>, <code>bool</code>)</li>
+      <li>breaker open (<code>breaker_open</code>, <code>bool</code>)</li>
+      <li>charging allowed (<code>charging_allowed</code>, <code>bool</code>)</li>
+      <li>heartbeat (<code>heartbeat_counter</code>, <code>unsigned int</code>)</li>
     </ul>
 
     <h3>OperatorCommandIf</h3>
     <ul>
-      <li>command id (<code>command_id</code>)</li>
-      <li>parameter (<code>command_param</code>)</li>
+      <li>command id (<code>command_id</code>, <code>unsigned int</code>)</li>
+      <li>parameter (<code>command_param</code>, <code>int</code>)</li>
     </ul>
   </div>
 
