@@ -114,7 +114,7 @@
     <ul>
       <li>consume <code>SensorFrameIf</code></li>
       <li>use provided functions for charging decisions</code></li>
-      <li>publish <code>ChargeCommandIf </code> at 100ms intervals and <code>ChargeStatusIf</code> at 200ms intervals</li>
+      <li>publish <code>ChargeCommandIf </code> and <code>ChargeStatusIf</code> at 200ms intervals</li>
       <li>consume <code>OperatorCommandIf</code> if an operator command is received</li>
     </ul>
 
@@ -129,7 +129,7 @@
     <ul>
       <li>receive UART console commands</li>
       <li>use provided functions to parse user commands</li>
-      <li>convert them into <code>OperatorCommandIf</code> and publish it to ChargeController</li>
+      <li>convert them into <code>OperatorCommandIf</code> and publish it to ChargeController at 500ms intervals</li>
       <li>consume <code>ChargeStatusIf</code> and <code>SafetyStateIf</code></li>
       <li>use provided functions to print state and logs to console</li>
     </ul>
@@ -144,15 +144,16 @@
           <th>Write by</th>
           <th>Read by</th>
           <th>Purpose</th>
+          <th>Physical Address Range</th>
+          <th>Virtual Address Range (Linux OS)</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td><code>SensorFrameIf</code></td><td>SensorFusion</td><td>ChargeController</td><td>periodic measurements</td></tr>
-        <tr><td><code>ChargeCommandIf</code></td><td>ChargeController</td><td>SafetyMonitor</td><td>charging command</td></tr>
-        <tr><td><code>ChargeStatusIf</code></td><td>ChargeController</td><td>LinuxSupervisor</td><td>controller status</td></tr>
-        <tr><td><code>SafetyStateIf</code></td><td>SafetyMonitor</td><td>LinuxSupervisor</td><td>safety state</td></tr>
-        <tr><td><code>OperatorCommandIf</code></td><td>LinuxSupervisor</td><td>ChargeController</td><td>structured internal command</td></tr>
-        <tr><td><code>UartConsoleCommandIf</code></td><td>UART</td><td>LinuxSupervisor</td><td>raw console input</td></tr>
+        <tr><td><code>SensorFrameIf</code></td><td>SensorFusion</td><td>ChargeController</td><td>periodic measurements</td><td>0x80340000 - 0x80340200 (512 bytes)</td><td>/</td> </tr>
+        <tr><td><code>ChargeCommandIf</code></td><td>ChargeController</td><td>SafetyMonitor</td><td>charging command</td><td>0x80341000 - 0x80341200 (512 bytes)</td><td>/</td></tr>
+        <tr><td><code>ChargeStatusIf</code></td><td>ChargeController</td><td>Supervisor</td><td>controller status</td><td>0x80342000 - 0x80342040 (64 bytes)</td><td>get_external_buffer(offset) </td></tr>
+        <tr><td><code>SafetyStateIf</code></td><td>SafetyMonitor</td><td>Supervisor</td><td>safety state</td><td>0x80343000 - 0x80343040 (64 bytes)</td><td>get_external_buffer(offset)</td></tr>
+        <tr><td><code>OperatorCommandIf</code></td><td>Supervisor</td><td>ChargeController</td><td>structured internal command</td><td>0x80344000 - 0x80344010 (16 bytes) </td><td>get_external_buffer(offset) </td></tr>
       </tbody>
     </table>
   </div>
