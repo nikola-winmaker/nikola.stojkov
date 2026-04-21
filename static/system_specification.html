@@ -270,12 +270,12 @@
   <div class="section">
     <h2>Acceptance checklist</h2>
     <ul class="checklist">
-      <li><label><input type="checkbox" /> Provided virtual sensors are read successfully</label></li>
+      <li><label><input type="checkbox" /> BMS Sensors are read and SensorFrame is published successfully</label></li>
       <li><label><input type="checkbox" /> <code>SensorFrameIf</code> is published periodically</label></li>
       <li><label><input type="checkbox" /> <code>ChargeController</code> computes a charging decision</label></li>
       <li><label><input type="checkbox" /> <code>SafetyMonitor</code> publishes final safety state</label></li>
-      <li><label><input type="checkbox" /> Linux parses UART commands correctly</label></li>
-      <li><label><input type="checkbox" /> Linux forwards <code>OperatorCommandIf</code></label></li>
+      <li><label><input type="checkbox" /> Supervisor receives UART commands correctly</label></li>
+      <li><label><input type="checkbox" /> Supervisor forwards <code>OperatorCommandIf</code></label></li>
       <li><label><input type="checkbox" /> At least one command works end-to-end</label></li>
       <li><label><input type="checkbox" /> At least one fault scenario is demonstrated</label></li>
       <li><label><input type="checkbox" /> Status is visible on the console</label></li>
