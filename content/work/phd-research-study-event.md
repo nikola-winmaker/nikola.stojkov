@@ -123,7 +123,7 @@ Usage of Docker is necessary, and Docker Desktop can be used for free if you are
 
    Wait until all submodules and tools are fully installed.
 
-9. From the bottom bar, click `Clean build all & Run` select `console` and `Classical`.
+9. From the bottom bar, click `Clean build all & Run` select `console` in the pop-up prompt on the top and then `Classical`.
 
 You should see Linux boot in the console and messages in the form `[APPx]`, where `x` is `1`, `2`, `3`, and `4`.
 
