@@ -119,11 +119,11 @@ Usage of Docker is necessary, and Docker Desktop can be used for free if you are
 
 6. In VS Code, press `Ctrl+Shift+P` or on MAC OS `Cmd+Shift+P`, search for `Reopen in Container`, and run that command.
 7. Inside the container, install the [Tasks extension](https://marketplace.visualstudio.com/items?itemName=actboy168.tasks)
-8. Run `Setup environment` in the VS Code bottom bar.
+8. Click `Setup environment` in the VS Code bottom bar.
 
    Wait until all submodules and tools are fully installed.
 
-9. From the bottom bar, try `Clean build all & Run`.
+9. From the bottom bar, click `Clean build all & Run` select `console` and `Classical`.
 
 You should see Linux boot in the console and messages in the form `[APPx]`, where `x` is `1`, `2`, `3`, and `4`.
 
