@@ -303,6 +303,17 @@
       After adding or updating HADL files, compose and generate the HALO framework
       packages using the VS Code tasks named <strong>Halo: Compose</strong> and
       <strong>Halo: Generate</strong> (available in the workspace Tasks menu).
+      </p>
+      <div class="note" style="margin: 14px 0 18px;">
+      <div class="note" style="margin: 14px 0 18px;">
+        <b>Guidance:</b> When creating a new HALO system, follow this recommended naming for consistency with other groups:<br>
+        <ol>
+          <li><b>ADL</b> file: <code>battery_charging_system.adl</code> — Define your system architecture and components first.</li>
+          <li><b>IDDL</b> file: <code>battery_charging_system.iddl</code> — Specify your interface data types and structures.</li>
+          <li><b>IDL</b> file: <code>battery_charging_system.idl</code> — Define the interface contracts and method integrity (if needed) that you outlined in ADL description.</li>
+          <li><b>HML</b> file: <code>battery_charging_system.hml</code> — Add profiles that you outlined in ADL description.</li>
+        </ol>
+      </div>
     </p>
   
     <h2>ADL Component Platform & Connection Profile Guidelines</h2>
