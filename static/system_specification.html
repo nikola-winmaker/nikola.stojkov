@@ -230,7 +230,7 @@
   </div>
 
   <div class="section">
-    <h2>Example UART commands</h2>
+    <h2>Example commands</h2>
     <ul>
       <li><code>start</code></li>
       <li><code>stop</code></li>
@@ -304,13 +304,60 @@
       packages using the VS Code tasks named <strong>Halo: Compose</strong> and
       <strong>Halo: Generate</strong> (available in the workspace Tasks menu).
     </p>
+  
+    <h2>ADL Component Platform & Connection Profile Guidelines</h2>
+      <div class="note" style="margin-bottom: 16px;">
+        <b>Suggestion:</b> Name each connection after the interface it uses, omitting the <code>If</code> suffix. For example, use <b>SensorTelemetry</b> for <code>SensorFrameIf</code>, <b>ChargingCommand</b> for <code>ChargeCommandIf</code>, etc.
+      </div>
+    <h3>Component Platform Names</h3>
+    <p>When defining components, use the following platform names:</p>
+    <ul>
+      <li><b>Platform:</b> riscv64_h1_zephyr</li>
+      <li><b>Platform:</b> riscv64_h2_freertos</li>
+      <li><b>Platform:</b> riscv64_h3_baremetal</li>
+      <li><b>Platform:</b> riscv64_h4_linux</li>
+    </ul>
+    <h3>Connections and Profile Mapping</h3>
+    <ul>
+      <li><b>SensorTelemetry</b>: SharedMemory</li>
+      <li><b>ChargingCommand</b>: SharedMemory</li>
+      <li><b>ChargingStatus</b>: BlackBoard</li>
+      <li><b>SafetyReport</b>: BlackBoard</li>
+      <li><b>OperatorControl</b>: EventChannel</li>
+    </ul>
+    <h3>HALO Profiles</h3>
+    <p>Profiles are built-in — use the following directly in your HML connection definitions.</p>
+    <ul>
+      <li>
+        <b>SharedMemory</b>
+        <ul>
+          <li>Override required attributes: <code>memSize</code>, <code>baseAddress</code></li>
+          <li>Set sizes and addresses to match the interface physical address ranges in this task sheet.</li>
+        </ul>
+      </li>
+      <li>
+        <b>BlackBoard</b>
+        <ul>
+          <li>Override required attributes: <code>maxPayload</code>, <code>bufferSize</code>, <code>baseAddress</code></li>
+        </ul>
+      </li>
+      <li>
+        <b>EventChannel</b>
+        <ul>
+          <li>Override required attributes: <code>eventQueueSize</code>, <code>maxChannels</code>, <code>baseAddress</code></li>
+        </ul>
+      </li>
+    </ul>
+    <p>See the HALO Guide for details and examples of attribute usage: <a href="https://nikola-winmaker.github.io/PhdHaloRSG/GettingStarted/#built-in-profile-attributes" target="_blank" rel="noopener">HALO Guide — Profiles</a>.</p>
+
+  </div>
+
+    <p>
+      <strong>Tip:</strong> HALO-specific code snippets are available in VS Code. Just type <code>hml</code> in a HML file or IDL in IDL file etc. Snippets are defined in <code>.vscode/hadl.code-snippets</code> in this workspace.
+    </p>
     <p>
       See an example HADL workflow in the Getting Started guide:
       <a href="https://nikola-winmaker.github.io/PhdHaloRSG/GettingStarted/#example" target="_blank" rel="noopener">Getting Started — example</a>.
-    </p>
-
-    <p>
-      <strong>Tip:</strong> HALO-specific code snippets are available in VS Code. Just type <code>hadl</code> in a HADL file for example or use the snippet picker. Snippets are defined in <code>.vscode/hadl.code-snippets</code> in this workspace.
     </p>
   </div>
 
@@ -327,6 +374,5 @@
       <img src="/images/normal_comm_flow.svg" alt="Normal communication flow diagram" style="max-width: 100%; height: auto;" />
     </div>
   </div>
-
 </body>
 </html>
