@@ -570,6 +570,10 @@
 				border: 1px solid rgba(15, 118, 110, 0.16);
 				font-size: 0.66em;
 				color: var(--ink);
+				box-sizing: border-box;
+				max-width: 100%;
+				overflow-wrap: anywhere;
+				word-break: break-word;
 			}
 
 			.mini-note {
@@ -1081,6 +1085,36 @@
 						<p class="lede">
 							A model-driven workflow for describing heterogeneous systems, validating communication intent across domains,
 							and generating portable and platform-specific implementation artifacts from one unified model.
+						</p>
+					</div>
+				</section>
+
+				<section class="slide-under-the-hood">
+					<div class="eyebrow">HALO UNDER THE HOOD</div>
+					<div class="one-col">
+						<div class="panel">
+							<h2>HETEROGENEOUS SOFTWARE MODEL - HSWM</h2>
+							<p>HSWM is a software model integrating different programming paradigms, languages, or frameworks within a single system.</p>
+							<h4>THE HALO FRAMEWORK APPROACH</h4>
+							<p>HALO is a model-driven approach for describing and implementing heterogeneous systems which consists of three main phases: describe, configure, and generate.</p>
+							<div style="margin-top:12px;">
+								<strong>DESCRIBE</strong>
+								<p>Describe the heterogeneous software model using an Architecture Description Language.</p>
+								<strong>CONFIGURE</strong>
+								<p>Configure and allocate resources inside the heterogeneous software model.</p>
+								<strong>GENERATE</strong>
+								<p>Generate the source code (HALO framework) previously described and configured.</p>
+							</div>
+						</div>
+					</div>
+					<div style="text-align:center; margin-top:2px; margin-bottom:0px">
+						<img src="/images/halo_under_the_hood.png" alt="HALO under the hood" style="max-width:80%; border-radius:8px; box-shadow:0 8px 32px rgba(15,23,42,0.13);" />
+					</div>
+					<div class="takeaway" style="margin-top:0px;">
+						<p>
+							Image shows processing cores (Core 1 runs Linux; Core 2 and Core 3 run an RTOS; Core 4 runs bare‑metal code) and programmable logic / accelerators. 
+							HALO framework provides a common layer that lets these different runtimes communicate. 
+							In short: HALO bridges software on diverse cores to shared hardware resources and accelerators.
 						</p>
 					</div>
 				</section>
