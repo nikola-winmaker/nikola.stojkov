@@ -119,7 +119,7 @@ Usage of Docker is necessary, and Docker Desktop can be used for free if you are
    ```
 
 6. In VS Code, press `Ctrl+Shift+P` or on MAC OS `Cmd+Shift+P`, search for `Reopen in Container`, and run that command.
-7. Inside the container, install the [Tasks extension](https://marketplace.visualstudio.com/items?itemName=actboy168.tasks)
+7. Inside the container, install the [Tasks extension](https://marketplace.visualstudio.com/items?itemName=actboy168.tasks) and [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 8. Click `Setup environment` in the VS Code bottom bar.
 
    Wait until all submodules and tools are fully installed.

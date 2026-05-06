@@ -163,12 +163,19 @@
 
     <h3>SensorFrameIf</h3>
     <ul>
-      <li>battery voltage (<code>unsigned int battery_voltage_mv = 0</code>)</li>
-      <li>charge current (<code>int charge_current_ma = 0</code>)</li>
-      <li>battery temperature (<code>float battery_temp_c = 0.0</code>)</li>
-      <li>breaker state (<code>bool breaker_closed = False</code>)</li>
-      <li>fault/status flags (<code>unsigned int fault_flags = 0</code>)</li>
+      <li>battery voltage in millivolts</li>
+      <li>charge current in milliamperes</li>
+      <li>battery temperature in degrees Celsius</li>
+      <li>breaker state</li>
+      <li>fault/status flags</li>
     </ul>
+    <pre><code>
+    unsigned int battery_voltage_mv = 0;
+    int charge_current_ma = 0;
+    float battery_temp_c = 0.0;
+    bool breaker_closed = false;
+    unsigned int fault_flags = 0;
+    </code></pre>
     <p><strong>fault_flags definition (bitmask, uint32):</strong></p>
     <ul>
       <li>bit 0 (<code>0x01</code>): over-temperature</li>
@@ -183,38 +190,60 @@
       Multiple faults can be set at once using bitwise OR.
       Example: <code>fault_flags = 0x03</code> means over-temperature and over-current.
     </p>
-
     <h3>ChargeCommandIf</h3>
     <ul>
-      <li>enable charging (<code>bool enable_charging = False</code>)</li>
-      <li>current limit (<code>unsigned int current_limit_ma = 0</code>)</li>
-      <li>voltage limit (<code>unsigned int voltage_limit_mv = 0</code>)</li>
-      <li>charging mode (<code>string charging_mode = "normal"</code>)</li>
+      <li>enable charging </li>
+      <li>current limit</li>
+      <li>voltage limit</li>
+      <li>charging mode</li>
     </ul>
     <p><strong>Allowed values for <code>charging_mode</code>:</strong> <code>"normal"</code>, <code>"fast"</code>.</p>
+    <pre><code>
+    bool enable_charging = False
+    unsigned int current_limit_ma = 0
+    unsigned int voltage_limit_mv = 0
+    string charging_mode = "normal"
+    </code></pre>
+
 
     <h3>ChargeStatusIf</h3>
     <ul>
-      <li>charger state (<code>string charger_state = "idle"</code>)</li>
-      <li>requested current (<code>unsigned int requested_current_ma = 0</code>)</li>
-      <li>requested voltage (<code>unsigned int requested_voltage_mv = 0</code>)</li>
-      <li>fault state (<code>unsigned int fault_state = 0</code>)</li>
+      <li>charger state     </li>
+      <li>requested current in milliamperes</li>
+      <li>requested voltage in millivolts</li>
+      <li>fault state       </li>
     </ul>
     <p><strong>Allowed values for <code>charger_state</code>:</strong> <code>"idle"</code>, <code>"charging"</code>, <code>"complete"</code>, <code>"fault"</code>.</p>
+    <pre><code>
+    string charger_state = "idle"        
+    unsigned int requested_current_ma = 0
+    unsigned int requested_voltage_mv = 0
+    unsigned int fault_state = 0         
+    </code></pre>
 
     <h3>SafetyStateIf</h3>
     <ul>
-      <li>safe mode (<code>bool safe_mode = False</code>)</li>
-      <li>breaker open (<code>bool breaker_open = False</code>)</li>
-      <li>charging allowed (<code>bool charging_allowed = False</code>)</li>
-      <li>heartbeat (<code>unsigned int heartbeat_counter = 0</code>)</li>
+      <li>safe mode        </li>
+      <li>breaker open     </li>
+      <li>charging allowed </li>
+      <li>heartbeat        </li>
     </ul>
+    <pre><code>
+    bool safe_mode = False            
+    bool breaker_open = False         
+    bool charging_allowed = False     
+    unsigned int heartbeat_counter = 0
+    </code></pre>
 
     <h3>OperatorCommandIf</h3>
     <ul>
-      <li>command id (<code>unsigned int command_id = 0</code>)</li>
-      <li>parameter (<code>int command_param = 0</code>)</li>
+      <li>command id</li>
+      <li>parameter </li>
     </ul>
+    <pre><code>
+    unsigned int command_id = 0
+    int command_param = 0      
+    </code></pre>
     <p><strong>Allowed values for <code>command_id</code>:</strong></p>
     <ul>
       <li><code>0</code>: no-op (ignore command, keep current state). <code>command_param</code> ignored.</li>
@@ -298,7 +327,7 @@
   <div class="section">
     <h2>HALO system description (HADL)</h2>
     <p>
-      HALO participants must create their HADL system description files in
+      HALO participants must create/update their HADL system description files in
       <code>/workspaces/PhdHaloRSG/halo_dist/hadls</code>.
       After adding or updating HADL files, compose and generate the HALO framework
       packages using the VS Code tasks named <strong>Halo: Compose</strong> and
@@ -310,16 +339,14 @@
         <ol>
           <li><b>ADL</b> file: <code>battery_charging_system.adl</code> — Define your system architecture and components first.</li>
           <li><b>IDDL</b> file: <code>battery_charging_system.iddl</code> — Specify your interface data types and structures.</li>
-          <li><b>IDL</b> file: <code>battery_charging_system.idl</code> — Define the interface contracts and method integrity (if needed) that you outlined in ADL description.</li>
+          <li><b>IDL</b> file: <code>battery_charging_system.idl</code> — Define the interface contracts (read and integrity are not needed) that you outlined in ADL description.</li>
           <li><b>HML</b> file: <code>battery_charging_system.hml</code> — Add profiles that you outlined in ADL description.</li>
         </ol>
       </div>
     </p>
   
     <h2>ADL Component Platform & Connection Profile Guidelines</h2>
-      <div class="note" style="margin-bottom: 16px;">
-        <b>Suggestion:</b> Name each connection after the interface it uses, omitting the <code>If</code> suffix. For example, use <b>SensorTelemetry</b> for <code>SensorFrameIf</code>, <b>ChargingCommand</b> for <code>ChargeCommandIf</code>, etc.
-      </div>
+    <p> Use <b>code snippets</b> to speed up development and ensure consistency by typing ADL when you are in an ADL file, IDL when you are in an IDL file, etc.</p>
     <h3>Component Platform Names</h3>
     <p>When defining components, use the following platform names:</p>
     <ul>
@@ -328,13 +355,14 @@
       <li><b>Platform:</b> riscv64_h3_baremetal</li>
       <li><b>Platform:</b> riscv64_h4_linux</li>
     </ul>
-    <h3>Connections and Profile Mapping</h3>
+    <h3>Connections, Interfaces and Profiles naming conventions</h3>
+    <p> You can name your connections, interfaces, and profiles as you like, but for consistency and clarity, I recommend using the following names that match the task sheet specifications:</p>
     <ul>
-      <li><b>SensorTelemetry</b>: SharedMemory</li>
-      <li><b>ChargingCommand</b>: SharedMemory</li>
-      <li><b>ChargingStatus</b>: BlackBoard</li>
-      <li><b>SafetyReport</b>: BlackBoard</li>
-      <li><b>OperatorControl</b>: EventChannel</li>
+      <li>Connection <b>SensorTelemetry</b>, Interface <b>SensorFrameIf</b>, Profile <b>SensorSharedMemoryProfile</b></li>
+      <li>Connection <b>ChargingCommand</b>, Interface <b>ChargeCommandIf</b>, Profile <b>ChargingSharedMemory</b></li>
+      <li>Connection <b>ChargingStatus</b>, Interface <b>ChargingStatusIf</b>, Profile <b>ChargingBlackBoard</b></li>
+      <li>Connection <b>SafetyReport</b>, Interface <b>SafetyReportIf</b>, Profile <b>SafetyBlackBoard</b></li>
+      <li>Connection <b>OperatorControl</b>, Interface <b>OperatorControlIf</b>, Profile <b>OperatorEventChannel</b></li>
     </ul>
     <h3>HALO Profiles</h3>
     <p>Profiles are built-in — use the following directly in your HML connection definitions.</p>
@@ -359,8 +387,27 @@
         </ul>
       </li>
     </ul>
-    <p>See the HALO Guide for details and examples of attribute usage: <a href="https://nikola-winmaker.github.io/PhdHaloRSG/GettingStarted/#built-in-profile-attributes" target="_blank" rel="noopener">HALO Guide — Profiles</a>.</p>
+    <strong>Important:</strong> Make sure to set the atributes which are not given explicitly in example for BlackBoard and EventChannel profiles correctly 
+    with sizes corresponding to the 64-bit RISC-V (RV64) architecture, in example:
 
+    <p><strong>Attribute values for BlackBoard and EventChannel profiles:</strong></p>
+    <ul>
+      <li>Profile for ChargingStatus maxPayload = 64, bufferSize: 64</li>
+      <li>Profile for SafetyReport maxPayload = 64, bufferSize: 64</li>
+      <li>Profile for OperatorControl eventQueueSize: 16, maxChannels: 1</li>
+    </ul>
+
+    Incorrect attribute values can lead to runtime errors or incorrect behavior of your HALO system.
+    See the HALO Guide for details and examples of attribute usage: <a href="https://nikola-winmaker.github.io/PhdHaloRSG/GettingStarted/#built-in-profile-attributes" target="_blank" rel="noopener">HALO Guide — Profiles</a>.
+
+    <h3>HALO Compose</h3>
+
+      After defining your HADL files, use the <strong>Halo: Compose</strong> task in VS Code to compose your system.
+      This will check for consistency and generate the necessary code artifacts for your HALO system.
+    <h3>HALO Generate</h3>
+
+      After successful composition, use the <strong>Halo: Generate</strong> task to generate the HALO framework packages.
+      This will create the necessary code and configuration files for your system based on the HADL descriptions.
   </div>
 
     <p>
