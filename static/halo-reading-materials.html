@@ -1089,6 +1089,99 @@
 					</div>
 				</section>
 
+				<section class="slide-problems">
+					<div class="eyebrow">CHALLENGES</div>
+					<h2>Typical Problems in SoC Environment</h2>
+					<div class="grid-3">
+						<div class="panel problem">
+							<strong>Resource Management</strong>
+							<p>Efficient allocation and management of shared resources in between cores is crucial to prevent bottlenecks and ensure optimal performance</p>
+						</div>
+						<div class="panel problem">
+							<strong>Latency</strong>
+							<p>Minimizing the communication delay between cores is essential for maintaining real-time processing and system responsiveness</p>
+						</div>
+						<div class="panel problem">
+							<strong>Scalability</strong>
+							<p>As the number of cores increases, the system must efficiently scale to handle additional processing power without compromising performance</p>
+						</div>
+						<div class="panel problem">
+							<strong>Costs</strong>
+							<p>The complexity and integration of multiple cores in an SoC can lead to increased design, development, and production costs</p>
+						</div>
+						<div class="panel problem">
+							<strong>Inter-Core Exchange</strong>
+							<p>Ensuring seamless and reliable data exchange between cores is vital for collaborative processing tasks across different software</p>
+						</div>
+						<div class="panel problem">
+							<strong>Design</strong>
+							<p>The architectural design of an SoC must balance performance, power consumption, and complexity to meet specific application requirements</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="slide-solutions">
+					<div class="eyebrow">SOLUTIONS</div>
+					<h2>Available Solutions for Describing AMP SW Architecture</h2>
+					<div class="grid-3">
+						<div class="panel cool">
+							<strong>Custom</strong>
+							<p>Ad-hoc or company-specific modeling environments built using Domain-Specific Languages (DSLs) or UML profiles.</p>
+						</div>
+						<div class="panel cool">
+							<strong>AADL</strong>
+							<p>Industry standard for safety-critical multicore systems; supports processor and partition allocation.</p>
+						</div>
+						<div class="panel cool">
+							<strong>RAPIDE, EADL, COCODEL</strong>
+							<p>Historical academic roots of current architecture modeling formalisms - event-based interactions and data-flow modeling</p>
+						</div>
+						<div class="panel warm">
+							<strong>MARTE</strong>
+							<p>Visual modeling of real-time tasks on heterogeneous/AMP systems - express timing constraints, task mappings, and resource utilization</p>
+						</div>
+						<div class="panel warm">
+							<strong>OS Redesign</strong>
+							<p>Runtime or operating system-level approaches that modify the kernel or partition manager to better support AMP communication and scheduling.</p>
+						</div>
+						<div class="panel warm">
+							<strong>EAST-ADL</strong>
+							<p>Supports layered abstraction and mapping to AUTOSAR components in multicore ECUs - mapping to AUTOSAR components deployed across multicore ECUs</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="slide-ipc">
+					<div class="eyebrow">IMPLEMENTATION</div>
+					<h2>Current Available Solutions for IPC</h2>
+					<div class="grid-3">
+						<div class="panel solution">
+							<strong>Custom</strong>
+							<p>Ad-hoc shared-memory or message-queue mechanisms developed for specific SoCs or RTOS environments.</p>
+						</div>
+						<div class="panel solution">
+							<strong>RPMSG</strong>
+							<p>Standard Linux-based protocol within OpenAMP, providing lightweight message-passing between heterogeneous cores</p>
+						</div>
+						<div class="panel solution">
+							<strong>MCAPI</strong>
+							<p>Formal Multicore Communications API standard defining messages, packets, and scalars for embedded systems</p>
+						</div>
+						<div class="panel solution">
+							<strong>Virtualization</strong>
+							<p>Hypervisor-based IPC through shared memory and event channels (e.g., Xen, Jailhouse)</p>
+						</div>
+						<div class="panel solution">
+							<strong>OS Redesign</strong>
+							<p>Custom RTOS or kernel modifications aimed at deterministic inter-core communication and timing predictability</p>
+						</div>
+						<div class="panel solution">
+							<strong>OpenAMP</strong>
+							<p>Framework combining RemoteProc (core management) and RPMsg (messaging). Widely used for Linux + RTOS AMP platforms</p>
+						</div>
+					</div>
+				</section>
+
 				<section class="slide-under-the-hood">
 					<div class="eyebrow">HALO UNDER THE HOOD</div>
 					<div class="one-col">
