@@ -289,20 +289,6 @@
   </div>
 
   <div class="section">
-    <h2>Acceptance checklist</h2>
-    <ul class="checklist">
-      <li><label><input type="checkbox" /> BMS Sensors are read and SensorFrame is published successfully</label></li>
-      <li><label><input type="checkbox" /> <code>SensorFrameIf</code> is published periodically</label></li>
-      <li><label><input type="checkbox" /> <code>ChargeController</code> computes a charging decision</label></li>
-      <li><label><input type="checkbox" /> <code>SafetyMonitor</code> publishes final safety state</label></li>
-      <li><label><input type="checkbox" /> Supervisor receives UART commands correctly</label></li>
-      <li><label><input type="checkbox" /> Supervisor forwards <code>OperatorCommandIf</code></label></li>
-      <li><label><input type="checkbox" /> At least one command works end-to-end</label></li>
-      <li><label><input type="checkbox" /> Status is visible on the console</label></li>
-    </ul>
-  </div>
-
-  <div class="section">
     <h2>Workshop Group Allocation</h2>
     <ol>
       <li>Five groups as G1 through G5.</li>
@@ -321,6 +307,123 @@
           <li>Time</li>
         </ul>
       </li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>Implementation Guidelines</h2>
+    
+    <h3>Using TODO Tree Extension (Classical & HALO Workshops)</h3>
+    <p>
+      To effectively track and manage your implementation tasks, you <strong>must</strong> use the 
+      <strong>TODO Tree</strong> extension in VS Code. This extension helps you organize and monitor 
+      your work across the codebase.
+    </p>
+    <ul>
+      <li><strong>Install TODO Tree:</strong> Open VS Code Extensions (Ctrl+Shift+X), search for "TODO Tree", and install it.</li>
+      <li><strong>Pre-populated TODOs:</strong> The skeleton code already contains TODO markers for all required implementation tasks:
+        <ul>
+          <li>Classical approach: TODOs prefixed with <code>TODO Classical: X</code> (where X is the task number)</li>
+          <li>HALO approach: TODOs prefixed with <code>TODO HALO: X</code></li>
+        </ul>
+      </li>
+      <li><strong>Tracking Progress:</strong> The TODO Tree view (accessible via the Activity Bar) displays all TODO items in your workspace, making it easy to see what remains to be completed.</li>
+      <li><strong>Completing Tasks:</strong> As you implement each TODO item:
+        <ol>
+          <li>Work on the implementation specified by the TODO comment</li>
+          <li>Once finished, <strong>delete the entire TODO marker line</strong> from your code</li>
+          <li>This removes the completed task from the TODO Tree and keeps your list clean</li>
+        </ol>
+      </li>
+      <li><strong>Regular Review:</strong> Check the TODO Tree frequently to track your progress. When the TODO Tree is empty, all required implementation tasks are complete.</li>
+    </ul>
+
+    <h3>Interacting with BMS Simulation via PTY Terminal</h3>
+    <p>
+      Once your implementation is built and running, you can interact with the BMS (Battery Management System) 
+      simulation through the console PTY. Use the <strong>PTY terminal</strong> in VS Code when selecting the task QEMU Sys Run.
+    </p>
+    <ul>
+      <li><strong>Start Simulation:</strong> Run the VS Code task named <strong>Qemu Sys Run</strong>.</li>
+      <li><strong>PTY Terminal:</strong> When the QEMU Sys Run executes if you selected PTY, it launches a pseudo-terminal window where you can interact with the running simulation in real-time.</li>
+      <li><strong>Send Commands:</strong> Use the terminal input to send operator commands to the Supervisor (Hart4 / Linux). Supported commands include:
+        <ul>
+          <li><code>start</code> — Start charging</li>
+          <li><code>stop</code> — Stop charging</li>
+          <li><code>reset</code> — Reset controller and safety state</li>
+          <li><code>mode normal</code> — Set charging mode to normal</li>
+          <li><code>mode fast</code> — Set charging mode to fast</li>
+          <li><code>set_current &lt;mA&gt;</code> — Set current limit (e.g., <code>set_current 5000</code>)</li>
+          <li><code>set_voltage &lt;mV&gt;</code> — Set voltage limit (e.g., <code>set_voltage 12000</code>)</li>
+        </ul>
+      </li>
+      <li><strong>Monitor Output:</strong> The console displays real-time feedback from the applications when you used logging mechanism [APPx], for example:
+        <ul>
+          <li>Sensor readings from Hart1 (Zephyr)</li>
+          <li>Charging controller state from Hart2 (FreeRTOS)</li>
+          <li>Safety state updates from Hart3 (Bare-metal)</li>
+          <li>Command acknowledgments and system status from Hart4 (Linux)</li>
+        </ul>
+      </li>
+      <li><strong>Debugging:</strong> Use the PTY terminal output to verify correct data flow between components and to test your command handling implementation end-to-end.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Acceptance checklist</h2>
+    <ul class="checklist">
+      <li><label><input type="checkbox" /> BMS Sensors are read and SensorFrame is published successfully</label></li>
+      <li><label><input type="checkbox" /> <code>SensorFrameIf</code> is published periodically</label></li>
+      <li><label><input type="checkbox" /> <code>ChargeController</code> computes a charging decision</label></li>
+      <li><label><input type="checkbox" /> <code>SafetyMonitor</code> publishes final safety state</label></li>
+      <li><label><input type="checkbox" /> Supervisor receives UART commands correctly</label></li>
+      <li><label><input type="checkbox" /> Supervisor forwards <code>OperatorCommandIf</code></label></li>
+      <li><label><input type="checkbox" /> At least one command works end-to-end</label></li>
+      <li><label><input type="checkbox" /> Status is visible on the console</label></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Classical Approach</h2>
+    <p>
+      In the classical approach, you are responsible for implementing all Inter-Process Communication (IPC), 
+      synchronization mechanisms, and middleware infrastructure yourself. This approach provides complete 
+      control and flexibility but requires careful management of low-level communication details.
+    </p>
+    
+    <h3>Your Responsibilities</h3>
+    <ul>
+      <li><strong>IPC Implementation:</strong> Design and implement communication mechanisms between the four harts:
+        <ul>
+          <li>Shared memory access and coordination</li>
+          <li>Synchronization primitives if needed (mutexes, semaphores, spin-locks, etc.)</li>
+          <li>Data consistency and coherence strategies if needed</li>
+        </ul>
+      </li>
+      <li><strong>Interface Management:</strong> Manually handle all interface reads/writes:
+        <ul>
+          <li>Read from and write to the physical memory addresses specified in the task sheet</li>
+          <li>Ensure proper memory barriers and synchronization points if needed</li>
+          <li>Implement data serialization/deserialization as needed</li>
+        </ul>
+      </li>
+      <li><strong>Error Handling:</strong> Implement error detection:
+        <ul>
+          <li>Handle missing or stale data from other components</li>
+          <li>Detect communication failures</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Example Structure</h3>
+    <p>A typical classical implementation workflow:</p>
+    <ol>
+      <li>Define data structures for each interface (matching the specifications in this task sheet)</li>
+      <li>Implement a simple shared memory protocol (e.g., producer writes, consumer reads with a flag or counter)</li>
+      <li>Add synchronization (e.g., spinlocks or semaphores for critical sections)</li>
+      <li>Implement the application logic for each hart using TODO markers</li>
+      <li>Test individual components first, then verify end-to-end communication</li>
+      <li>Delete TODO markers as you complete each task</li>
     </ol>
   </div>
 
